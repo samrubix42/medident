@@ -89,8 +89,8 @@
             <h3 class="text-sm font-bold text-med-navy">Quick Links</h3>
 
             <ul class="mt-5 space-y-3 text-sm text-slate-500">
-                <li><a href="{{ url('/') }}" class="transition hover:text-med-blue">Home</a></li>
-                <li><a href="{{ url('/#about') }}" class="transition hover:text-med-blue">About Us</a></li>
+                <li><a href="{{ route('home') }}" class="transition hover:text-med-blue">Home</a></li>
+                <li><a href="{{ route('about') }}" class="transition hover:text-med-blue">About Us</a></li>
                 <li><a href="{{ url('/#services') }}" class="transition hover:text-med-blue">Our Services</a></li>
                 <li><a href="{{ url('/#testimonials') }}" class="transition hover:text-med-blue">Testimonials</a></li>
                 <li><a href="{{ url('/#contact') }}" class="transition hover:text-med-blue">Contact Us</a></li>

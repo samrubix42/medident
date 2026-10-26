@@ -48,13 +48,21 @@
             {{-- Desktop menu --}}
             <nav class="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
 
-                <a href="{{ url('/') }}"
-                    class="text-sm font-semibold text-med-blue">
+                <a href="{{ route('home') }}"
+                    @class([
+                        'text-sm font-semibold transition',
+                        'text-med-blue' => request()->routeIs('home'),
+                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('home'),
+                    ])>
                     Home
                 </a>
 
-                <a href="{{ url('/#about') }}"
-                    class="text-sm font-medium text-slate-600 transition hover:text-med-blue">
+                <a href="{{ route('about') }}"
+                    @class([
+                        'text-sm font-semibold transition',
+                        'text-med-blue' => request()->routeIs('about'),
+                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('about'),
+                    ])>
                     About Us
                 </a>
 
@@ -151,15 +159,23 @@
             class="border-t border-slate-200 bg-white px-5 py-4 shadow-lg lg:hidden">
             <nav class="mx-auto flex max-w-7xl flex-col" aria-label="Mobile navigation">
 
-                <a href="{{ url('/') }}"
+                <a href="{{ route('home') }}"
                     @click="mobileOpen = false"
-                    class="border-b border-slate-100 py-3 text-sm font-semibold text-med-blue">
+                    @class([
+                        'border-b border-slate-100 py-3 text-sm',
+                        'font-semibold text-med-blue' => request()->routeIs('home'),
+                        'font-medium text-slate-700' => ! request()->routeIs('home'),
+                    ])>
                     Home
                 </a>
 
-                <a href="{{ url('/#about') }}"
+                <a href="{{ route('about') }}"
                     @click="mobileOpen = false"
-                    class="border-b border-slate-100 py-3 text-sm font-medium text-slate-700">
+                    @class([
+                        'border-b border-slate-100 py-3 text-sm',
+                        'font-semibold text-med-blue' => request()->routeIs('about'),
+                        'font-medium text-slate-700' => ! request()->routeIs('about'),
+                    ])>
                     About Us
                 </a>
 

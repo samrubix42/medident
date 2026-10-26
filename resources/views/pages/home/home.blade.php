@@ -36,7 +36,7 @@
                     <i class="ri-arrow-right-up-line text-lg"></i>
                 </a>
 
-                <a href="#about"
+                <a href="{{ route('about') }}"
                    class="inline-flex items-center gap-2 border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-med-navy transition hover:border-med-blue hover:text-med-blue">
                     About Our Clinic
                     <i class="ri-arrow-right-line"></i>
