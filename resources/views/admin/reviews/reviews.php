@@ -30,8 +30,6 @@ new #[Layout('layouts::admin')] #[Title('Reviews')] class extends Component
 
     public ?int $lastSkippedCount = null;
 
-    public ?string $statusMessage = null;
-
     public bool $showDeleteModal = false;
 
     public ?int $reviewIdBeingDeleted = null;
@@ -88,7 +86,6 @@ new #[Layout('layouts::admin')] #[Title('Reviews')] class extends Component
 
         $this->lastImportCount = null;
         $this->lastSkippedCount = null;
-        $this->statusMessage = null;
 
         try {
             $rows = $this->readRows($this->file->getRealPath(), $this->file->getClientOriginalExtension());
@@ -139,7 +136,7 @@ new #[Layout('layouts::admin')] #[Title('Reviews')] class extends Component
 
         $this->lastImportCount = count($records);
         $this->lastSkippedCount = $skipped;
-        $this->statusMessage = 'Reviews imported successfully.';
+        $this->dispatch('toast-show', message: 'Reviews imported successfully.', type: 'success');
         $this->reset('file');
         $this->resetPage();
     }
@@ -148,7 +145,6 @@ new #[Layout('layouts::admin')] #[Title('Reviews')] class extends Component
     {
         $this->reviewIdBeingDeleted = $reviewId;
         $this->showDeleteModal = true;
-        $this->statusMessage = null;
     }
 
     public function cancelDelete(): void
@@ -168,7 +164,7 @@ new #[Layout('layouts::admin')] #[Title('Reviews')] class extends Component
         Review::whereKey($this->reviewIdBeingDeleted)->delete();
 
         $this->cancelDelete();
-        $this->statusMessage = 'Review deleted successfully.';
+        $this->dispatch('toast-show', message: 'Review deleted successfully.', type: 'success');
     }
 
     /**

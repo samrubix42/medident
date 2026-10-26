@@ -22,13 +22,6 @@
         </div>
     </div>
 
-    @if ($statusMessage)
-        <div class="flex items-start gap-3 border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
-            <i class="ri-checkbox-circle-line mt-0.5 text-lg"></i>
-            <p>{{ $statusMessage }}</p>
-        </div>
-    @endif
-
     {{-- Import --}}
     <section class="border border-slate-200 bg-white">
         <div class="border-b border-slate-100 p-5 sm:p-6">

@@ -33,6 +33,8 @@
         </main>
     </div>
 
+    <x-toaster />
+
     @livewireScripts
 </body>
 </html>

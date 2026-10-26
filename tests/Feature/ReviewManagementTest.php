@@ -122,7 +122,8 @@ test('reviews can be imported from a csv file and re-imported without duplicates
         ->call('import')
         ->assertHasNoErrors()
         ->assertSet('lastImportCount', 1)
-        ->assertSet('lastSkippedCount', 0);
+        ->assertSet('lastSkippedCount', 0)
+        ->assertDispatched('toast-show');
 
     $review = Review::firstOrFail();
 
@@ -217,7 +218,8 @@ test('the delete modal opens, closes, and deletes a review', function () {
         ->call('confirmDelete', $review->id)
         ->call('deleteReview')
         ->assertSet('showDeleteModal', false)
-        ->assertSet('reviewIdBeingDeleted', null);
+        ->assertSet('reviewIdBeingDeleted', null)
+        ->assertDispatched('toast-show');
 
     $this->assertDatabaseMissing('reviews', ['id' => $review->id]);
 });

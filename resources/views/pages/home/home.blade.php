@@ -550,27 +550,91 @@
 
 
     {{-- TESTIMONIALS --}}
+    @php($reviews = $this->reviews)
+    @php($googleReviewsUrl = $reviews->first()?->reviews_link)
+
     <section
         id="testimonials"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Google reviews"
         x-data="{
             active: 0,
-            reviews: [
-                {
-                    quote: 'The team took time to explain everything clearly, and I felt that my concerns were heard.',
-                    name: 'Patient Review',
-                    service: 'Medical consultation'
-                },
-                {
-                    quote: 'The staff were welcoming and made the visit feel comfortable. The information was easy to understand.',
-                    name: 'Patient Review',
-                    service: 'Clinic experience'
-                },
-                {
-                    quote: 'I appreciated the friendly communication and the attention given to my questions.',
-                    name: 'Patient Review',
-                    service: 'Family healthcare'
+            total: {{ $reviews->count() }},
+            timer: null,
+            resizeHandler: null,
+            visibilityHandler: null,
+            get visible() {
+                return window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 640 ? 2 : 1);
+            },
+            get maxIndex() {
+                return Math.max(0, this.total - this.visible);
+            },
+            init() {
+                this.resizeHandler = () => {
+                    if (this.active > this.maxIndex) this.goTo(this.maxIndex);
+                };
+                this.visibilityHandler = () => document.hidden ? this.stop() : this.start();
+                window.addEventListener('resize', this.resizeHandler);
+                document.addEventListener('visibilitychange', this.visibilityHandler);
+                this.start();
+            },
+            destroy() {
+                this.stop();
+                window.removeEventListener('resize', this.resizeHandler);
+                document.removeEventListener('visibilitychange', this.visibilityHandler);
+            },
+            start() {
+                this.stop();
+
+                if (this.total < 2 || document.hidden) {
+                    return;
                 }
-            ]
+
+                this.timer = setInterval(() => this.next(), 5000);
+            },
+            stop() {
+                if (this.timer) clearInterval(this.timer);
+                this.timer = null;
+            },
+            next() {
+                this.goTo(this.active >= this.maxIndex ? 0 : this.active + 1);
+            },
+            prev() {
+                this.goTo(this.active <= 0 ? this.maxIndex : this.active - 1);
+            },
+            goTo(index) {
+                this.active = Math.min(Math.max(index, 0), this.maxIndex);
+                const track = this.$refs.track;
+                const first = track?.children[0];
+                const card = track?.children[this.active];
+
+                if (first && card) {
+                    track.scrollTo({ left: card.offsetLeft - first.offsetLeft, behavior: 'smooth' });
+                }
+            },
+            syncActive() {
+                const track = this.$refs.track;
+
+                if (! track || track.children.length === 0) {
+                    return;
+                }
+
+                const first = track.children[0];
+                let closest = 0;
+                let distance = Infinity;
+
+                Array.from(track.children).forEach((card, index) => {
+                    const current = Math.abs(card.offsetLeft - first.offsetLeft - track.scrollLeft);
+
+                    if (current < distance) {
+                        distance = current;
+                        closest = index;
+                    }
+                });
+
+                this.active = Math.min(closest, this.maxIndex);
+            }
         }"
         class="scroll-mt-24 py-16 sm:py-20 lg:py-24">
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
@@ -578,67 +642,157 @@
             <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div class="max-w-2xl">
                     <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
-                        Patient Experiences
+                        Google Reviews
                     </p>
 
                     <h2 class="mt-3 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl">
-                        Care that makes a difference.
+                        What our patients say.
                     </h2>
 
                     <p class="mt-4 leading-7 text-slate-600">
-                        Every patient deserves to feel heard, respected and supported throughout their care.
+                        Read genuine feedback from patients who visited MediDENT Multicare Clinic.
                     </p>
+
+                    @if ($googleReviewsUrl)
+                        <a href="{{ $googleReviewsUrl }}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-med-blue transition hover:text-sky-800">
+                            <img src="{{ asset('google-img.png') }}"
+                                 alt=""
+                                 class="h-4 w-4"
+                                 decoding="async">
+                            View all Google reviews
+                            <i class="ri-arrow-right-up-line"></i>
+                        </a>
+                    @endif
                 </div>
 
-                <div class="flex gap-2">
-                    <button
-                        type="button"
-                        @click="active = (active - 1 + reviews.length) % reviews.length"
-                        aria-label="Previous review"
-                        class="grid h-11 w-11 place-items-center border border-slate-300 text-xl text-med-navy transition hover:border-med-blue hover:text-med-blue">
-                        <i class="ri-arrow-left-line"></i>
-                    </button>
+                @if ($reviews->count() > 1)
+                    <div class="flex gap-2">
+                        <button
+                            type="button"
+                            @click="prev()"
+                            aria-label="Previous review"
+                            class="grid h-11 w-11 place-items-center border border-slate-300 text-xl text-med-navy transition hover:border-med-blue hover:text-med-blue">
+                            <i class="ri-arrow-left-line"></i>
+                        </button>
 
-                    <button
-                        type="button"
-                        @click="active = (active + 1) % reviews.length"
-                        aria-label="Next review"
-                        class="grid h-11 w-11 place-items-center bg-med-blue text-xl text-white transition hover:bg-sky-800">
-                        <i class="ri-arrow-right-line"></i>
-                    </button>
+                        <button
+                            type="button"
+                            @click="next()"
+                            aria-label="Next review"
+                            class="grid h-11 w-11 place-items-center bg-med-blue text-xl text-white transition hover:bg-sky-800">
+                            <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
+                @endif
+            </div>
+
+            @if ($reviews->isEmpty())
+                <div class="mt-9 border border-slate-200 bg-white p-8 text-center">
+                    <img src="{{ asset('google-img.png') }}"
+                         alt=""
+                         class="mx-auto h-10 w-10"
+                         loading="lazy"
+                         decoding="async">
+                    <p class="mt-3 font-semibold text-med-navy">Google reviews are on the way.</p>
+                    <p class="mt-1 text-sm text-slate-500">Our latest patient reviews will appear here soon.</p>
                 </div>
-            </div>
+            @else
+                <div x-ref="track"
+                     @scroll.debounce.300ms="syncActive()"
+                     class="mt-9 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    @foreach ($reviews as $review)
+                        @php($authorName = $review->author_title ?: 'Google user')
+                        @php($rating = (float) $review->review_rating)
 
-            <div class="mt-9 grid gap-5 md:grid-cols-3">
+                        <article
+                            role="group"
+                            aria-roledescription="slide"
+                            aria-label="Review {{ $loop->iteration }} of {{ $reviews->count() }}"
+                            class="flex w-[86%] shrink-0 snap-start flex-col border border-slate-200 bg-white p-6 shadow-sm transition hover:border-sky-200 hover:shadow-md sm:w-[calc(50%-0.625rem)] sm:p-7 lg:w-[calc(33.333%-0.834rem)]">
+                            <div class="flex items-start justify-between gap-3">
+                                <div class="flex items-center gap-1 text-amber-500" aria-label="{{ number_format($rating, 1) }} out of 5 stars">
+                                    @for ($star = 1; $star <= 5; $star++)
+                                        @if ($rating >= $star)
+                                            <i class="ri-star-fill"></i>
+                                        @elseif ($rating >= $star - 0.5)
+                                            <i class="ri-star-half-fill"></i>
+                                        @else
+                                            <i class="ri-star-line"></i>
+                                        @endif
+                                    @endfor
+                                </div>
 
-                <template x-for="(review, index) in reviews" :key="index">
-                    <article
-                        @click="active = index"
-                        class="cursor-pointer border p-6 transition sm:p-7"
-                        :class="active === index
-                            ? 'border-sky-200 bg-[#f5fafc] shadow-md'
-                            : 'border-slate-200 bg-white hover:border-slate-300'">
-                        <div class="flex items-center gap-1 text-amber-500" aria-label="Sample five-star rating">
-                            <template x-for="star in 5" :key="star">
-                                <i class="ri-star-fill"></i>
-                            </template>
-                        </div>
+                                <span class="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-400">
+                                    <img src="{{ asset('google-img.png') }}"
+                                         alt=""
+                                         class="h-4 w-4"
+                                         loading="lazy"
+                                         decoding="async">
+                                    Google
+                                </span>
+                            </div>
 
-                        <i class="ri-double-quotes-l mt-6 block text-3xl text-med-blue"></i>
+                            <p class="mt-5 flex-1 line-clamp-6 text-sm leading-7 text-slate-600">
+                                {{ $review->review_text }}
+                            </p>
 
-                        <p class="mt-2 min-h-24 text-sm leading-7 text-slate-600" x-text="review.quote"></p>
+                            <div class="mt-6 flex items-center gap-3 border-t border-slate-100 pt-5">
+                                @if ($review->author_image)
+                                    <img src="{{ $review->author_image }}"
+                                         alt="{{ $authorName }}"
+                                         loading="lazy"
+                                         decoding="async"
+                                         referrerpolicy="no-referrer"
+                                         class="h-10 w-10 shrink-0 rounded-full object-cover">
+                                @else
+                                    <div class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sky-50 text-sm font-bold text-med-blue">
+                                        {{ mb_substr($authorName, 0, 1) }}
+                                    </div>
+                                @endif
 
-                        <div class="mt-6 border-t border-slate-200 pt-5">
-                            <p class="text-sm font-bold text-med-navy" x-text="review.name"></p>
-                            <p class="mt-1 text-xs text-slate-500" x-text="review.service"></p>
-                        </div>
-                    </article>
-                </template>
+                                <div class="min-w-0">
+                                    <p class="truncate text-sm font-bold text-med-navy">{{ $authorName }}</p>
+                                    <p class="mt-0.5 text-xs text-slate-500">
+                                        {{ $review->review_datetime_utc?->format('M j, Y') ?? 'Google review' }}
+                                    </p>
+                                </div>
 
-            </div>
+                                @if ($review->review_link)
+                                    <a href="{{ $review->review_link }}"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       aria-label="Read {{ $authorName }}'s review on Google"
+                                       class="ml-auto inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-med-blue transition hover:text-sky-800">
+                                        Read
+                                        <i class="ri-arrow-right-up-line"></i>
+                                    </a>
+                                @endif
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
 
-            <p class="mt-4 text-xs text-slate-400">
-                Replace sample reviews with genuine patient feedback before publishing.
+                @if ($reviews->count() > 1)
+                    <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
+                        <template x-for="index in total" :key="index">
+                            <button
+                                type="button"
+                                @click="goTo(index - 1)"
+                                :aria-label="`Show review ${index}`"
+                                :aria-current="active === index - 1 ? 'true' : 'false'"
+                                class="h-2.5 rounded-full transition-all duration-300"
+                                :class="active === index - 1 ? 'w-8 bg-med-blue' : 'w-2.5 bg-slate-300 hover:bg-slate-400'">
+                            </button>
+                        </template>
+                    </div>
+                @endif
+            @endif
+
+            <p class="mt-4 text-center text-xs text-slate-400">
+                Showing Google reviews rated 4.5 stars and above.
             </p>
         </div>
     </section>
