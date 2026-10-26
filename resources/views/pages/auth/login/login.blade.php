@@ -4,9 +4,10 @@
         {{-- Brand --}}
         <div class="mb-8 flex flex-col items-center text-center">
             <a href="{{ route('home') }}" class="flex items-center gap-3" wire:navigate>
-                <span class="grid h-11 w-11 place-items-center bg-med-blue text-xl text-white">
-                    <i class="ri-heart-pulse-line"></i>
-                </span>
+                <img
+                    src="{{ asset('logo.webp') }}"
+                    alt="MediDENT Multicare Clinic"
+                    class="h-12 w-auto object-contain">
 
                 <span class="text-left">
                     <span class="block text-base font-bold leading-none tracking-tight text-med-navy">MediDENT</span>

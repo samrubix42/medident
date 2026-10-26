@@ -31,11 +31,18 @@
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 lg:px-8">
 
             {{-- Brand logo --}}
-            <a href="{{ url('/') }}" class="shrink-0" aria-label="MediDENT home">
+            <a href="{{ url('/') }}" class="flex shrink-0 items-center gap-3" aria-label="MediDENT home">
                 <img
                     src="{{ asset('logo.webp') }}"
                     alt="MediDENT Multicare Clinic"
-                    class="w-20 object-contain sm:w-20">
+                    class="h-10 w-auto object-contain sm:h-12">
+
+                <span>
+                    <span class="block text-base font-bold leading-none tracking-tight text-med-navy sm:text-lg">MediDENT</span>
+                    <span class="mt-1 block text-[9px] font-semibold uppercase tracking-[0.18em] text-med-blue sm:text-[10px]">
+                        Multicare Clinic
+                    </span>
+                </span>
             </a>
 
             {{-- Desktop menu --}}

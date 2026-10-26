@@ -18,10 +18,11 @@
 
         {{-- Brand --}}
         <div class="flex h-16 shrink-0 items-center justify-between gap-3 border-b border-slate-100 px-5">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3" wire:navigate>
-                <span class="grid h-9 w-9 place-items-center bg-med-blue text-lg text-white">
-                    <i class="ri-heart-pulse-line"></i>
-                </span>
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5" wire:navigate>
+                <img
+                    src="{{ asset('logo.webp') }}"
+                    alt="MediDENT Multicare Clinic"
+                    class="h-9 w-auto object-contain">
 
                 <span>
                     <span class="block text-sm font-bold leading-none tracking-tight text-med-navy">MediDENT</span>
@@ -60,6 +61,21 @@
                         'text-slate-400' => ! request()->routeIs('admin.dashboard'),
                     ])></i>
                     Dashboard
+                </a>
+
+                <a href="{{ route('admin.reviews') }}"
+                    wire:navigate
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.reviews'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.reviews'),
+                    ])>
+                    <i @class([
+                        'ri-star-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.reviews'),
+                        'text-slate-400' => ! request()->routeIs('admin.reviews'),
+                    ])></i>
+                    Reviews
                 </a>
 
                 <span class="flex cursor-default items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-400">

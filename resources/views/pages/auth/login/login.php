@@ -10,9 +10,9 @@ use Livewire\Component;
 
 new #[Layout('layouts::auth')] #[Title('Admin Login')] class extends Component
 {
-    public string $email = '';
+    public string $email = 'admin@medidentclinic.com';
 
-    public string $password = '';
+    public string $password = 'password';
 
     public bool $remember = false;
 

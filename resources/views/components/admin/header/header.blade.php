@@ -8,6 +8,7 @@
 
     $pageTitle = match (true) {
         request()->routeIs('admin.dashboard') => 'Dashboard',
+        request()->routeIs('admin.reviews') => 'Reviews',
         default => 'Admin',
     };
 @endphp
@@ -23,6 +24,11 @@
             class="grid h-9 w-9 shrink-0 place-items-center text-xl text-med-navy transition hover:bg-slate-50 lg:hidden">
             <i class="ri-menu-3-line"></i>
         </button>
+
+        <img
+            src="{{ asset('logo.webp') }}"
+            alt="MediDENT Multicare Clinic"
+            class="h-7 w-auto shrink-0 object-contain lg:hidden">
 
         {{-- Page title --}}
         <h1 class="min-w-0 truncate text-sm font-semibold text-med-navy sm:text-base">

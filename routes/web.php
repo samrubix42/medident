@@ -11,3 +11,7 @@ Route::livewire('/login', 'pages::auth.login')
 Route::livewire('/admin', 'admin::dashboard')
     ->middleware('auth')
     ->name('admin.dashboard');
+
+Route::livewire('/admin/reviews', 'admin::reviews')
+    ->middleware('auth')
+    ->name('admin.reviews');

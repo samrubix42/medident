@@ -45,12 +45,18 @@
 
         {{-- Brand --}}
         <div class="lg:col-span-2">
-            <a href="{{ url('/') }}" class="inline-block">
+            <a href="{{ url('/') }}" class="inline-flex items-center gap-3" aria-label="MediDENT home">
                 <img
-                    src="{{ asset('images/medident-logo.png') }}"
+                    src="{{ asset('logo.webp') }}"
                     alt="MediDENT Multicare Clinic"
-                    class="w-48 object-contain"
-                >
+                    class="h-12 w-auto object-contain">
+
+                <span>
+                    <span class="block text-lg font-bold leading-none tracking-tight text-med-navy">MediDENT</span>
+                    <span class="mt-1 block text-[10px] font-semibold uppercase tracking-[0.18em] text-med-blue">
+                        Multicare Clinic
+                    </span>
+                </span>
             </a>
 
             <p class="mt-5 max-w-md text-sm leading-7 text-slate-500">
