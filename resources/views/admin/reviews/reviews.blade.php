@@ -12,101 +12,30 @@
             </h2>
 
             <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-                Import your Google Maps review export and manage the reviews stored for the clinic.
+                Manage the reviews stored for the clinic or reset them to the seeded data.
             </p>
         </div>
 
-        <div class="inline-flex w-fit items-center gap-2 border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-med-navy">
-            <i class="ri-star-line text-lg text-amber-500"></i>
-            {{ number_format($this->reviews->total()) }} total reviews
+        <div class="flex w-fit flex-wrap items-center gap-2">
+            <div class="inline-flex items-center gap-2 border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-med-navy">
+                <i class="ri-star-line text-lg text-amber-500"></i>
+                {{ number_format($this->reviews->total()) }} total reviews
+            </div>
+
+            <button
+                type="button"
+                wire:click="resetReviews"
+                wire:confirm="Reset all reviews to the seeded data? This will remove any changes."
+                wire:loading.attr="disabled"
+                wire:target="resetReviews"
+                class="inline-flex items-center gap-2 border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:border-red-200 hover:bg-red-50 hover:text-med-red disabled:cursor-not-allowed disabled:opacity-70">
+                <i class="ri-loader-4-line animate-spin" wire:loading wire:target="resetReviews"></i>
+                <i class="ri-restart-line" wire:loading.remove wire:target="resetReviews"></i>
+                <span wire:loading.remove wire:target="resetReviews">Reset reviews</span>
+                <span wire:loading wire:target="resetReviews">Resetting...</span>
+            </button>
         </div>
     </div>
-
-    {{-- Import --}}
-    <section class="border border-slate-200 bg-white">
-        <div class="border-b border-slate-100 p-5 sm:p-6">
-            <div class="flex items-start gap-3">
-                <span class="grid h-10 w-10 shrink-0 place-items-center bg-sky-50 text-xl text-med-blue">
-                    <i class="ri-upload-cloud-2-line"></i>
-                </span>
-
-                <div>
-                    <h3 class="font-bold text-med-navy">Import reviews</h3>
-                    <p class="mt-1 text-sm leading-6 text-slate-500">
-                        Upload a CSV, JSON, or XLSX Google Maps export. Reviews are matched by
-                        <code class="bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600">review_id</code>,
-                        so importing the same file again updates existing rows instead of duplicating them.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <form wire:submit="import" class="p-5 sm:p-6">
-            <div class="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
-                <div>
-                    <label for="reviews-file" class="block text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-                        Review export file
-                    </label>
-
-                    <input
-                        id="reviews-file"
-                        type="file"
-                        wire:model="file"
-                        accept=".csv,.txt,.json,.xlsx,text/csv,application/json,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                        class="mt-2 block w-full cursor-pointer border border-slate-200 bg-slate-50 text-sm text-slate-500 file:mr-4 file:cursor-pointer file:border-0 file:bg-med-navy file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white hover:file:bg-slate-800">
-
-                    <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400">
-                        <span>CSV, JSON, or XLSX (UTF-8), up to 10 MB.</span>
-
-                        <span wire:loading wire:target="file" class="inline-flex items-center gap-1.5 text-med-blue">
-                            <i class="ri-loader-4-line animate-spin"></i>
-                            Uploading file...
-                        </span>
-
-                        @if ($file)
-                            <span class="inline-flex min-w-0 items-center gap-1.5 text-slate-500">
-                                <i class="ri-file-list-3-line"></i>
-                                <span class="max-w-xs truncate">{{ $file->getClientOriginalName() }}</span>
-                            </span>
-                        @endif
-                    </div>
-
-                    @error('file')
-                        <p class="mt-2 flex items-start gap-2 text-sm text-red-600">
-                            <i class="ri-error-warning-line mt-0.5"></i>
-                            {{ $message }}
-                        </p>
-                    @enderror
-                </div>
-
-                <button
-                    type="submit"
-                    wire:loading.attr="disabled"
-                    wire:target="import"
-                    class="inline-flex items-center justify-center gap-2 bg-med-red px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-70">
-                    <i class="ri-upload-cloud-2-line" wire:loading.remove wire:target="import"></i>
-                    <i class="ri-loader-4-line animate-spin" wire:loading wire:target="import"></i>
-                    <span wire:loading.remove wire:target="import">Import reviews</span>
-                    <span wire:loading wire:target="import">Importing...</span>
-                </button>
-            </div>
-
-            @if ($lastImportCount !== null)
-                <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border border-sky-100 bg-sky-50 px-4 py-3 text-sm text-sky-800">
-                    <span class="inline-flex items-center gap-2 font-semibold">
-                        <i class="ri-file-check-line"></i>
-                        {{ number_format($lastImportCount) }} {{ \Illuminate\Support\Str::plural('review', $lastImportCount) }} processed
-                    </span>
-
-                    @if ($lastSkippedCount > 0)
-                        <span class="text-sky-700">
-                            {{ number_format($lastSkippedCount) }} empty {{ \Illuminate\Support\Str::plural('row', $lastSkippedCount) }} skipped
-                        </span>
-                    @endif
-                </div>
-            @endif
-        </form>
-    </section>
 
     {{-- Listing --}}
     <section class="border border-slate-200 bg-white">
@@ -275,7 +204,7 @@
                                 </p>
 
                                 <p class="mt-1 text-xs text-slate-500">
-                                    {{ $search !== '' ? 'Try a different author, clinic, or review keyword.' : 'Upload a Google Maps review export above to get started.' }}
+                                    {{ $search !== '' ? 'Try a different author, clinic, or review keyword.' : 'Use Reset reviews to restore the seeded reviews.' }}
                                 </p>
                             </td>
                         </tr>
@@ -290,21 +219,6 @@
             </div>
         @endif
     </section>
-
-    {{-- Import loading overlay --}}
-    <div
-        wire:loading.flex
-        wire:target="import"
-        class="fixed inset-0 z-[60] items-center justify-center bg-slate-900/40 p-4 backdrop-blur-sm">
-        <div class="flex items-center gap-3 border border-slate-200 bg-white px-5 py-4 shadow-xl">
-            <i class="ri-loader-4-line animate-spin text-2xl text-med-blue"></i>
-
-            <div>
-                <p class="text-sm font-semibold text-med-navy">Importing reviews</p>
-                <p class="mt-0.5 text-xs text-slate-500">Please wait while the file is processed...</p>
-            </div>
-        </div>
-    </div>
 
     {{-- Delete confirmation modal --}}
     <div
