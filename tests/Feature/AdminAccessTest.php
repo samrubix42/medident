@@ -1,0 +1,61 @@
+<?php
+
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
+
+uses(RefreshDatabase::class);
+
+test('the login page renders', function () {
+    $this->get('/login')
+        ->assertOk()
+        ->assertSee('Sign in to your account');
+});
+
+test('guests are redirected from the admin dashboard', function () {
+    $this->get('/admin')
+        ->assertRedirect('/login');
+});
+
+test('authenticated users can view the admin dashboard', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get('/admin')
+        ->assertOk()
+        ->assertSee('Dashboard')
+        ->assertSee('Recent appointments');
+});
+
+test('an admin can sign in with valid credentials', function () {
+    User::factory()->create([
+        'email' => 'admin@medidentclinic.com',
+        'password' => 'password',
+    ]);
+
+    Livewire::test('pages::auth.login')
+        ->set('email', 'admin@medidentclinic.com')
+        ->set('password', 'password')
+        ->call('login')
+        ->assertRedirect(route('admin.dashboard'));
+});
+
+test('invalid credentials are rejected', function () {
+    Livewire::test('pages::auth.login')
+        ->set('email', 'admin@medidentclinic.com')
+        ->set('password', 'wrong-password')
+        ->call('login')
+        ->assertHasErrors('email');
+});
+
+test('an admin can sign out', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user);
+
+    Livewire::test('admin.header')
+        ->call('logout')
+        ->assertRedirect(route('login'));
+
+    expect(auth()->check())->toBeFalse();
+});

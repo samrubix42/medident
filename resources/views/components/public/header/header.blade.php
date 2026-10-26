@@ -33,9 +33,9 @@
             {{-- Brand logo --}}
             <a href="{{ url('/') }}" class="shrink-0" aria-label="MediDENT home">
                 <img
-                    src="{{ asset('images/medident-logo.png') }}"
+                    src="{{ asset('logo.webp') }}"
                     alt="MediDENT Multicare Clinic"
-                    class="w-44 object-contain sm:w-52">
+                    class="w-20 object-contain sm:w-20">
             </a>
 
             {{-- Desktop menu --}}
