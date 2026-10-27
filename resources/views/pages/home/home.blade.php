@@ -365,7 +365,7 @@
                 </p>
             </div>
 
-            <a href="#contact"
+            <a href="{{ route('contact') }}"
                 class="inline-flex w-full shrink-0 items-center justify-center gap-2 bg-med-blue px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800 sm:w-auto">
                 Contact the Clinic
                 <i class="ri-arrow-right-up-line"></i>
@@ -609,7 +609,7 @@
 
                 </div>
 
-                <a href="#contact"
+                <a href="{{ route('contact') }}"
                     class="mt-8 inline-flex w-full items-center justify-center gap-3 bg-med-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 sm:w-auto sm:justify-start">
                     Get in Touch <i class="ri-arrow-right-up-line text-lg"></i>
                 </a>

@@ -142,8 +142,12 @@
                     Testimonials
                 </a>
 
-                <a href="{{ url('/#contact') }}"
-                    class="text-sm font-medium text-slate-600 transition hover:text-med-blue">
+                <a href="{{ route('contact') }}"
+                    @class([
+                        'text-sm font-semibold transition',
+                        'text-med-blue' => request()->routeIs('contact'),
+                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('contact'),
+                    ])>
                     Contact
                 </a>
             </nav>
@@ -280,9 +284,13 @@
                         <i class="ri-arrow-right-s-line text-lg text-slate-300"></i>
                     </a>
 
-                    <a href="{{ url('/#contact') }}"
+                    <a href="{{ route('contact') }}"
                         @click="mobileOpen = false"
-                        class="flex items-center justify-between py-4 text-sm font-medium text-slate-700 transition hover:text-med-blue">
+                        @class([
+                            'flex items-center justify-between py-4 text-sm transition',
+                            'font-semibold text-med-blue' => request()->routeIs('contact'),
+                            'font-medium text-slate-700 hover:text-med-blue' => ! request()->routeIs('contact'),
+                        ])>
                         <span class="flex items-center gap-3">
                             <i class="ri-map-pin-line text-lg"></i>
                             Contact

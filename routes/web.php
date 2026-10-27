@@ -6,6 +6,8 @@ Route::livewire('/', 'pages::home')->name('home');
 
 Route::livewire('/about-us', 'pages::about')->name('about');
 
+Route::livewire('/contact-us', 'pages::contact')->name('contact');
+
 Route::livewire('/login', 'pages::auth.login')
     ->middleware('guest')
     ->name('login');
