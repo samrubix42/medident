@@ -12,6 +12,10 @@ Route::livewire('/blog', 'pages::blog')->name('blog');
 
 Route::livewire('/blog/{slug}', 'pages::blog-show')->name('blog.show');
 
+Route::livewire('/services', 'pages::services')->name('services');
+
+Route::livewire('/services/{slug}', 'pages::service-show')->name('services.show');
+
 Route::livewire('/contact-us', 'pages::contact')->name('contact');
 
 Route::livewire('/best-dentist-ghaziabad', 'pages::dentist')->name('dentist');

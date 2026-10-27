@@ -20,7 +20,7 @@
             </p>
 
             <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-                <a href="{{ url('/#services') }}"
+                <a href="{{ route('services') }}"
                    class="inline-flex w-full items-center justify-center gap-2 border border-slate-300 bg-white px-5 py-3.5 text-sm font-semibold text-med-navy transition hover:border-med-blue hover:text-med-blue sm:w-auto sm:px-6">
                     Explore our services
                     <i class="ri-arrow-right-line"></i>
@@ -72,7 +72,7 @@
                             <button
                                 type="button"
                                 wire:key="blog-filter-{{ $blogCategory->id }}"
-                                wire:click='selectCategory(@js($blogCategory->slug))'
+                                wire:click="selectCategory(@js($blogCategory->slug))"
                                 @class([
                                     'border px-4 py-2 text-sm font-semibold transition',
                                     'border-med-blue bg-med-blue text-white' => $category === $blogCategory->slug,

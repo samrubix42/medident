@@ -69,4 +69,15 @@ class Service extends Model
 
         return asset($this->image_link);
     }
+
+    public function excerpt(int $length = 160): string
+    {
+        $shortDescription = trim((string) $this->short_description);
+
+        if ($shortDescription !== '') {
+            return $shortDescription;
+        }
+
+        return Str::limit(strip_tags((string) $this->content), $length);
+    }
 }

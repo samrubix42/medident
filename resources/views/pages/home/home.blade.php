@@ -117,240 +117,81 @@
                 </p>
             </div>
 
-            <button type="button"
-                @click="$dispatch('open-booking-modal')"
-                class="inline-flex w-fit shrink-0 items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue transition hover:text-sky-800">
-                Book a Consultation
-                <i class="ri-arrow-right-line"></i>
-            </button>
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+                <a href="{{ route('services', ['category' => 'physician']) }}"
+                   class="inline-flex w-fit shrink-0 items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue transition hover:text-sky-800">
+                    View all medical services
+                    <i class="ri-arrow-right-line"></i>
+                </a>
+
+                <button type="button"
+                    @click="$dispatch('open-booking-modal')"
+                    class="inline-flex w-fit shrink-0 items-center gap-2 border-b border-slate-300 pb-1 text-sm font-semibold text-slate-600 transition hover:border-med-blue hover:text-med-blue">
+                    Book a Consultation
+                    <i class="ri-arrow-right-line"></i>
+                </button>
+            </div>
 
         </div>
 
         {{-- Service cards --}}
         <div class="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+            @forelse ($this->physicianServices as $service)
+                <article
+                    wire:key="home-physician-service-{{ $service['slug'] }}"
+                    class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 {{ $service['hover'] }} hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
 
-            {{-- General Disease --}}
-            <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
+                    <div class="relative h-52 overflow-hidden bg-slate-100">
+                        @if ($service['image'])
+                            <img
+                                src="{{ $service['image'] }}"
+                                alt="{{ $service['alt'] }}"
+                                loading="lazy"
+                                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                            >
+                        @else
+                            <span class="flex h-full w-full items-center justify-center bg-gradient-to-br from-sky-50 via-white to-slate-100">
+                                <i class="{{ $service['icon'] }} text-5xl text-sky-200"></i>
+                            </span>
+                        @endif
 
-                <div class="relative h-52 overflow-hidden bg-slate-100">
-                    <img
-                        src="{{ asset('images/general-diseases.jpg') }}"
-                        alt="General physician consultation"
-                        loading="lazy"
-                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    >
-
-                    <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold text-med-blue shadow-sm">
-                        General Medicine
-                    </span>
-                </div>
-
-                <div class="flex flex-1 flex-col p-6 sm:p-7">
-                    <div class="flex items-start justify-between gap-3">
-                        <h3 class="text-xl font-bold text-med-navy">
-                            General Diseases
-                        </h3>
-
-                        <i class="ri-stethoscope-line text-2xl text-med-blue"></i>
+                        <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold {{ $service['accent'] }} shadow-sm">
+                            {{ $service['tag'] }}
+                        </span>
                     </div>
 
-                    <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
-                        Consultation for common illnesses, fever, infections and other everyday health concerns, with guidance on appropriate treatment and prevention.
-                    </p>
+                    <div class="flex flex-1 flex-col p-6 sm:p-7">
+                        <div class="flex items-start justify-between gap-3">
+                            <h3 class="text-xl font-bold text-med-navy">
+                                {{ $service['title'] }}
+                            </h3>
 
-                    <a href="#contact"
-                        class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-med-blue">
-                        View Details
-                        <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </article>
+                            <i class="{{ $service['icon'] }} text-2xl {{ $service['accent'] }}"></i>
+                        </div>
 
-            {{-- Gastrointestinal Diseases --}}
-            <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
+                        <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
+                            {{ $service['description'] }}
+                        </p>
 
-                <div class="relative h-52 overflow-hidden bg-slate-100">
-                    <img
-                        src="{{ asset('images/gastro.jpg') }}"
-                        alt="Digestive health consultation"
-                        loading="lazy"
-                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    >
-
-                    <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold text-emerald-700 shadow-sm">
-                        Digestive Health
-                    </span>
-                </div>
-
-                <div class="flex flex-1 flex-col p-6 sm:p-7">
-                    <div class="flex items-start justify-between gap-3">
-                        <h3 class="text-xl font-bold text-med-navy">
-                            Gastrointestinal Diseases
-                        </h3>
-
-                        <i class="ri-capsule-line text-2xl text-emerald-600"></i>
+                        <a href="{{ route('services.show', $service['slug']) }}"
+                            class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold {{ $service['accent'] }}">
+                            View Details
+                            <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
+                        </a>
                     </div>
-
-                    <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
-                        Medical evaluation for digestive concerns such as acidity, indigestion, abdominal discomfort and changes in bowel habits.
-                    </p>
-
-                    <a href="#contact"
-                        class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-emerald-700">
-                        View Details
-                        <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </article>
-
-            {{-- Heart Disease --}}
-            <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-red-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
-
-                <div class="relative h-52 overflow-hidden bg-slate-100">
-                    <img
-                        src="{{ asset('images/heart.jpg') }}"
-                        alt="Heart health consultation"
-                        loading="lazy"
-                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    >
-
-                    <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold text-med-red shadow-sm">
-                        Heart Health
+                </article>
+            @empty
+                <div class="border border-slate-200 bg-[#f8fbfd] px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
+                    <span class="mx-auto grid h-14 w-14 place-items-center bg-white text-2xl text-med-blue shadow-sm">
+                        <i class="ri-stethoscope-line"></i>
                     </span>
-                </div>
 
-                <div class="flex flex-1 flex-col p-6 sm:p-7">
-                    <div class="flex items-start justify-between gap-3">
-                        <h3 class="text-xl font-bold text-med-navy">
-                            Heart Disease
-                        </h3>
-
-                        <i class="ri-heart-pulse-line text-2xl text-med-red"></i>
-                    </div>
-
-                    <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
-                        Assessment of cardiovascular risk factors, blood pressure concerns and symptoms that may require further heart health evaluation.
+                    <h3 class="mt-4 text-lg font-bold text-med-navy">Medical service information is being updated.</h3>
+                    <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
+                        Contact the clinic to ask about available consultations or book an appointment.
                     </p>
-
-                    <a href="#contact"
-                        class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-med-red">
-                        View Details
-                        <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
                 </div>
-            </article>
-
-            {{-- Thyroid --}}
-            <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
-
-                <div class="relative h-52 overflow-hidden bg-slate-100">
-                    <img
-                        src="{{ asset('images/throid.jpg') }}"
-                        alt="Thyroid health consultation"
-                        loading="lazy"
-                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    >
-
-                    <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold text-violet-700 shadow-sm">
-                        Hormonal Health
-                    </span>
-                </div>
-
-                <div class="flex flex-1 flex-col p-6 sm:p-7">
-                    <div class="flex items-start justify-between gap-3">
-                        <h3 class="text-xl font-bold text-med-navy">
-                            Thyroid Disorders
-                        </h3>
-
-                        <i class="ri-pulse-line text-2xl text-violet-600"></i>
-                    </div>
-
-                    <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
-                        Evaluation and management of thyroid-related concerns, including hormone imbalances that can affect energy, metabolism and overall wellbeing.
-                    </p>
-
-                    <a href="#contact"
-                        class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-violet-700">
-                        View Details
-                        <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </article>
-
-            {{-- Respiratory Disease --}}
-            <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
-
-                <div class="relative h-52 overflow-hidden bg-slate-100">
-                    <img
-                        src="{{ asset('images/respiratory.jpg') }}"
-                        alt="Respiratory health consultation"
-                        loading="lazy"
-                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    >
-
-                    <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold text-cyan-700 shadow-sm">
-                        Respiratory Health
-                    </span>
-                </div>
-
-                <div class="flex flex-1 flex-col p-6 sm:p-7">
-                    <div class="flex items-start justify-between gap-3">
-                        <h3 class="text-xl font-bold text-med-navy">
-                            Respiratory Diseases
-                        </h3>
-
-                        <i class="ri-lungs-line text-2xl text-cyan-700"></i>
-                    </div>
-
-                    <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
-                        Consultation for breathing difficulties, persistent cough, asthma-related concerns and other respiratory symptoms.
-                    </p>
-
-                    <a href="#contact"
-                        class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-cyan-700">
-                        View Details
-                        <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </article>
-
-            {{-- Vaccination --}}
-            <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-amber-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
-
-                <div class="relative h-52 overflow-hidden bg-slate-100">
-                    <img
-                        src="{{ asset('images/vaccination.jpg') }}"
-                        alt="Vaccination and preventive healthcare"
-                        loading="lazy"
-                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    >
-
-                    <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold text-amber-700 shadow-sm">
-                        Preventive Care
-                    </span>
-                </div>
-
-                <div class="flex flex-1 flex-col p-6 sm:p-7">
-                    <div class="flex items-start justify-between gap-3">
-                        <h3 class="text-xl font-bold text-med-navy">
-                            Vaccination
-                        </h3>
-
-                        <i class="ri-syringe-line text-2xl text-amber-600"></i>
-                    </div>
-
-                    <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
-                        Preventive vaccination services and guidance on recommended immunisation schedules for eligible children and adults.
-                    </p>
-
-                    <a href="#contact"
-                        class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-amber-700">
-                        View Details
-                        <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
-                </div>
-            </article>
-
+            @endforelse
         </div>
 
         {{-- Bottom CTA --}}
@@ -423,7 +264,7 @@
                         Medical consultations and guidance for everyday health concerns and your family's general healthcare needs.
                     </p>
 
-                    <a href="#contact"
+                    <a href="{{ route('services', ['category' => 'physician']) }}"
                         class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-med-blue">
                         Learn More <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
                     </a>
@@ -447,7 +288,7 @@
                         Support with diabetes monitoring, ongoing management and guidance to help you care for your health.
                     </p>
 
-                    <a href="#contact"
+                    <a href="{{ route('services') }}"
                         class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-med-red">
                         Learn More <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
                     </a>
@@ -471,7 +312,7 @@
                         Oral health consultations, preventive dental care and treatment options to help maintain a healthy smile.
                     </p>
 
-                    <a href="#dental-services"
+                    <a href="{{ route('services', ['category' => 'dental']) }}"
                         class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700">
                         Learn More <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
                     </a>
@@ -499,23 +340,38 @@
                     </p>
                 </div>
 
-                <button type="button"
-                    @click="$dispatch('open-booking-modal')"
-                    class="inline-flex w-fit items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue hover:text-sky-800">
-                    Book a Dental Visit <i class="ri-arrow-right-line"></i>
-                </button>
+                <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+                    <a href="{{ route('services', ['category' => 'dental']) }}"
+                       class="inline-flex w-fit items-center gap-2 border-b border-cyan-700 pb-1 text-sm font-semibold text-cyan-700 hover:text-cyan-900">
+                        View all dental services <i class="ri-arrow-right-line"></i>
+                    </a>
+
+                    <button type="button"
+                        @click="$dispatch('open-booking-modal')"
+                        class="inline-flex w-fit items-center gap-2 border-b border-slate-300 pb-1 text-sm font-semibold text-slate-600 hover:border-med-blue hover:text-med-blue">
+                        Book a Dental Visit <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
-                @foreach ($this->dentalServices as $service)
-                    <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 {{ $service['hover'] }} hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
+                @forelse ($this->dentalServices as $service)
+                    <article
+                        wire:key="home-dental-service-{{ $service['slug'] }}"
+                        class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 {{ $service['hover'] }} hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
                         <div class="relative h-52 overflow-hidden bg-slate-100">
-                            <img
-                                src="{{ asset($service['image']) }}"
-                                alt="{{ $service['alt'] }}"
-                                loading="lazy"
-                                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                            >
+                            @if ($service['image'])
+                                <img
+                                    src="{{ $service['image'] }}"
+                                    alt="{{ $service['alt'] }}"
+                                    loading="lazy"
+                                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                >
+                            @else
+                                <span class="flex h-full w-full items-center justify-center bg-gradient-to-br from-cyan-50 via-white to-slate-100">
+                                    <i class="{{ $service['icon'] }} text-5xl text-cyan-200"></i>
+                                </span>
+                            @endif
 
                             <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold {{ $service['accent'] }} shadow-sm">
                                 {{ $service['tag'] }}
@@ -535,14 +391,25 @@
                                 {{ $service['description'] }}
                             </p>
 
-                            <a href="#contact"
+                            <a href="{{ route('services.show', $service['slug']) }}"
                                 class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold {{ $service['accent'] }}">
                                 View Details
                                 <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
                             </a>
                         </div>
                     </article>
-                @endforeach
+                @empty
+                    <div class="border border-slate-200 bg-[#f8fbfd] px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
+                        <span class="mx-auto grid h-14 w-14 place-items-center bg-white text-2xl text-cyan-700 shadow-sm">
+                            <i class="ri-tooth-line"></i>
+                        </span>
+
+                        <h3 class="mt-4 text-lg font-bold text-med-navy">Dental service information is being updated.</h3>
+                        <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
+                            Contact the clinic to ask about available dental treatments or book a consultation.
+                        </p>
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -554,7 +421,7 @@
 
             <div class="relative">
                 <img
-                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1100&q=85"
+                    src="{{ asset('images/photo-1576091160399-112ba8d25d1d.avif') }}"
                     alt="Healthcare professional consulting a patient"
                     loading="lazy"
                     class="h-[280px] w-full object-cover sm:h-[430px]">

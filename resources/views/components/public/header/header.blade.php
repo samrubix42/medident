@@ -87,7 +87,11 @@
                         type="button"
                         @click="servicesOpen = !servicesOpen"
                         :aria-expanded="servicesOpen"
-                        class="flex items-center gap-1.5 text-sm font-medium text-slate-600 transition hover:text-med-blue">
+                        @class([
+                            'flex items-center gap-1.5 text-sm font-semibold transition',
+                            'text-med-blue' => request()->routeIs('services', 'services.show'),
+                            'text-slate-600 hover:text-med-blue' => ! request()->routeIs('services', 'services.show'),
+                        ])>
                         Services
                         <i class="ri-arrow-down-s-line text-lg transition"
                             :class="{ 'rotate-180': servicesOpen }"></i>
@@ -99,7 +103,7 @@
                         x-transition.origin.top.left
                         @click.outside="servicesOpen = false"
                         class="absolute left-0 top-full mt-4 w-64 border border-slate-200 bg-white p-2 shadow-xl">
-                        <a href="{{ url('/#services') }}"
+                        <a href="{{ route('services', ['category' => 'physician']) }}"
                             @click="servicesOpen = false"
                             class="flex items-center gap-3 p-3 transition hover:bg-sky-50">
                             <span class="grid h-10 w-10 shrink-0 place-items-center bg-sky-50 text-xl text-med-blue">
@@ -111,7 +115,7 @@
                             </span>
                         </a>
 
-                        <a href="{{ url('/#services') }}"
+                        <a href="{{ route('services') }}"
                             @click="servicesOpen = false"
                             class="flex items-center gap-3 p-3 transition hover:bg-red-50">
                             <span class="grid h-10 w-10 shrink-0 place-items-center bg-red-50 text-xl text-med-red">
@@ -123,7 +127,7 @@
                             </span>
                         </a>
 
-                        <a href="{{ url('/#services') }}"
+                        <a href="{{ route('services', ['category' => 'dental']) }}"
                             @click="servicesOpen = false"
                             class="flex items-center gap-3 p-3 transition hover:bg-cyan-50">
                             <span class="grid h-10 w-10 shrink-0 place-items-center bg-cyan-50 text-xl text-cyan-700">
@@ -133,6 +137,13 @@
                                 <span class="block text-sm font-semibold text-med-navy">Dental Care</span>
                                 <span class="mt-1 block text-xs text-slate-500">Complete oral healthcare</span>
                             </span>
+                        </a>
+
+                        <a href="{{ route('services') }}"
+                            @click="servicesOpen = false"
+                            class="mt-1 flex items-center justify-between border-t border-slate-100 px-3 py-3 text-sm font-semibold text-med-blue transition hover:bg-sky-50">
+                            View all services
+                            <i class="ri-arrow-right-line"></i>
                         </a>
                     </div>
                 </div>
@@ -273,22 +284,29 @@
                     </button>
 
                     <div x-cloak x-show="servicesOpen" x-transition class="border-b border-slate-100 bg-slate-50 px-4">
-                        <a href="{{ url('/#services') }}"
+                        <a href="{{ route('services', ['category' => 'physician']) }}"
                             @click="mobileOpen = false; servicesOpen = false"
                             class="flex items-center gap-3 py-3 text-sm text-slate-600 transition hover:text-med-blue">
                             <i class="ri-stethoscope-line text-med-blue"></i> Medical Care
                         </a>
 
-                        <a href="{{ url('/#services') }}"
+                        <a href="{{ route('services') }}"
                             @click="mobileOpen = false; servicesOpen = false"
                             class="flex items-center gap-3 py-3 text-sm text-slate-600 transition hover:text-med-blue">
                             <i class="ri-heart-pulse-line text-med-red"></i> Diabetes Care
                         </a>
 
-                        <a href="{{ url('/#services') }}"
+                        <a href="{{ route('services', ['category' => 'dental']) }}"
                             @click="mobileOpen = false; servicesOpen = false"
                             class="flex items-center gap-3 py-3 text-sm text-slate-600 transition hover:text-med-blue">
                             <i class="ri-tooth-line text-cyan-700"></i> Dental Care
+                        </a>
+
+                        <a href="{{ route('services') }}"
+                            @click="mobileOpen = false; servicesOpen = false"
+                            class="flex items-center justify-between border-t border-slate-200 py-3 text-sm font-semibold text-med-blue">
+                            View all services
+                            <i class="ri-arrow-right-line"></i>
                         </a>
                     </div>
 

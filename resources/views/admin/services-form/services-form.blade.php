@@ -433,7 +433,23 @@
             promotion: false,
             plugins: 'lists link table code fullscreen wordcount',
             toolbar: 'undo redo | blocks | bold italic underline | bullist numlist | link table | code fullscreen',
-            content_style: 'body { font-family: Inter, sans-serif; font-size: 15px; line-height: 1.7; color: #475569; }',
+            content_style: `
+                body { font-family: Inter, sans-serif; font-size: 15px; line-height: 1.8; color: #475569; }
+                h2 { margin: 28px 0 12px; color: #12324a; font-size: 24px; line-height: 1.3; }
+                h3 { margin: 24px 0 10px; color: #12324a; font-size: 20px; line-height: 1.4; }
+                h4 { margin: 20px 0 8px; color: #12324a; font-size: 18px; line-height: 1.4; }
+                p { margin: 0 0 18px; }
+                ul, ol { margin: 0 0 18px; padding-left: 24px; }
+                li { margin-bottom: 8px; }
+                a { color: #0788bd; font-weight: 600; text-decoration: underline; }
+                blockquote { margin: 24px 0; padding: 16px 20px; border-left: 4px solid #0788bd; background: #f0f9ff; }
+                img { max-width: 100%; height: auto; border: 1px solid #e2e8f0; }
+                table { width: 100%; border-collapse: collapse; font-size: 14px; }
+                th, td { padding: 10px 12px; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+                th { background: #f8fafc; color: #12324a; }
+                iframe { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+                hr { margin: 28px 0; border: 0; border-top: 1px solid #e2e8f0; }
+            `,
             setup: (editor) => {
                 editor.on('change input undo redo', () => {
                     editor.save();
