@@ -14,19 +14,19 @@ class GalleryImageSeeder extends Seeder
     public function run(): void
     {
         $categories = GalleryCategory::query()
-            ->whereIn('slug', ['general', 'physician', 'dental', 'camp'])
+            ->whereIn('slug', ['general-physician', 'dental', 'camp'])
             ->get()
             ->keyBy('slug');
 
         $images = [
-            ['category' => 'general', 'link' => 'images/hero-img.jpg'],
-            ['category' => 'general', 'link' => 'images/general-diseases.jpg'],
-            ['category' => 'general', 'link' => 'images/vaccination.jpg'],
-            ['category' => 'physician', 'link' => 'images/gastro.jpg'],
-            ['category' => 'physician', 'link' => 'images/heart.jpg'],
-            ['category' => 'physician', 'link' => 'images/respiratory.jpg'],
-            ['category' => 'physician', 'link' => 'images/throid.jpg'],
-            ['category' => 'physician', 'link' => 'doctors/Dr.-Divya-Prakash.jpeg'],
+            ['category' => 'general-physician', 'link' => 'images/hero-img.jpg'],
+            ['category' => 'general-physician', 'link' => 'images/general-diseases.jpg'],
+            ['category' => 'general-physician', 'link' => 'images/vaccination.jpg'],
+            ['category' => 'general-physician', 'link' => 'images/gastro.jpg'],
+            ['category' => 'general-physician', 'link' => 'images/heart.jpg'],
+            ['category' => 'general-physician', 'link' => 'images/respiratory.jpg'],
+            ['category' => 'general-physician', 'link' => 'images/throid.jpg'],
+            ['category' => 'general-physician', 'link' => 'doctors/Dr.-Divya-Prakash.jpeg'],
             ['category' => 'dental', 'link' => 'dental/cosmetic-dental.jpg'],
             ['category' => 'dental', 'link' => 'dental/KIDSDENTISTRY.jpg'],
             ['category' => 'dental', 'link' => 'dental/Dental-Implants.jpg'],

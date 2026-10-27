@@ -13,8 +13,7 @@ class GalleryCategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['title' => 'General', 'slug' => 'general'],
-            ['title' => 'Physician', 'slug' => 'physician'],
+            ['title' => 'General Physician', 'slug' => 'general-physician'],
             ['title' => 'Dental', 'slug' => 'dental'],
             ['title' => 'Camp', 'slug' => 'camp'],
         ];
