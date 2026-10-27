@@ -8,80 +8,39 @@
         default => 'Good evening',
     };
 
-    $stats = [
-        [
-            'label' => "Today's appointments",
-            'value' => '12',
-            'note' => '3 more than yesterday',
-            'noteClass' => 'text-slate-500',
-            'icon' => 'ri-calendar-check-line',
-            'iconClass' => 'bg-slate-100 text-slate-500',
-        ],
-        [
-            'label' => 'Total patients',
-            'value' => '1,248',
-            'note' => '24 new this month',
-            'noteClass' => 'text-slate-500',
-            'icon' => 'ri-user-heart-line',
-            'iconClass' => 'bg-slate-100 text-slate-500',
-        ],
-        [
-            'label' => 'Services offered',
-            'value' => '6',
-            'note' => 'All services active',
-            'noteClass' => 'text-slate-500',
-            'icon' => 'ri-stethoscope-line',
-            'iconClass' => 'bg-slate-100 text-slate-500',
-        ],
-        [
-            'label' => 'Pending enquiries',
-            'value' => '4',
-            'note' => 'Needs follow-up',
-            'noteClass' => 'text-slate-500',
-            'icon' => 'ri-chat-3-line',
-            'iconClass' => 'bg-slate-100 text-slate-500',
-        ],
-    ];
-
     $actions = [
-        [
-            'label' => 'New appointment',
-            'hint' => 'Schedule a visit',
-            'icon' => 'ri-calendar-2-line',
-            'iconClass' => 'bg-slate-100 text-slate-500',
-        ],
-        [
-            'label' => 'Add patient',
-            'hint' => 'Create a record',
-            'icon' => 'ri-user-add-line',
-            'iconClass' => 'bg-slate-100 text-slate-500',
-        ],
         [
             'label' => 'Manage services',
             'hint' => 'Update offerings',
             'icon' => 'ri-stethoscope-line',
-            'iconClass' => 'bg-slate-100 text-slate-500',
+            'iconClass' => 'bg-violet-50 text-violet-600',
+            'url' => route('admin.services'),
+            'navigate' => true,
         ],
         [
-            'label' => 'View enquiries',
+            'label' => 'Add blog post',
+            'hint' => 'Publish an article',
+            'icon' => 'ri-article-line',
+            'iconClass' => 'bg-sky-50 text-med-blue',
+            'url' => route('admin.blog-posts.create'),
+            'navigate' => false,
+        ],
+        [
+            'label' => 'View inquiries',
             'hint' => 'Respond to messages',
             'icon' => 'ri-chat-3-line',
-            'iconClass' => 'bg-slate-100 text-slate-500',
+            'iconClass' => 'bg-amber-50 text-amber-600',
+            'url' => route('admin.inquiries'),
+            'navigate' => true,
         ],
-    ];
-
-    $avatarStyles = [
-        'blue' => 'bg-slate-100 text-slate-600',
-        'amber' => 'bg-slate-100 text-slate-600',
-        'violet' => 'bg-slate-100 text-slate-600',
-        'red' => 'bg-slate-100 text-slate-600',
-        'emerald' => 'bg-slate-100 text-slate-600',
-    ];
-
-    $statusStyles = [
-        'Confirmed' => 'bg-emerald-50 text-emerald-700 ring-emerald-600/10',
-        'Waiting' => 'bg-amber-50 text-amber-700 ring-amber-600/10',
-        'Cancelled' => 'bg-red-50 text-red-700 ring-red-600/10',
+        [
+            'label' => 'Manage gallery',
+            'hint' => 'Update clinic photos',
+            'icon' => 'ri-image-line',
+            'iconClass' => 'bg-emerald-50 text-emerald-600',
+            'url' => route('admin.gallery-images'),
+            'navigate' => true,
+        ],
     ];
 @endphp
 
@@ -114,7 +73,7 @@
 
     {{-- Stats --}}
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        @foreach ($stats as $stat)
+        @foreach ($this->stats as $stat)
             <div
                 wire:key="stat-{{ $loop->index }}"
                 class="border border-slate-200 bg-white p-5 transition hover:border-slate-300 hover:shadow-sm">
@@ -132,8 +91,8 @@
                     </span>
                 </div>
 
-                <p class="mt-4 flex items-center gap-1.5 text-xs font-medium {{ $stat['noteClass'] }}">
-                    <i class="ri-arrow-up-line"></i>
+                <p class="mt-4 flex items-center gap-1.5 text-xs font-medium text-slate-500">
+                    <i class="{{ $stat['noteIcon'] }}"></i>
                     {{ $stat['note'] }}
                 </p>
             </div>
@@ -144,17 +103,9 @@
 
         {{-- Recent appointments --}}
         <section class="border border-slate-200 bg-white xl:col-span-2">
-            <div class="flex flex-col gap-3 border-b border-slate-100 p-5 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                    <h3 class="font-bold text-med-navy">Recent appointments</h3>
-                    <p class="mt-1 text-xs text-slate-500">Today's patient schedule</p>
-                </div>
-
-                <a href="#"
-                    class="inline-flex w-fit items-center gap-2 text-xs font-semibold text-med-blue transition hover:text-sky-800">
-                    View all
-                    <i class="ri-arrow-right-line"></i>
-                </a>
+            <div class="border-b border-slate-100 p-5">
+                <h3 class="font-bold text-med-navy">Recent appointments</h3>
+                <p class="mt-1 text-xs text-slate-500">Newest booking requests from the website.</p>
             </div>
 
             <div class="overflow-x-auto">
@@ -162,59 +113,72 @@
                     <thead class="bg-slate-50 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">
                         <tr>
                             <th scope="col" class="px-5 py-3">Patient</th>
-                            <th scope="col" class="px-5 py-3">Service</th>
-                            <th scope="col" class="px-5 py-3">Time</th>
-                            <th scope="col" class="px-5 py-3">Status</th>
-                            <th scope="col" class="px-5 py-3 text-right">View</th>
+                            <th scope="col" class="px-5 py-3">Phone</th>
+                            <th scope="col" class="px-5 py-3">Concern</th>
+                            <th scope="col" class="px-5 py-3">Received</th>
                         </tr>
                     </thead>
 
                     <tbody class="divide-y divide-slate-100">
-                        @foreach ($appointments as $appointment)
+                        @forelse ($this->recentAppointments as $appointment)
                             @php
-                                $initials = str($appointment['name'])
+                                $initials = str($appointment->name)
                                     ->explode(' ')
+                                    ->filter()
                                     ->map(fn ($part) => str($part)->substr(0, 1)->upper())
                                     ->take(2)
                                     ->implode('');
+                                $phoneHref = preg_replace('/[^\d+]/', '', (string) $appointment->phone);
                             @endphp
 
-                            <tr wire:key="appointment-{{ $loop->index }}" class="transition hover:bg-slate-50/70">
+                            <tr wire:key="appointment-{{ $appointment->id }}" class="transition hover:bg-slate-50/70">
                                 <td class="whitespace-nowrap px-5 py-4">
                                     <div class="flex items-center gap-3">
-                                        <span class="grid h-9 w-9 shrink-0 place-items-center text-xs font-bold {{ $avatarStyles[$appointment['color']] }}">
-                                            {{ $initials }}
+                                        <span class="grid h-9 w-9 shrink-0 place-items-center bg-slate-100 text-xs font-bold text-slate-600">
+                                            {{ $initials ?: 'P' }}
                                         </span>
 
                                         <span class="text-sm font-semibold text-med-navy">
-                                            {{ $appointment['name'] }}
+                                            {{ $appointment->name }}
                                         </span>
                                     </div>
                                 </td>
 
                                 <td class="whitespace-nowrap px-5 py-4 text-sm text-slate-600">
-                                    {{ $appointment['service'] }}
+                                    @if ($phoneHref)
+                                        <a href="tel:{{ $phoneHref }}" class="transition hover:text-med-blue">
+                                            {{ $appointment->phone }}
+                                        </a>
+                                    @else
+                                        {{ $appointment->phone }}
+                                    @endif
                                 </td>
 
-                                <td class="whitespace-nowrap px-5 py-4 text-sm text-slate-600">
-                                    {{ $appointment['time'] }}
-                                </td>
-
-                                <td class="whitespace-nowrap px-5 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 text-[11px] font-semibold ring-1 ring-inset {{ $statusStyles[$appointment['status']] }}">
-                                        {{ $appointment['status'] }}
+                                <td class="px-5 py-4 text-sm text-slate-600">
+                                    <span class="block max-w-64 truncate" title="{{ $appointment->problem }}">
+                                        {{ $appointment->problem }}
                                     </span>
                                 </td>
 
-                                <td class="px-5 py-4 text-right">
-                                    <a href="#"
-                                        aria-label="View appointment for {{ $appointment['name'] }}"
-                                        class="inline-grid h-8 w-8 place-items-center border border-slate-200 text-sm text-slate-400 transition hover:border-med-blue hover:text-med-blue">
-                                        <i class="ri-arrow-right-up-line"></i>
-                                    </a>
+                                <td class="whitespace-nowrap px-5 py-4 text-sm text-slate-500">
+                                    <time
+                                        datetime="{{ $appointment->created_at->toIso8601String() }}"
+                                        title="{{ $appointment->created_at->format('d M Y, g:i A') }}">
+                                        {{ $appointment->created_at->diffForHumans() }}
+                                    </time>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="4" class="px-5 py-12 text-center">
+                                    <span class="mx-auto grid h-11 w-11 place-items-center bg-slate-100 text-slate-400">
+                                        <i class="ri-calendar-line text-xl"></i>
+                                    </span>
+                                    <p class="mt-3 text-sm font-semibold text-med-navy">No appointment requests yet</p>
+                                    <p class="mt-1 text-xs text-slate-500">New bookings from the website will appear here.</p>
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -230,8 +194,9 @@
 
                 <div class="mt-4 grid grid-cols-2 gap-3">
                     @foreach ($actions as $action)
-                        <a href="#"
+                        <a href="{{ $action['url'] }}"
                             wire:key="action-{{ $loop->index }}"
+                            @if ($action['navigate']) wire:navigate @endif
                             class="group border border-slate-100 bg-slate-50/70 p-4 transition hover:border-slate-200 hover:bg-white hover:shadow-sm">
                             <span class="grid h-9 w-9 place-items-center {{ $action['iconClass'] }}">
                                 <i class="{{ $action['icon'] }} text-lg"></i>
@@ -248,39 +213,77 @@
                 </div>
             </div>
 
-            {{-- Clinic status --}}
-            <div class="border border-slate-200 bg-white p-5">
-                <div class="flex items-center justify-between gap-4">
-                    <h3 class="font-bold text-med-navy">Clinic status</h3>
-
-                    <span class="inline-flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
-                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                        Open
-                    </span>
-                </div>
-
-                <div class="mt-4 flex items-start gap-3 border border-slate-100 bg-slate-50 p-3">
-                    <span class="grid h-9 w-9 shrink-0 place-items-center bg-sky-50 text-med-blue">
-                        <i class="ri-time-line text-lg"></i>
-                    </span>
-
+            {{-- Recent inquiries --}}
+            <div class="border border-slate-200 bg-white">
+                <div class="flex items-center justify-between gap-4 border-b border-slate-100 p-5">
                     <div>
-                        <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-                            Today's hours
-                        </p>
-                        <p class="mt-0.5 text-sm font-semibold text-med-navy">
-                            9:00 AM – 8:00 PM
-                        </p>
+                        <h3 class="font-bold text-med-navy">Recent inquiries</h3>
+                        <p class="mt-1 text-xs text-slate-500">Latest contact messages</p>
                     </div>
+
+                    <a href="{{ route('admin.inquiries') }}"
+                        wire:navigate
+                        class="inline-flex items-center gap-1.5 text-xs font-semibold text-med-blue transition hover:text-sky-800">
+                        View all
+                        <i class="ri-arrow-right-line"></i>
+                    </a>
                 </div>
 
-                <p class="mt-3 text-xs leading-6 text-slate-500">
-                    Monday to Saturday. The clinic is closed on Sundays.
-                </p>
+                <div class="divide-y divide-slate-100">
+                    @forelse ($this->recentInquiries as $inquiry)
+                        @php
+                            $initials = str($inquiry->name)
+                                ->explode(' ')
+                                ->filter()
+                                ->map(fn ($part) => str($part)->substr(0, 1)->upper())
+                                ->take(2)
+                                ->implode('');
+                        @endphp
 
-                <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-4 text-xs">
-                    <span class="text-slate-500">Doctors on duty</span>
-                    <span class="font-semibold text-med-navy">3</span>
+                        <a href="{{ route('admin.inquiries') }}"
+                            wire:key="inquiry-{{ $inquiry->id }}"
+                            wire:navigate
+                            class="group flex gap-3 p-4 transition hover:bg-slate-50">
+                            <span class="relative grid h-9 w-9 shrink-0 place-items-center bg-slate-100 text-[11px] font-semibold text-slate-600">
+                                {{ $initials ?: 'I' }}
+
+                                @if (! $inquiry->is_read)
+                                    <span class="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-med-blue"
+                                        aria-label="Unread inquiry"></span>
+                                @endif
+                            </span>
+
+                            <span class="min-w-0 flex-1">
+                                <span class="flex items-center gap-2">
+                                    <span class="truncate text-sm font-semibold text-med-navy">
+                                        {{ $inquiry->name }}
+                                    </span>
+
+                                    @if (! $inquiry->is_read)
+                                        <span class="shrink-0 bg-sky-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.1em] text-med-blue">
+                                            New
+                                        </span>
+                                    @endif
+                                </span>
+
+                                <span class="mt-1 block truncate text-xs text-slate-500">
+                                    {{ $inquiry->subject }}
+                                </span>
+
+                                <span class="mt-1 block text-[11px] text-slate-400">
+                                    {{ $inquiry->created_at->diffForHumans() }}
+                                </span>
+                            </span>
+                        </a>
+                    @empty
+                        <div class="px-5 py-10 text-center">
+                            <span class="mx-auto grid h-11 w-11 place-items-center bg-slate-100 text-slate-400">
+                                <i class="ri-mail-line text-xl"></i>
+                            </span>
+                            <p class="mt-3 text-sm font-semibold text-med-navy">No inquiries yet</p>
+                            <p class="mt-1 text-xs text-slate-500">Contact form messages will appear here.</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </aside>
