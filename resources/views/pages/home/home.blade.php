@@ -468,12 +468,77 @@
                         Oral health consultations, preventive dental care and treatment options to help maintain a healthy smile.
                     </p>
 
-                    <a href="#contact"
+                    <a href="#dental-services"
                         class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700">
                         Learn More <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
                     </a>
                 </article>
 
+            </div>
+        </div>
+    </section>
+
+    <section id="dental-services" class="scroll-mt-24 border-t border-slate-100 py-16 sm:py-20 lg:py-24">
+        <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+
+            <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div class="max-w-2xl">
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
+                        Dental Services
+                    </p>
+
+                    <h2 class="mt-3 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl">
+                        Complete care for every smile.
+                    </h2>
+
+                    <p class="mt-4 max-w-xl leading-7 text-slate-600">
+                        From preventive check-ups to restorative treatments, our dental services are designed to keep your smile healthy and comfortable.
+                    </p>
+                </div>
+
+                <a href="#contact"
+                    class="inline-flex w-fit items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue hover:text-sky-800">
+                    Book a Dental Visit <i class="ri-arrow-right-line"></i>
+                </a>
+            </div>
+
+            <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                @foreach ($this->dentalServices as $service)
+                    <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 {{ $service['hover'] }} hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
+                        <div class="relative h-52 overflow-hidden bg-slate-100">
+                            <img
+                                src="{{ asset($service['image']) }}"
+                                alt="{{ $service['alt'] }}"
+                                loading="lazy"
+                                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                            >
+
+                            <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold {{ $service['accent'] }} shadow-sm">
+                                {{ $service['tag'] }}
+                            </span>
+                        </div>
+
+                        <div class="flex flex-1 flex-col p-6 sm:p-7">
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-xl font-bold text-med-navy">
+                                    {{ $service['title'] }}
+                                </h3>
+
+                                <i class="{{ $service['icon'] }} text-2xl {{ $service['accent'] }}"></i>
+                            </div>
+
+                            <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
+                                {{ $service['description'] }}
+                            </p>
+
+                            <a href="#contact"
+                                class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold {{ $service['accent'] }}">
+                                View Details
+                                <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
+                            </a>
+                        </div>
+                    </article>
+                @endforeach
             </div>
         </div>
     </section>
