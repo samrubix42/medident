@@ -20,5 +20,16 @@ class ContactMessage extends Model
         'phone',
         'subject',
         'message',
+        'is_read',
     ];
+
+    /**
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'is_read' => 'boolean',
+        ];
+    }
 }

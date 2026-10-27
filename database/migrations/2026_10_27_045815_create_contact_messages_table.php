@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('contact_messages', function (Blueprint $table) {
             $table->id();
             $table->string('name', 120);
-            $table->string('email', 190);
+            $table->string('email', 190)->nullable();
             $table->string('phone', 20);
             $table->string('subject', 150);
             $table->text('message');
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
 
             $table->index('created_at');

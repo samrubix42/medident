@@ -9,6 +9,7 @@
     $pageTitle = match (true) {
         request()->routeIs('admin.dashboard') => 'Dashboard',
         request()->routeIs('admin.reviews') => 'Reviews',
+        request()->routeIs('admin.inquiries') => 'Inquiries',
         request()->routeIs('admin.gallery-categories') => 'Gallery Categories',
         request()->routeIs('admin.gallery-images') => 'Gallery Images',
         request()->routeIs('admin.blog-categories') => 'Blog Categories',

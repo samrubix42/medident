@@ -207,26 +207,7 @@
                     </div>
                 </div>
 
-                @if ($submitted)
-                    <div class="mt-7 border border-emerald-200 bg-emerald-50 p-6 text-center sm:p-8" role="status">
-                        <span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-emerald-100 text-3xl text-emerald-600">
-                            <i class="ri-checkbox-circle-line"></i>
-                        </span>
-
-                        <h3 class="mt-4 text-lg font-bold text-med-navy">Message sent successfully</h3>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">
-                            Thank you for contacting MediDENT Multicare Clinic. We will reach out to you soon.
-                        </p>
-
-                        <button type="button"
-                                wire:click="sendAnother"
-                                class="mt-5 inline-flex items-center justify-center gap-2 border border-emerald-300 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100">
-                            Send another message
-                            <i class="ri-arrow-right-line"></i>
-                        </button>
-                    </div>
-                @else
-                    <form wire:submit="submit" class="mt-7">
+                <form wire:submit="submit" class="mt-7">
                         <div class="grid gap-5 sm:grid-cols-2">
                             <div>
                                 <label for="contact-name" class="text-sm font-semibold text-med-navy">
@@ -249,6 +230,7 @@
                             <div>
                                 <label for="contact-email" class="text-sm font-semibold text-med-navy">
                                     Email Address
+                                    <span class="font-normal text-slate-400">(optional)</span>
                                 </label>
                                 <input
                                     id="contact-email"
@@ -332,7 +314,6 @@
                             </button>
                         </div>
                     </form>
-                @endif
             </div>
         </div>
     </section>
@@ -378,4 +359,62 @@
             </div>
         </div>
     </section>
+
+    <div
+        x-data
+        x-cloak
+        x-show="$wire.submitted"
+        x-transition.opacity
+        @keydown.escape.window="$wire.sendAnother()"
+        class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/60" wire:click="sendAnother"></div>
+
+        <div
+            x-transition
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="inquiry-modal-title"
+            class="relative w-full max-w-lg border border-slate-200 bg-white p-6 shadow-2xl sm:p-8">
+            <button
+                type="button"
+                wire:click="sendAnother"
+                aria-label="Close inquiry confirmation"
+                class="absolute right-4 top-4 grid h-8 w-8 place-items-center text-lg text-slate-400 transition hover:bg-slate-50 hover:text-med-navy">
+                <i class="ri-close-line"></i>
+            </button>
+
+            <span class="grid h-14 w-14 place-items-center rounded-full bg-emerald-50 text-3xl text-emerald-600">
+                <i class="ri-checkbox-circle-line"></i>
+            </span>
+
+            <p class="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-emerald-600">
+                Inquiry received
+            </p>
+
+            <h2 id="inquiry-modal-title" class="mt-2 text-2xl font-bold tracking-tight text-med-navy">
+                Thank you for reaching out.
+            </h2>
+
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+                Your message is now with our care team. We will review your inquiry and get back to you as soon as possible.
+            </p>
+
+            <div class="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+                @if ($settings->phone)
+                    <a href="{{ $settings->phoneHref() }}"
+                       class="inline-flex items-center justify-center gap-2 border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:border-med-blue hover:text-med-blue">
+                        <i class="ri-phone-line text-base"></i>
+                        Call the clinic
+                    </a>
+                @endif
+
+                <button
+                    type="button"
+                    wire:click="sendAnother"
+                    class="inline-flex items-center justify-center bg-med-blue px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-800">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

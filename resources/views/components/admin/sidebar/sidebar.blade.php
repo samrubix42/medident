@@ -78,6 +78,21 @@
                     Reviews
                 </a>
 
+                <a href="{{ route('admin.inquiries') }}"
+                    wire:navigate
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.inquiries'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.inquiries'),
+                    ])>
+                    <i @class([
+                        'ri-mail-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.inquiries'),
+                        'text-slate-400' => ! request()->routeIs('admin.inquiries'),
+                    ])></i>
+                    Inquiries
+                </a>
+
                 <a href="{{ route('admin.gallery-categories') }}"
                     wire:navigate
                     @class([

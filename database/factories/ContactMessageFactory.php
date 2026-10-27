@@ -23,6 +23,14 @@ class ContactMessageFactory extends Factory
             'phone' => fake()->numerify('+91 9#########'),
             'subject' => fake()->sentence(4),
             'message' => fake()->paragraph(),
+            'is_read' => false,
         ];
+    }
+
+    public function read(): static
+    {
+        return $this->state(fn (): array => [
+            'is_read' => true,
+        ]);
     }
 }
