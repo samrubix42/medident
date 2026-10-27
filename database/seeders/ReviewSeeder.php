@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Review;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ReviewSeeder extends Seeder
 {
@@ -21,11 +22,25 @@ class ReviewSeeder extends Seeder
 
         $updateColumns = array_values(array_diff(array_keys($records[0]), ['review_id', 'created_at']));
 
-        foreach (array_chunk($records, 500) as $chunk) {
+        $batchSize = $this->batchSize(count($records[0]));
+
+        foreach (array_chunk($records, $batchSize) as $chunk) {
             Review::upsert($chunk, ['review_id'], $updateColumns);
         }
 
         $this->command?->info('Seeded '.count($records).' reviews.');
+    }
+
+    private function batchSize(int $columnCount): int
+    {
+        $maxParameters = match (DB::connection()->getDriverName()) {
+            'sqlite' => 999,
+            'sqlsrv' => 2100,
+            'mysql', 'mariadb', 'pgsql' => 65535,
+            default => 999,
+        };
+
+        return max(1, intdiv($maxParameters, $columnCount));
     }
 
     /**
