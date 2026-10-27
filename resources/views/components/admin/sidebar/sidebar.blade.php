@@ -1,5 +1,4 @@
 @php
-    $engagementActive = request()->routeIs('admin.reviews', 'admin.inquiries');
     $servicesActive = request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit', 'admin.service-categories');
     $blogActive = request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit', 'admin.blog-categories');
     $galleryActive = request()->routeIs('admin.gallery-images', 'admin.gallery-categories');
@@ -9,7 +8,6 @@
 <aside
     x-data="{
         open: false,
-        engagementOpen: {{ $engagementActive ? 'true' : 'false' }},
         servicesOpen: {{ $servicesActive ? 'true' : 'false' }},
         blogOpen: {{ $blogActive ? 'true' : 'false' }},
         galleryOpen: {{ $galleryActive ? 'true' : 'false' }},
@@ -79,59 +77,37 @@
                     Dashboard
                 </a>
 
-                {{-- Patient engagement --}}
-                <div>
-                    <button
-                        type="button"
-                        @click="engagementOpen = ! engagementOpen"
-                        :aria-expanded="engagementOpen"
-                        aria-controls="admin-engagement-menu"
-                        @class([
-                            'flex w-full items-center gap-3 px-3 py-2.5 text-sm transition',
-                            'bg-sky-50 font-semibold text-med-blue' => $engagementActive,
-                            'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! $engagementActive,
-                        ])>
-                        <i @class([
-                            'ri-message-3-line text-lg',
-                            'text-med-blue' => $engagementActive,
-                            'text-slate-400' => ! $engagementActive,
-                        ])></i>
-                        <span class="flex-1 text-left">Patient Engagement</span>
-                        <i class="ri-arrow-down-s-line text-base transition-transform"
-                           :class="engagementOpen && 'rotate-180'"></i>
-                    </button>
+                <a href="{{ route('admin.reviews') }}"
+                    wire:navigate
+                    @click="open = false"
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.reviews'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.reviews'),
+                    ])>
+                    <i @class([
+                        'ri-star-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.reviews'),
+                        'text-slate-400' => ! request()->routeIs('admin.reviews'),
+                    ])></i>
+                    Reviews
+                </a>
 
-                    <div
-                        id="admin-engagement-menu"
-                        x-cloak
-                        x-show="engagementOpen"
-                        x-transition
-                        class="mt-0.5 ml-4 space-y-0.5 border-l border-slate-200 pl-3">
-                        <a href="{{ route('admin.reviews') }}"
-                            wire:navigate
-                            @click="open = false"
-                            @class([
-                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
-                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.reviews'),
-                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.reviews'),
-                            ])>
-                            <i class="ri-star-line text-base"></i>
-                            Reviews
-                        </a>
-
-                        <a href="{{ route('admin.inquiries') }}"
-                            wire:navigate
-                            @click="open = false"
-                            @class([
-                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
-                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.inquiries'),
-                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.inquiries'),
-                            ])>
-                            <i class="ri-mail-line text-base"></i>
-                            Inquiries
-                        </a>
-                    </div>
-                </div>
+                <a href="{{ route('admin.inquiries') }}"
+                    wire:navigate
+                    @click="open = false"
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.inquiries'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.inquiries'),
+                    ])>
+                    <i @class([
+                        'ri-mail-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.inquiries'),
+                        'text-slate-400' => ! request()->routeIs('admin.inquiries'),
+                    ])></i>
+                    Inquiries
+                </a>
 
                 {{-- Services --}}
                 <div>
@@ -348,29 +324,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
-
-            <div class="my-5 h-px bg-slate-100"></div>
-
-            <p class="px-3 pb-2 text-[10px] font-medium uppercase tracking-[0.16em] text-slate-400">
-                Coming soon
-            </p>
-
-            <div class="space-y-0.5">
-                <span class="flex cursor-default items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-400">
-                    <i class="ri-calendar-check-line text-lg"></i>
-                    Appointments
-                </span>
-
-                <span class="flex cursor-default items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-400">
-                    <i class="ri-user-line text-lg"></i>
-                    Patients
-                </span>
-
-                <span class="flex cursor-default items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-400">
-                    <i class="ri-team-line text-lg"></i>
-                    Doctors
-                </span>
             </div>
 
             <div class="my-5 h-px bg-slate-100"></div>

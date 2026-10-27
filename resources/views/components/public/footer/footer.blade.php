@@ -120,6 +120,8 @@
                 <li><a href="{{ route('home') }}" class="transition hover:text-med-blue">Home</a></li>
                 <li><a href="{{ route('about') }}" class="transition hover:text-med-blue">About Us</a></li>
                 <li><a href="{{ route('services') }}" class="transition hover:text-med-blue">Our Services</a></li>
+                <li><a href="{{ route('physician') }}" class="transition hover:text-med-blue">Best Physician in Ghaziabad</a></li>
+                <li><a href="{{ route('dentist') }}" class="transition hover:text-med-blue">Best Dentist in Ghaziabad</a></li>
                 <li><a href="{{ route('gallery') }}" class="transition hover:text-med-blue">Gallery</a></li>
                 <li><a href="{{ route('blog') }}" class="transition hover:text-med-blue">Blog</a></li>
                 <li><a href="{{ url('/#testimonials') }}" class="transition hover:text-med-blue">Testimonials</a></li>

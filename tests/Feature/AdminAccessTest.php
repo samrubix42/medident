@@ -27,18 +27,21 @@ test('authenticated users can view the admin dashboard', function () {
         ->assertSee('Recent appointments');
 });
 
-test('the admin sidebar renders grouped menus and submenus', function () {
+test('the admin sidebar renders separate review and inquiry links plus grouped submenus', function () {
     $this->actingAs(User::factory()->create())
         ->get('/admin')
         ->assertOk()
-        ->assertSee('Patient Engagement')
+        ->assertSee('Reviews')
+        ->assertSee('Inquiries')
         ->assertSee('All services')
         ->assertSee('Posts')
         ->assertSee('Images')
         ->assertSee('Page SEO')
         ->assertSee('Settings')
         ->assertSee('aria-controls="admin-services-menu"', false)
-        ->assertSee('x-show="servicesOpen"', false);
+        ->assertSee('x-show="servicesOpen"', false)
+        ->assertDontSee('Patient Engagement')
+        ->assertDontSee('Coming soon');
 });
 
 test('an admin can sign in with valid credentials', function () {

@@ -62,6 +62,13 @@ class PageSeoSeeder extends Seeder
                 'meta_description' => 'Dr. Ratika Gupta, B.D.S., M.D.S., is an experienced dental surgeon in Shastri Nagar, Ghaziabad offering family, cosmetic and implant dentistry. Book a visit.',
                 'meta_keywords' => 'best dentist in Shastri Nagar, dentist in Shastri Nagar Ghaziabad, Dr Ratika Gupta, dental surgeon Ghaziabad, pediatric dentist Ghaziabad, cosmetic dentistry Ghaziabad, dental implants Ghaziabad, root canal treatment Ghaziabad',
             ],
+            [
+                'page_name' => 'Dr. Divya Prakash',
+                'page_slug' => 'physician',
+                'meta_title' => 'Best Physician Doctor in Ghaziabad | Dr. Divya Prakash',
+                'meta_description' => 'Dr. Divya Prakash is a diabetologist and general physician in Ghaziabad with over 10 years of experience. Book a consultation at MediDENT, Shastri Nagar.',
+                'meta_keywords' => 'best physician in Ghaziabad, general physician Ghaziabad, diabetologist Ghaziabad, Dr Divya Prakash, physician near me Ghaziabad, consultant physician Shastri Nagar',
+            ],
         ];
 
         foreach ($pages as $page) {

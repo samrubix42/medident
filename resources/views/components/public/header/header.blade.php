@@ -82,7 +82,9 @@
                 </a>
 
                 {{-- Services dropdown --}}
-                <div class="relative">
+                <div class="relative"
+                     @mouseenter="servicesOpen = true"
+                     @mouseleave="servicesOpen = false">
                     <button
                         type="button"
                         @click="servicesOpen = !servicesOpen"
@@ -102,49 +104,51 @@
                         x-show="servicesOpen"
                         x-transition.origin.top.left
                         @click.outside="servicesOpen = false"
-                        class="absolute left-0 top-full mt-4 w-64 border border-slate-200 bg-white p-2 shadow-xl">
-                        <a href="{{ route('services', ['category' => 'physician']) }}"
-                            @click="servicesOpen = false"
-                            class="flex items-center gap-3 p-3 transition hover:bg-sky-50">
-                            <span class="grid h-10 w-10 shrink-0 place-items-center bg-sky-50 text-xl text-med-blue">
-                                <i class="ri-stethoscope-line"></i>
-                            </span>
-                            <span>
-                                <span class="block text-sm font-semibold text-med-navy">Medical Care</span>
-                                <span class="mt-1 block text-xs text-slate-500">Everyday healthcare</span>
-                            </span>
-                        </a>
+                        class="absolute left-0 top-full w-64 pt-3">
+                        <div class="border border-slate-200 bg-white p-2 shadow-xl">
+                            <a href="{{ route('services', ['category' => 'physician']) }}"
+                                @click="servicesOpen = false"
+                                class="flex items-center gap-3 p-3 transition hover:bg-sky-50">
+                                <span class="grid h-10 w-10 shrink-0 place-items-center bg-sky-50 text-xl text-med-blue">
+                                    <i class="ri-stethoscope-line"></i>
+                                </span>
+                                <span>
+                                    <span class="block text-sm font-semibold text-med-navy">Medical Care</span>
+                                    <span class="mt-1 block text-xs text-slate-500">Everyday healthcare</span>
+                                </span>
+                            </a>
 
-                        <a href="{{ route('services') }}"
-                            @click="servicesOpen = false"
-                            class="flex items-center gap-3 p-3 transition hover:bg-red-50">
-                            <span class="grid h-10 w-10 shrink-0 place-items-center bg-red-50 text-xl text-med-red">
-                                <i class="ri-heart-pulse-line"></i>
-                            </span>
-                            <span>
-                                <span class="block text-sm font-semibold text-med-navy">Diabetes Care</span>
-                                <span class="mt-1 block text-xs text-slate-500">Ongoing health support</span>
-                            </span>
-                        </a>
+                            <a href="{{ route('services') }}"
+                                @click="servicesOpen = false"
+                                class="flex items-center gap-3 p-3 transition hover:bg-red-50">
+                                <span class="grid h-10 w-10 shrink-0 place-items-center bg-red-50 text-xl text-med-red">
+                                    <i class="ri-heart-pulse-line"></i>
+                                </span>
+                                <span>
+                                    <span class="block text-sm font-semibold text-med-navy">Diabetes Care</span>
+                                    <span class="mt-1 block text-xs text-slate-500">Ongoing health support</span>
+                                </span>
+                            </a>
 
-                        <a href="{{ route('services', ['category' => 'dental']) }}"
-                            @click="servicesOpen = false"
-                            class="flex items-center gap-3 p-3 transition hover:bg-cyan-50">
-                            <span class="grid h-10 w-10 shrink-0 place-items-center bg-cyan-50 text-xl text-cyan-700">
-                                <i class="ri-tooth-line"></i>
-                            </span>
-                            <span>
-                                <span class="block text-sm font-semibold text-med-navy">Dental Care</span>
-                                <span class="mt-1 block text-xs text-slate-500">Complete oral healthcare</span>
-                            </span>
-                        </a>
+                            <a href="{{ route('services', ['category' => 'dental']) }}"
+                                @click="servicesOpen = false"
+                                class="flex items-center gap-3 p-3 transition hover:bg-cyan-50">
+                                <span class="grid h-10 w-10 shrink-0 place-items-center bg-cyan-50 text-xl text-cyan-700">
+                                    <i class="ri-tooth-line"></i>
+                                </span>
+                                <span>
+                                    <span class="block text-sm font-semibold text-med-navy">Dental Care</span>
+                                    <span class="mt-1 block text-xs text-slate-500">Complete oral healthcare</span>
+                                </span>
+                            </a>
 
-                        <a href="{{ route('services') }}"
-                            @click="servicesOpen = false"
-                            class="mt-1 flex items-center justify-between border-t border-slate-100 px-3 py-3 text-sm font-semibold text-med-blue transition hover:bg-sky-50">
-                            View all services
-                            <i class="ri-arrow-right-line"></i>
-                        </a>
+                            <a href="{{ route('services') }}"
+                                @click="servicesOpen = false"
+                                class="mt-1 flex items-center justify-between border-t border-slate-100 px-3 py-3 text-sm font-semibold text-med-blue transition hover:bg-sky-50">
+                                View all services
+                                <i class="ri-arrow-right-line"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 

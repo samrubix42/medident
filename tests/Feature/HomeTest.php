@@ -105,11 +105,22 @@ test('the home page displays frequently asked questions with clinic details', fu
         ->assertSee('+91 90000 00000');
 });
 
-test('the footer shows the Techonika credit', function () {
+test('the services dropdown opens on mouse hover', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('@mouseenter="servicesOpen = true"', false)
+        ->assertSee('@mouseleave="servicesOpen = false"', false);
+});
+
+test('the footer shows the Techonika credit and doctor profile links', function () {
     $this->get('/')
         ->assertOk()
         ->assertSee('Powered by')
         ->assertSee('href="https://techonika.com/"', false)
         ->assertSee('Techonika')
+        ->assertSee('Best Physician in Ghaziabad')
+        ->assertSee('href="'.route('physician').'"', false)
+        ->assertSee('Best Dentist in Ghaziabad')
+        ->assertSee('href="'.route('dentist').'"', false)
         ->assertDontSee('Medical · Diabetes · Dental Care');
 });

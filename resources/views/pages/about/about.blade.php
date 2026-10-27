@@ -311,7 +311,9 @@
                             </p>
 
                             <h3 class="mt-2 text-2xl font-bold tracking-tight text-med-navy sm:text-3xl">
-                                Dr. Divya Prakash
+                                <a href="{{ route('physician') }}" class="transition hover:text-med-blue">
+                                    Dr. Divya Prakash
+                                </a>
                             </h3>
 
                             <p class="mt-2 text-sm font-semibold text-med-blue">
@@ -359,6 +361,12 @@
                                    class="inline-flex items-center gap-2 border border-slate-300 px-4 py-2.5 text-sm font-semibold text-med-navy transition hover:border-med-blue hover:text-med-blue">
                                     <i class="ri-phone-line"></i>
                                     0120-4169996
+                                </a>
+
+                                <a href="{{ route('physician') }}"
+                                   class="inline-flex items-center gap-2 border border-slate-300 px-4 py-2.5 text-sm font-semibold text-med-navy transition hover:border-med-blue hover:text-med-blue">
+                                    View full profile
+                                    <i class="ri-arrow-right-line"></i>
                                 </a>
                             </div>
                         </div>

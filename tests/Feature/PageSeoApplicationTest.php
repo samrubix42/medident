@@ -31,6 +31,7 @@ test('stored page seo metadata is applied to public pages', function (string $pa
     'services' => ['services', 'services'],
     'contact' => ['contact', 'contact'],
     'dentist' => ['dentist', 'dentist'],
+    'physician' => ['physician', 'physician'],
 ]);
 
 test('public pages use their default metadata when no page seo entry exists', function () {
