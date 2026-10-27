@@ -9,6 +9,7 @@
     $pageTitle = match (true) {
         request()->routeIs('admin.dashboard') => 'Dashboard',
         request()->routeIs('admin.reviews') => 'Reviews',
+        request()->routeIs('admin.gallery-categories') => 'Gallery Categories',
         default => 'Admin',
     };
 @endphp
