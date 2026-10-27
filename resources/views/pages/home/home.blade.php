@@ -3,24 +3,27 @@
 
 
 {{-- HERO SECTION --}}
-<section class="relative overflow-hidden bg-[#f5fafc]">
+<section class="relative overflow-hidden bg-gradient-to-br from-[#f5fafc] via-white to-[#f8fbfd]">
 
-    <div class="mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 sm:gap-10 sm:px-6 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:px-8 lg:py-24">
+    <div class="absolute -left-40 top-20 h-80 w-80 rounded-full bg-med-blue/5 blur-3xl"></div>
+    <div class="absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-cyan-400/5 blur-3xl"></div>
+
+    <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:gap-12 sm:px-6 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:px-8 lg:py-28">
 
         {{-- Hero Content --}}
         <div>
-            <div class="inline-flex max-w-full items-center gap-2 border border-sky-100 bg-white px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-med-blue sm:text-xs sm:tracking-[0.16em]">
+            <div class="inline-flex max-w-full items-center gap-2 rounded-full border border-sky-100 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-med-blue shadow-sm">
                 <i class="ri-hospital-line shrink-0 text-base"></i>
                 MediDENT Clinic &middot; Ghaziabad
             </div>
 
-            <h1 class="mt-5 max-w-2xl text-[2rem] font-bold leading-[1.15] tracking-tight text-med-navy sm:mt-6 sm:text-5xl lg:text-[3.5rem]">
+            <h1 class="mt-6 max-w-2xl text-4xl font-bold leading-[1.12] tracking-tight text-med-navy sm:mt-8 sm:text-5xl lg:text-[3.75rem]">
                 Welcome to
-                <span class="text-med-blue">MediDENT Multicare Clinic</span>
-                Ghaziabad
+                <span class="bg-gradient-to-r from-med-blue to-cyan-600 bg-clip-text text-transparent">MediDENT Multicare Clinic</span>
+                <br class="hidden sm:block">Ghaziabad
             </h1>
 
-            <p class="mt-5 max-w-xl text-sm leading-7 text-slate-600 sm:mt-6 sm:text-base sm:leading-8">
+            <p class="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg sm:leading-9">
                 MediDENT Multicare Clinic provides medical, diabetes and dental care for patients of all ages. Our healthcare team works to deliver comprehensive services tailored to your individual needs.
             </p>
 
@@ -29,26 +32,26 @@
             </p>
 
             {{-- Buttons --}}
-            <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
                 <button type="button"
                    @click="$dispatch('open-booking-modal')"
-                   class="inline-flex w-full items-center justify-center gap-3 bg-med-blue px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-sky-800 sm:w-auto sm:px-6">
+                   class="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-med-blue to-sky-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-med-blue/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-med-blue/35 sm:w-auto sm:px-8">
                     Book an Appointment
-                    <i class="ri-arrow-right-up-line text-lg"></i>
+                    <i class="ri-arrow-right-up-line text-lg transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
                 </button>
 
                 <a href="{{ route('about') }}"
-                   class="inline-flex w-full items-center justify-center gap-2 border border-slate-300 bg-white px-5 py-3.5 text-sm font-semibold text-med-navy transition hover:border-med-blue hover:text-med-blue sm:w-auto sm:px-6">
+                   class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-med-navy shadow-sm transition-all hover:-translate-y-0.5 hover:border-med-blue hover:text-med-blue hover:shadow-md sm:w-auto sm:px-8">
                     About Our Clinic
                     <i class="ri-arrow-right-line"></i>
                 </a>
             </div>
 
             {{-- Service Highlights --}}
-            <div class="mt-8 grid grid-cols-1 gap-4 border-t border-slate-200 pt-6 sm:grid-cols-2 sm:gap-6">
+            <div class="mt-10 grid grid-cols-1 gap-4 rounded-2xl border border-slate-100 bg-white/80 p-6 shadow-sm backdrop-blur-sm sm:grid-cols-2 sm:gap-6">
 
-                <div class="flex items-start gap-3">
-                    <div class="grid h-10 w-10 shrink-0 place-items-center bg-white text-xl text-med-blue">
+                <div class="group flex items-start gap-4">
+                    <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-sky-50 to-sky-100/50 text-xl text-med-blue transition group-hover:scale-105">
                         <i class="ri-stethoscope-line"></i>
                     </div>
                     <div>
@@ -59,8 +62,8 @@
                     </div>
                 </div>
 
-                <div class="flex items-start gap-3">
-                    <div class="grid h-10 w-10 shrink-0 place-items-center bg-white text-xl text-med-red">
+                <div class="group flex items-start gap-4">
+                    <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-red-50 to-red-100/50 text-xl text-med-red transition group-hover:scale-105">
                         <i class="ri-heart-pulse-line"></i>
                     </div>
                     <div>
@@ -76,15 +79,19 @@
 
         {{-- Hero Image --}}
         <div class="relative">
-            <div class="absolute -right-3 -top-3 h-24 w-24 border border-sky-200 sm:-right-5 sm:-top-5 sm:h-32 sm:w-32"></div>
+            <div class="absolute -right-4 -top-4 h-28 w-28 rounded-full bg-gradient-to-br from-med-blue/10 to-transparent sm:-right-6 sm:-top-6 sm:h-36 sm:w-36"></div>
+            <div class="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-cyan-400/10 blur-2xl"></div>
 
-            <div class="relative border-[5px] border-white bg-white shadow-[0_20px_60px_rgba(18,50,74,0.12)]">
+            <div class="relative overflow-hidden rounded-3xl border-[6px] border-white bg-white shadow-[0_40px_80px_rgba(18,50,74,0.16)]">
                 <img
                     src="{{ asset('images/hero-img.jpg') }}"
                     alt="MediDENT Multicare Clinic"
                     fetchpriority="high"
-                    class="h-[280px] w-full object-cover sm:h-[400px] lg:h-[470px]"
+                    class="h-[320px] w-full object-cover sm:h-[440px] lg:h-[520px]"
                 >
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-med-navy/40 to-transparent p-6">
+                    <p class="text-sm font-medium text-white">Compassionate care. Trusted results.</p>
+                </div>
             </div>
 
         
@@ -96,66 +103,68 @@
 
 {{-- GENERAL PHYSICIAN CONSULTATION --}}
 <section id="consultation"
-    class="scroll-mt-24 border-y border-slate-100 bg-white py-12 sm:py-20 lg:py-24">
+    class="scroll-mt-24 border-y border-slate-100 bg-white py-12 sm:py-16 lg:py-24">
 
     <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
         {{-- Section heading --}}
-        <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
 
             <div class="max-w-2xl">
-                <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
+                <div class="inline-flex items-center gap-2 rounded-full bg-med-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-med-red">
+                    <i class="ri-stethoscope-line"></i>
                     General Healthcare
-                </p>
+                </div>
 
-                <h2 class="mt-3 text-3xl font-bold leading-tight tracking-tight text-med-navy sm:text-4xl">
+                <h2 class="mt-5 text-3xl font-bold leading-tight tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
                     General Physician Consultation
                 </h2>
 
-                <p class="mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
+                <p class="mt-4 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
                     Expert medical guidance for common illnesses, ongoing health concerns, preventive care and your family's wellbeing.
                 </p>
             </div>
 
-            <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+            <div class="flex flex-wrap items-center gap-3">
                 <a href="{{ route('services', ['category' => 'physician']) }}"
-                   class="inline-flex w-fit shrink-0 items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue transition hover:text-sky-800">
+                   class="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-med-blue/20 bg-med-blue/5 px-6 py-2.5 text-sm font-semibold text-med-blue transition-all hover:-translate-y-0.5 hover:bg-med-blue/10">
                     View all medical services
-                    <i class="ri-arrow-right-line"></i>
+                    <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
                 </a>
 
                 <button type="button"
                     @click="$dispatch('open-booking-modal')"
-                    class="inline-flex w-fit shrink-0 items-center gap-2 border-b border-slate-300 pb-1 text-sm font-semibold text-slate-600 transition hover:border-med-blue hover:text-med-blue">
+                    class="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-slate-200 px-6 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-med-blue hover:text-med-blue">
                     Book a Consultation
-                    <i class="ri-arrow-right-line"></i>
+                    <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
                 </button>
             </div>
 
         </div>
 
         {{-- Service cards --}}
-        <div class="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-10 grid gap-6 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
             @forelse ($this->physicianServices as $service)
                 <article
                     wire:key="home-physician-service-{{ $service['slug'] }}"
-                    class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 {{ $service['hover'] }} hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
+                    class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)]">
 
-                    <div class="relative h-52 overflow-hidden bg-slate-100">
+                    <div class="relative h-52 overflow-hidden">
                         @if ($service['image'])
                             <img
                                 src="{{ $service['image'] }}"
                                 alt="{{ $service['alt'] }}"
                                 loading="lazy"
-                                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                class="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                             >
                         @else
-                            <span class="flex h-full w-full items-center justify-center bg-gradient-to-br from-sky-50 via-white to-slate-100">
-                                <i class="{{ $service['icon'] }} text-5xl text-sky-200"></i>
+                            <span class="flex h-full w-full items-center justify-center bg-gradient-to-br from-sky-50 via-white to-slate-50">
+                                <i class="{{ $service['icon'] }} text-6xl text-sky-200"></i>
                             </span>
                         @endif
+                        <div class="absolute inset-0 bg-gradient-to-t from-med-navy/20 to-transparent"></div>
 
-                        <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold {{ $service['accent'] }} shadow-sm">
+                        <span class="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold {{ $service['accent'] }} shadow-sm backdrop-blur-sm">
                             {{ $service['tag'] }}
                         </span>
                     </div>
@@ -166,7 +175,9 @@
                                 {{ $service['title'] }}
                             </h3>
 
-                            <i class="{{ $service['icon'] }} text-2xl {{ $service['accent'] }}"></i>
+                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-50 {{ $service['accent'] }} transition group-hover:scale-105">
+                                <i class="{{ $service['icon'] }} text-xl"></i>
+                            </span>
                         </div>
 
                         <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
@@ -174,19 +185,19 @@
                         </p>
 
                         <a href="{{ route('services.show', $service['slug']) }}"
-                            class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold {{ $service['accent'] }}">
+                            class="group/btn mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold {{ $service['accent'] }}">
                             View Details
-                            <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
+                            <i class="ri-arrow-right-line transition-transform group-hover/btn:translate-x-1"></i>
                         </a>
                     </div>
                 </article>
             @empty
-                <div class="border border-slate-200 bg-[#f8fbfd] px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
-                    <span class="mx-auto grid h-14 w-14 place-items-center bg-white text-2xl text-med-blue shadow-sm">
+                <div class="rounded-2xl border border-slate-100 bg-gradient-to-br from-[#f8fbfd] to-white px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
+                    <span class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-white text-2xl text-med-blue shadow-sm">
                         <i class="ri-stethoscope-line"></i>
                     </span>
 
-                    <h3 class="mt-4 text-lg font-bold text-med-navy">Medical service information is being updated.</h3>
+                    <h3 class="mt-5 text-lg font-bold text-med-navy">Medical service information is being updated.</h3>
                     <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
                         Contact the clinic to ask about available consultations or book an appointment.
                     </p>
@@ -195,21 +206,21 @@
         </div>
 
         {{-- Bottom CTA --}}
-        <div class="mt-10 flex flex-col gap-4 border border-slate-200 bg-[#f8fbfd] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-            <div>
-                <h3 class="text-lg font-bold text-med-navy">
+        <div class="mt-12 flex flex-col gap-6 rounded-2xl border border-slate-100 bg-gradient-to-br from-[#f8fbfd] to-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-8 lg:p-10">
+            <div class="max-w-xl">
+                <h3 class="text-xl font-bold text-med-navy">
                     Need help choosing the right consultation?
                 </h3>
 
-                <p class="mt-2 text-sm leading-6 text-slate-500">
-                    Contact our clinic to discuss your concerns and available services.
+                <p class="mt-2 text-sm leading-6 text-slate-600">
+                    Contact our clinic to discuss your concerns and available services. Our team will guide you to the right care.
                 </p>
             </div>
 
             <a href="{{ route('contact') }}"
-                class="inline-flex w-full shrink-0 items-center justify-center gap-2 bg-med-blue px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800 sm:w-auto">
+                class="group inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-med-blue to-sky-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-med-blue/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-med-blue/35 sm:w-auto">
                 Contact the Clinic
-                <i class="ri-arrow-right-up-line"></i>
+                <i class="ri-arrow-right-up-line transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
             </a>
         </div>
 
@@ -219,161 +230,173 @@
 
 
     {{-- SERVICES --}}
-    <section id="services" class="scroll-mt-24 py-12 sm:py-20 lg:py-24">
+    <section id="services" class="scroll-mt-24 py-12 sm:py-16 lg:py-24">
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
-            <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div class="max-w-2xl">
-                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-med-blue/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-med-blue">
+                        <i class="ri-hospital-line"></i>
                         Our Healthcare Services
-                    </p>
+                    </div>
 
-                    <h2 class="mt-3 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl">
+                    <h2 class="mt-5 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
                         Complete care. One trusted clinic.
                     </h2>
 
-                    <p class="mt-4 max-w-xl leading-7 text-slate-600">
-                        Focused care for your everyday health, long-term wellbeing and confident smile.
+                    <p class="mt-4 max-w-xl leading-7 text-slate-600 sm:text-base">
+                        Focused care for your everyday health, long-term wellbeing and confident smile under one roof.
                     </p>
                 </div>
 
                 <button type="button"
                     @click="$dispatch('open-booking-modal')"
-                    class="inline-flex w-fit items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue hover:text-sky-800">
-                    Book a Consultation <i class="ri-arrow-right-line"></i>
+                    class="group inline-flex w-fit items-center gap-2 rounded-full border border-med-blue/20 bg-med-blue/5 px-6 py-2.5 text-sm font-semibold text-med-blue transition-all hover:-translate-y-0.5 hover:bg-med-blue/10">
+                    Book a Consultation <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
                 </button>
             </div>
 
-            <div class="mt-8 grid gap-5 sm:mt-10 md:grid-cols-3">
+            <div class="mt-10 grid gap-6 sm:mt-12 md:grid-cols-3">
 
                 {{-- Medical --}}
-                <article class="group border border-slate-200 bg-white p-7 transition hover:border-sky-200 hover:shadow-[0_15px_40px_rgba(18,50,74,0.07)] sm:p-8">
-                    <div class="flex items-center justify-between">
-                        <div class="grid h-14 w-14 place-items-center bg-sky-50 text-2xl text-med-blue">
-                            <i class="ri-stethoscope-line"></i>
+                <article class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
+                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-sky-50/50 transition group-hover:scale-150"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between">
+                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100/50 text-2xl text-med-blue transition group-hover:scale-110">
+                                <i class="ri-stethoscope-line"></i>
+                            </div>
+
+                            <span class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-xl text-slate-400 transition group-hover:border-med-blue group-hover:text-med-blue">
+                                <i class="ri-arrow-up-right-line"></i>
+                            </span>
                         </div>
 
-                        <span class="text-2xl text-slate-300 transition group-hover:text-med-blue">
-                            <i class="ri-arrow-up-right-line"></i>
-                        </span>
+                        <h3 class="mt-8 text-xl font-bold text-med-navy">Medical Care</h3>
+
+                        <p class="mt-3 text-sm leading-7 text-slate-600">
+                            Medical consultations and guidance for everyday health concerns and your family's general healthcare needs.
+                        </p>
+
+                        <a href="{{ route('services', ['category' => 'physician']) }}"
+                            class="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-med-blue">
+                            Learn More <i class="ri-arrow-right-line transition-transform group-hover/link:translate-x-1"></i>
+                        </a>
                     </div>
-
-                    <h3 class="mt-7 text-xl font-bold text-med-navy">Medical Care</h3>
-
-                    <p class="mt-3 text-sm leading-7 text-slate-600">
-                        Medical consultations and guidance for everyday health concerns and your family's general healthcare needs.
-                    </p>
-
-                    <a href="{{ route('services', ['category' => 'physician']) }}"
-                        class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-med-blue">
-                        Learn More <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
                 </article>
 
                 {{-- Diabetes --}}
-                <article class="group border border-slate-200 bg-white p-7 transition hover:border-red-200 hover:shadow-[0_15px_40px_rgba(18,50,74,0.07)] sm:p-8">
-                    <div class="flex items-center justify-between">
-                        <div class="grid h-14 w-14 place-items-center bg-red-50 text-2xl text-med-red">
-                            <i class="ri-heart-pulse-line"></i>
+                <article class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
+                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-red-50/50 transition group-hover:scale-150"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between">
+                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-red-50 to-red-100/50 text-2xl text-med-red transition group-hover:scale-110">
+                                <i class="ri-heart-pulse-line"></i>
+                            </div>
+
+                            <span class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-xl text-slate-400 transition group-hover:border-med-red group-hover:text-med-red">
+                                <i class="ri-arrow-up-right-line"></i>
+                            </span>
                         </div>
 
-                        <span class="text-2xl text-slate-300 transition group-hover:text-med-red">
-                            <i class="ri-arrow-up-right-line"></i>
-                        </span>
+                        <h3 class="mt-8 text-xl font-bold text-med-navy">Diabetes Care</h3>
+
+                        <p class="mt-3 text-sm leading-7 text-slate-600">
+                            Support with diabetes monitoring, ongoing management and guidance to help you care for your health effectively.
+                        </p>
+
+                        <a href="{{ route('services') }}"
+                            class="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-med-red">
+                            Learn More <i class="ri-arrow-right-line transition-transform group-hover/link:translate-x-1"></i>
+                        </a>
                     </div>
-
-                    <h3 class="mt-7 text-xl font-bold text-med-navy">Diabetes Care</h3>
-
-                    <p class="mt-3 text-sm leading-7 text-slate-600">
-                        Support with diabetes monitoring, ongoing management and guidance to help you care for your health.
-                    </p>
-
-                    <a href="{{ route('services') }}"
-                        class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-med-red">
-                        Learn More <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
                 </article>
 
                 {{-- Dental --}}
-                <article class="group border border-slate-200 bg-white p-7 transition hover:border-cyan-200 hover:shadow-[0_15px_40px_rgba(18,50,74,0.07)] sm:p-8">
-                    <div class="flex items-center justify-between">
-                        <div class="grid h-14 w-14 place-items-center bg-cyan-50 text-2xl text-cyan-700">
-                            <i class="ri-tooth-line"></i>
+                <article class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
+                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-cyan-50/50 transition group-hover:scale-150"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between">
+                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-cyan-50 to-cyan-100/50 text-2xl text-cyan-700 transition group-hover:scale-110">
+                                <i class="ri-tooth-line"></i>
+                            </div>
+
+                            <span class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-xl text-slate-400 transition group-hover:border-cyan-700 group-hover:text-cyan-700">
+                                <i class="ri-arrow-up-right-line"></i>
+                            </span>
                         </div>
 
-                        <span class="text-2xl text-slate-300 transition group-hover:text-cyan-700">
-                            <i class="ri-arrow-up-right-line"></i>
-                        </span>
+                        <h3 class="mt-8 text-xl font-bold text-med-navy">Dental Care</h3>
+
+                        <p class="mt-3 text-sm leading-7 text-slate-600">
+                            Oral health consultations, preventive dental care and treatment options to help maintain a healthy, confident smile.
+                        </p>
+
+                        <a href="{{ route('services', ['category' => 'dental']) }}"
+                            class="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700">
+                            Learn More <i class="ri-arrow-right-line transition-transform group-hover/link:translate-x-1"></i>
+                        </a>
                     </div>
-
-                    <h3 class="mt-7 text-xl font-bold text-med-navy">Dental Care</h3>
-
-                    <p class="mt-3 text-sm leading-7 text-slate-600">
-                        Oral health consultations, preventive dental care and treatment options to help maintain a healthy smile.
-                    </p>
-
-                    <a href="{{ route('services', ['category' => 'dental']) }}"
-                        class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700">
-                        Learn More <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
                 </article>
 
             </div>
         </div>
     </section>
 
-    <section id="dental-services" class="scroll-mt-24 border-t border-slate-100 py-12 sm:py-20 lg:py-24">
+    <section id="dental-services" class="scroll-mt-24 border-t border-slate-100 bg-gradient-to-b from-white to-slate-50/30 py-12 sm:py-16 lg:py-24">
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
-            <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div class="max-w-2xl">
-                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
+                        <i class="ri-tooth-line"></i>
                         Dental Services
-                    </p>
+                    </div>
 
-                    <h2 class="mt-3 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl">
+                    <h2 class="mt-5 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
                         Complete care for every smile.
                     </h2>
 
-                    <p class="mt-4 max-w-xl leading-7 text-slate-600">
+                    <p class="mt-4 max-w-xl leading-7 text-slate-600 sm:text-base">
                         From preventive check-ups to restorative treatments, our dental services are designed to keep your smile healthy and comfortable.
                     </p>
                 </div>
 
-                <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+                <div class="flex flex-wrap items-center gap-3">
                     <a href="{{ route('services', ['category' => 'dental']) }}"
-                       class="inline-flex w-fit items-center gap-2 border-b border-cyan-700 pb-1 text-sm font-semibold text-cyan-700 hover:text-cyan-900">
-                        View all dental services <i class="ri-arrow-right-line"></i>
+                       class="group inline-flex w-fit items-center gap-2 rounded-full border border-cyan-700/20 bg-cyan-50 px-6 py-2.5 text-sm font-semibold text-cyan-700 transition-all hover:-translate-y-0.5 hover:bg-cyan-100/70">
+                        View all dental services <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
                     </a>
 
                     <button type="button"
                         @click="$dispatch('open-booking-modal')"
-                        class="inline-flex w-fit items-center gap-2 border-b border-slate-300 pb-1 text-sm font-semibold text-slate-600 hover:border-med-blue hover:text-med-blue">
-                        Book a Dental Visit <i class="ri-arrow-right-line"></i>
+                        class="group inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 px-6 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-med-blue hover:text-med-blue">
+                        Book a Dental Visit <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="mt-10 grid gap-6 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
                 @forelse ($this->dentalServices as $service)
                     <article
                         wire:key="home-dental-service-{{ $service['slug'] }}"
-                        class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 {{ $service['hover'] }} hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
-                        <div class="relative h-52 overflow-hidden bg-slate-100">
+                        class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)]">
+                        <div class="relative h-52 overflow-hidden">
                             @if ($service['image'])
                                 <img
                                     src="{{ $service['image'] }}"
                                     alt="{{ $service['alt'] }}"
                                     loading="lazy"
-                                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                    class="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                                 >
                             @else
-                                <span class="flex h-full w-full items-center justify-center bg-gradient-to-br from-cyan-50 via-white to-slate-100">
-                                    <i class="{{ $service['icon'] }} text-5xl text-cyan-200"></i>
+                                <span class="flex h-full w-full items-center justify-center bg-gradient-to-br from-cyan-50 via-white to-slate-50">
+                                    <i class="{{ $service['icon'] }} text-6xl text-cyan-200"></i>
                                 </span>
                             @endif
+                            <div class="absolute inset-0 bg-gradient-to-t from-med-navy/20 to-transparent"></div>
 
-                            <span class="absolute left-4 top-4 bg-white px-3 py-1.5 text-xs font-semibold {{ $service['accent'] }} shadow-sm">
+                            <span class="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold {{ $service['accent'] }} shadow-sm backdrop-blur-sm">
                                 {{ $service['tag'] }}
                             </span>
                         </div>
@@ -384,7 +407,9 @@
                                     {{ $service['title'] }}
                                 </h3>
 
-                                <i class="{{ $service['icon'] }} text-2xl {{ $service['accent'] }}"></i>
+                                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-50 {{ $service['accent'] }} transition group-hover:scale-105">
+                                    <i class="{{ $service['icon'] }} text-xl"></i>
+                                </span>
                             </div>
 
                             <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
@@ -392,19 +417,19 @@
                             </p>
 
                             <a href="{{ route('services.show', $service['slug']) }}"
-                                class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold {{ $service['accent'] }}">
+                                class="group/btn mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold {{ $service['accent'] }}">
                                 View Details
-                                <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
+                                <i class="ri-arrow-right-line transition-transform group-hover/btn:translate-x-1"></i>
                             </a>
                         </div>
                     </article>
                 @empty
-                    <div class="border border-slate-200 bg-[#f8fbfd] px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
-                        <span class="mx-auto grid h-14 w-14 place-items-center bg-white text-2xl text-cyan-700 shadow-sm">
+                    <div class="rounded-2xl border border-slate-100 bg-gradient-to-br from-[#f8fbfd] to-white px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
+                        <span class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-white text-2xl text-cyan-700 shadow-sm">
                             <i class="ri-tooth-line"></i>
                         </span>
 
-                        <h3 class="mt-4 text-lg font-bold text-med-navy">Dental service information is being updated.</h3>
+                        <h3 class="mt-5 text-lg font-bold text-med-navy">Dental service information is being updated.</h3>
                         <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
                             Contact the clinic to ask about available dental treatments or book a consultation.
                         </p>
@@ -416,60 +441,74 @@
 
 
     {{-- ABOUT --}}
-    <section id="about" class="scroll-mt-24 border-y border-slate-100 bg-[#f5fafc] py-12 sm:py-20 lg:py-24">
-        <div class="mx-auto grid max-w-7xl items-center gap-8 px-5 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+    <section id="about" class="scroll-mt-24 border-y border-slate-100 bg-gradient-to-br from-[#f5fafc] via-white to-[#f8fbfd] py-12 sm:py-16 lg:py-24">
+        <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
 
             <div class="relative">
-                <img
-                    src="{{ asset('images/photo-1576091160399-112ba8d25d1d.avif') }}"
-                    alt="Healthcare professional consulting a patient"
-                    loading="lazy"
-                    class="h-[280px] w-full object-cover sm:h-[430px]">
+                <div class="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-med-blue/10 sm:-right-6 sm:-top-6 sm:h-32 sm:w-32"></div>
+                <div class="absolute -bottom-6 -left-6 h-28 w-28 rounded-full bg-cyan-400/10 blur-2xl"></div>
+                <div class="relative overflow-hidden rounded-3xl border-[6px] border-white shadow-[0_40px_80px_rgba(18,50,74,0.14)]">
+                    <img
+                        src="{{ asset('images/photo-1576091160399-112ba8d25d1d.avif') }}"
+                        alt="Healthcare professional consulting a patient"
+                        loading="lazy"
+                        class="h-[320px] w-full object-cover sm:h-[450px]">
+                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-med-navy/40 to-transparent p-6">
+                        <p class="text-sm font-medium text-white">Patient-first care at every step</p>
+                    </div>
+                </div>
 
               
             </div>
 
             <div class="pt-3 lg:pt-0">
-                <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
+                <div class="inline-flex items-center gap-2 rounded-full bg-med-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-med-red">
+                    <i class="ri-hospital-line"></i>
                     About MediDENT
-                </p>
+                </div>
 
-                <h2 class="mt-4 text-3xl font-bold leading-tight tracking-tight text-med-navy sm:text-4xl">
+                <h2 class="mt-5 text-3xl font-bold leading-tight tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
                     Healthcare should feel personal, not complicated.
                 </h2>
 
-                <p class="mt-5 text-base leading-8 text-slate-600">
-                    We believe better healthcare begins with listening. Our approach focuses on understanding your concerns, explaining your options clearly and helping you make informed decisions about your wellbeing.
+                <p class="mt-6 text-base leading-8 text-slate-600">
+                    We believe better healthcare begins with listening. Our approach focuses on understanding your concerns, explaining your options clearly and helping you make informed decisions about your wellbeing in a warm, welcoming environment.
                 </p>
 
-                <div class="mt-7 space-y-5">
+                <div class="mt-8 space-y-5">
 
-                    <div class="flex gap-4">
-                        <i class="ri-check-line mt-0.5 text-xl text-med-blue"></i>
+                    <div class="group flex gap-4 rounded-2xl p-4 transition hover:bg-white hover:shadow-sm">
+                        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-med-blue/10 to-med-blue/5 text-xl text-med-blue">
+                            <i class="ri-heart-2-line"></i>
+                        </span>
                         <div>
                             <h3 class="font-semibold text-med-navy">A patient-first approach</h3>
                             <p class="mt-1 text-sm leading-6 text-slate-600">
-                                Your questions and concerns deserve time, respect and attention.
+                                Your questions and concerns deserve time, respect and attention from our caring team.
                             </p>
                         </div>
                     </div>
 
-                    <div class="flex gap-4">
-                        <i class="ri-check-line mt-0.5 text-xl text-med-blue"></i>
+                    <div class="group flex gap-4 rounded-2xl p-4 transition hover:bg-white hover:shadow-sm">
+                        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-cyan-500/10 to-cyan-500/5 text-xl text-cyan-700">
+                            <i class="ri-hospital-line"></i>
+                        </span>
                         <div>
                             <h3 class="font-semibold text-med-navy">Multiple care services</h3>
                             <p class="mt-1 text-sm leading-6 text-slate-600">
-                                Medical, diabetes and dental services in one convenient place.
+                                Medical, diabetes and dental services all in one convenient, trusted location.
                             </p>
                         </div>
                     </div>
 
-                    <div class="flex gap-4">
-                        <i class="ri-check-line mt-0.5 text-xl text-med-blue"></i>
+                    <div class="group flex gap-4 rounded-2xl p-4 transition hover:bg-white hover:shadow-sm">
+                        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-med-red/10 to-med-red/5 text-xl text-med-red">
+                            <i class="ri-chat-3-line"></i>
+                        </span>
                         <div>
                             <h3 class="font-semibold text-med-navy">Clear, thoughtful guidance</h3>
                             <p class="mt-1 text-sm leading-6 text-slate-600">
-                                Understand your care options and the next steps to consider.
+                                Understand your care options and the next steps to consider for better health outcomes.
                             </p>
                         </div>
                     </div>
@@ -477,8 +516,8 @@
                 </div>
 
                 <a href="{{ route('contact') }}"
-                    class="mt-8 inline-flex w-full items-center justify-center gap-3 bg-med-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 sm:w-auto sm:justify-start">
-                    Get in Touch <i class="ri-arrow-right-up-line text-lg"></i>
+                    class="group mt-8 inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-med-navy to-[#0f2a3d] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-med-navy/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-med-navy/35 sm:w-auto sm:justify-start">
+                    Get in Touch <i class="ri-arrow-right-up-line text-lg transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
                 </a>
             </div>
         </div>

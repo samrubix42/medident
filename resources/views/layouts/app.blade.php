@@ -75,7 +75,7 @@
     @livewireStyles
 </head>
 
-<body class="min-h-screen bg-white font-sans text-slate-700 antialiased">
+<body class="min-h-screen bg-[#FAFDFE] font-sans text-slate-700 antialiased">
 
     <livewire:public.header />
 

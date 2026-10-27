@@ -6,77 +6,43 @@
     @keydown.escape.window="mobileOpen = false; servicesOpen = false"
     @resize.window.debounce.150ms="if (window.innerWidth >= 1024) { mobileOpen = false; servicesOpen = false }"
     class="relative z-50">
-    {{-- Top information bar --}}
-    <div class="hidden bg-med-navy text-white sm:block">
-        <div class="mx-auto flex max-w-7xl flex-col justify-between gap-2 px-5 py-2 text-xs sm:flex-row sm:items-center lg:px-8">
-            <p class="flex items-center justify-center gap-2 text-white/80 sm:justify-start">
-                <i class="ri-heart-pulse-line text-base text-cyan-300"></i>
-                Thoughtful care for your entire family
-            </p>
-
-            <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-white/80">
-                @if ($settings->phone)
-                    <a href="{{ $settings->phoneHref() }}" class="transition hover:text-white">
-                        <i class="ri-phone-line mr-1 text-cyan-300"></i>
-                        {{ $settings->phone }}
-                    </a>
-                @endif
-
-                @if ($settings->secondary_phone)
-                    <a href="{{ $settings->secondaryPhoneHref() }}" class="transition hover:text-white">
-                        <i class="ri-phone-line mr-1 text-cyan-300"></i>
-                        {{ $settings->secondary_phone }}
-                    </a>
-                @endif
-
-                @if ($settings->opening_hours)
-                    <span class="hidden text-white/30 sm:inline">|</span>
-
-                    <span>
-                        <i class="ri-time-line mr-1 text-cyan-300"></i>
-                        {{ $settings->opening_hours }}
-                    </span>
-                @endif
-            </div>
-        </div>
-    </div>
 
     {{-- Main navigation --}}
-    <header class="border-b border-slate-200 bg-white">
-        <div class="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 lg:px-8">
+    <header class="sticky top-4 z-50 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-5 rounded-full border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-[0_10px_40px_rgba(18,50,74,0.08)] backdrop-blur-xl sm:px-6 lg:px-8">
 
             {{-- Brand logo --}}
-            <a href="{{ url('/') }}" class="flex shrink-0 items-center gap-3" aria-label="MediDENT home">
+            <a href="{{ url('/') }}" class="group flex shrink-0 items-center gap-3" aria-label="MediDENT home">
                 <img
                     src="{{ asset('logo.webp') }}"
                     alt="MediDENT Multicare Clinic"
-                    class="h-10 w-auto object-contain sm:h-12">
+                    class="h-10 w-auto object-contain transition group-hover:scale-105 sm:h-12">
 
                 <span>
-                    <span class="block text-base font-bold leading-none tracking-tight text-med-navy sm:text-lg">MediDENT</span>
-                    <span class="mt-1 block text-[9px] font-semibold uppercase tracking-[0.18em] text-med-blue sm:text-[10px]">
+                    <span class="block text-base font-bold leading-none tracking-tight text-med-navy transition group-hover:text-med-blue sm:text-lg">MediDENT</span>
+                    <span class="mt-1 block text-[9px] font-semibold uppercase tracking-[0.2em] text-med-blue sm:text-[10px]">
                         Multicare Clinic
                     </span>
                 </span>
             </a>
 
             {{-- Desktop menu --}}
-            <nav class="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
+            <nav class="hidden items-center gap-1 xl:gap-2 lg:flex" aria-label="Main navigation">
 
                 <a href="{{ route('home') }}"
                     @class([
-                        'text-sm font-semibold transition',
-                        'text-med-blue' => request()->routeIs('home'),
-                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('home'),
+                        'rounded-full px-4 py-2 text-sm font-semibold transition-all',
+                        'bg-med-blue/5 text-med-blue' => request()->routeIs('home'),
+                        'text-slate-700 hover:bg-slate-50 hover:text-med-blue' => ! request()->routeIs('home'),
                     ])>
                     Home
                 </a>
 
                 <a href="{{ route('about') }}"
                     @class([
-                        'text-sm font-semibold transition',
-                        'text-med-blue' => request()->routeIs('about'),
-                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('about'),
+                        'rounded-full px-4 py-2 text-sm font-semibold transition-all',
+                        'bg-med-blue/5 text-med-blue' => request()->routeIs('about'),
+                        'text-slate-700 hover:bg-slate-50 hover:text-med-blue' => ! request()->routeIs('about'),
                     ])>
                     About Us
                 </a>
@@ -90,61 +56,67 @@
                         @click="servicesOpen = !servicesOpen"
                         :aria-expanded="servicesOpen"
                         @class([
-                            'flex items-center gap-1.5 text-sm font-semibold transition',
-                            'text-med-blue' => request()->routeIs('services', 'services.show'),
-                            'text-slate-600 hover:text-med-blue' => ! request()->routeIs('services', 'services.show'),
+                            'flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all',
+                            'bg-med-blue/5 text-med-blue' => request()->routeIs('services', 'services.show'),
+                            'text-slate-700 hover:bg-slate-50 hover:text-med-blue' => ! request()->routeIs('services', 'services.show'),
                         ])>
                         Services
-                        <i class="ri-arrow-down-s-line text-lg transition"
+                        <i class="ri-arrow-down-s-line text-lg transition-transform"
                             :class="{ 'rotate-180': servicesOpen }"></i>
                     </button>
 
                     <div
                         x-cloak
                         x-show="servicesOpen"
-                        x-transition.origin.top.left
+                        x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 translate-y-1"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-1"
                         @click.outside="servicesOpen = false"
-                        class="absolute left-0 top-full w-64 pt-3">
-                        <div class="border border-slate-200 bg-white p-2 shadow-xl">
-                            <a href="{{ route('services', ['category' => 'physician']) }}"
-                                @click="servicesOpen = false"
-                                class="flex items-center gap-3 p-3 transition hover:bg-sky-50">
-                                <span class="grid h-10 w-10 shrink-0 place-items-center bg-sky-50 text-xl text-med-blue">
-                                    <i class="ri-stethoscope-line"></i>
-                                </span>
-                                <span>
-                                    <span class="block text-sm font-semibold text-med-navy">Medical Care</span>
-                                    <span class="mt-1 block text-xs text-slate-500">Everyday healthcare</span>
-                                </span>
-                            </a>
+                        class="absolute left-0 top-full w-72 pt-2">
+                        <div class="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-[0_20px_60px_rgba(18,50,74,0.12)]">
+                            <div class="p-2">
+                                <a href="{{ route('services', ['category' => 'physician']) }}"
+                                    @click="servicesOpen = false"
+                                    class="group flex items-center gap-3 rounded-xl p-3 transition hover:bg-sky-50/70">
+                                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-sky-50 to-sky-100/50 text-xl text-med-blue transition group-hover:scale-105">
+                                        <i class="ri-stethoscope-line"></i>
+                                    </span>
+                                    <span>
+                                        <span class="block text-sm font-semibold text-med-navy">Medical Care</span>
+                                        <span class="mt-0.5 block text-xs text-slate-500">Everyday healthcare</span>
+                                    </span>
+                                </a>
 
+                                <a href="{{ route('services') }}"
+                                    @click="servicesOpen = false"
+                                    class="group flex items-center gap-3 rounded-xl p-3 transition hover:bg-red-50/70">
+                                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-red-50 to-red-100/50 text-xl text-med-red transition group-hover:scale-105">
+                                        <i class="ri-heart-pulse-line"></i>
+                                    </span>
+                                    <span>
+                                        <span class="block text-sm font-semibold text-med-navy">Diabetes Care</span>
+                                        <span class="mt-0.5 block text-xs text-slate-500">Ongoing health support</span>
+                                    </span>
+                                </a>
+
+                                <a href="{{ route('services', ['category' => 'dental']) }}"
+                                    @click="servicesOpen = false"
+                                    class="group flex items-center gap-3 rounded-xl p-3 transition hover:bg-cyan-50/70">
+                                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-cyan-50 to-cyan-100/50 text-xl text-cyan-700 transition group-hover:scale-105">
+                                        <i class="ri-tooth-line"></i>
+                                    </span>
+                                    <span>
+                                        <span class="block text-sm font-semibold text-med-navy">Dental Care</span>
+                                        <span class="mt-0.5 block text-xs text-slate-500">Complete oral healthcare</span>
+                                    </span>
+                                </a>
+                            </div>
                             <a href="{{ route('services') }}"
                                 @click="servicesOpen = false"
-                                class="flex items-center gap-3 p-3 transition hover:bg-red-50">
-                                <span class="grid h-10 w-10 shrink-0 place-items-center bg-red-50 text-xl text-med-red">
-                                    <i class="ri-heart-pulse-line"></i>
-                                </span>
-                                <span>
-                                    <span class="block text-sm font-semibold text-med-navy">Diabetes Care</span>
-                                    <span class="mt-1 block text-xs text-slate-500">Ongoing health support</span>
-                                </span>
-                            </a>
-
-                            <a href="{{ route('services', ['category' => 'dental']) }}"
-                                @click="servicesOpen = false"
-                                class="flex items-center gap-3 p-3 transition hover:bg-cyan-50">
-                                <span class="grid h-10 w-10 shrink-0 place-items-center bg-cyan-50 text-xl text-cyan-700">
-                                    <i class="ri-tooth-line"></i>
-                                </span>
-                                <span>
-                                    <span class="block text-sm font-semibold text-med-navy">Dental Care</span>
-                                    <span class="mt-1 block text-xs text-slate-500">Complete oral healthcare</span>
-                                </span>
-                            </a>
-
-                            <a href="{{ route('services') }}"
-                                @click="servicesOpen = false"
-                                class="mt-1 flex items-center justify-between border-t border-slate-100 px-3 py-3 text-sm font-semibold text-med-blue transition hover:bg-sky-50">
+                                class="flex items-center justify-between border-t border-slate-100 px-5 py-3.5 text-sm font-semibold text-med-blue transition hover:bg-slate-50/50">
                                 View all services
                                 <i class="ri-arrow-right-line"></i>
                             </a>
@@ -154,32 +126,32 @@
 
                 <a href="{{ route('gallery') }}"
                     @class([
-                        'text-sm font-semibold transition',
-                        'text-med-blue' => request()->routeIs('gallery'),
-                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('gallery'),
+                        'rounded-full px-4 py-2 text-sm font-semibold transition-all',
+                        'bg-med-blue/5 text-med-blue' => request()->routeIs('gallery'),
+                        'text-slate-700 hover:bg-slate-50 hover:text-med-blue' => ! request()->routeIs('gallery'),
                     ])>
                     Gallery
                 </a>
 
                 <a href="{{ route('blog') }}"
                     @class([
-                        'text-sm font-semibold transition',
-                        'text-med-blue' => request()->routeIs('blog', 'blog.show'),
-                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('blog', 'blog.show'),
+                        'rounded-full px-4 py-2 text-sm font-semibold transition-all',
+                        'bg-med-blue/5 text-med-blue' => request()->routeIs('blog', 'blog.show'),
+                        'text-slate-700 hover:bg-slate-50 hover:text-med-blue' => ! request()->routeIs('blog', 'blog.show'),
                     ])>
                     Blog
                 </a>
 
                 <a href="{{ url('/#testimonials') }}"
-                    class="text-sm font-medium text-slate-600 transition hover:text-med-blue">
+                    class="rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-50 hover:text-med-blue">
                     Testimonials
                 </a>
 
                 <a href="{{ route('contact') }}"
                     @class([
-                        'text-sm font-semibold transition',
-                        'text-med-blue' => request()->routeIs('contact'),
-                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('contact'),
+                        'rounded-full px-4 py-2 text-sm font-semibold transition-all',
+                        'bg-med-blue/5 text-med-blue' => request()->routeIs('contact'),
+                        'text-slate-700 hover:bg-slate-50 hover:text-med-blue' => ! request()->routeIs('contact'),
                     ])>
                     Contact
                 </a>
@@ -188,9 +160,9 @@
             {{-- Desktop appointment button --}}
             <button type="button"
                 @click="$dispatch('open-booking-modal')"
-                class="hidden items-center gap-2 bg-med-red px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700 lg:inline-flex">
-                Book an Appointment
-                <i class="ri-arrow-right-up-line text-base"></i>
+                class="group hidden items-center gap-2 rounded-full bg-gradient-to-r from-med-red to-red-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-500/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-red-500/30 lg:inline-flex">
+                Book Appointment
+                <i class="ri-arrow-right-up-line text-base transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
             </button>
 
             {{-- Mobile menu button --}}
@@ -199,7 +171,7 @@
                 @click="mobileOpen = true; servicesOpen = false"
                 :aria-expanded="mobileOpen"
                 aria-label="Open navigation"
-                class="grid h-10 w-10 shrink-0 place-items-center border border-slate-200 text-xl text-med-navy lg:hidden">
+                class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 text-xl text-med-navy transition hover:border-med-blue hover:bg-slate-50 lg:hidden">
                 <i class="ri-menu-3-line"></i>
             </button>
         </div>
@@ -391,8 +363,8 @@
 
                     <button type="button"
                         @click="mobileOpen = false; $dispatch('open-booking-modal')"
-                        class="mt-5 flex w-full items-center justify-center gap-2 bg-med-red px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-red-700">
-                        Book an Appointment
+                        class="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-med-red to-red-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:shadow-lg">
+                        Book Appointment
                         <i class="ri-arrow-right-up-line text-base"></i>
                     </button>
                 </div>
