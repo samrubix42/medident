@@ -13,12 +13,15 @@ class GalleryCategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['title' => 'Clinic Photos', 'slug' => 'clinic-photos'],
-            ['title' => 'Treatments', 'slug' => 'treatments'],
-            ['title' => 'Team', 'slug' => 'team'],
-            ['title' => 'Events', 'slug' => 'events'],
-            ['title' => 'General Physician Dental Camp', 'slug' => 'general-physician-dental-camp'],
+            ['title' => 'General', 'slug' => 'general'],
+            ['title' => 'Physician', 'slug' => 'physician'],
+            ['title' => 'Dental', 'slug' => 'dental'],
+            ['title' => 'Camp', 'slug' => 'camp'],
         ];
+
+        GalleryCategory::query()
+            ->whereNotIn('slug', array_column($categories, 'slug'))
+            ->delete();
 
         foreach ($categories as $category) {
             GalleryCategory::updateOrCreate(
