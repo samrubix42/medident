@@ -21,3 +21,7 @@ Route::livewire('/admin/reviews', 'admin::reviews')
 Route::livewire('/admin/gallery-categories', 'admin::gallery-categories')
     ->middleware('auth')
     ->name('admin.gallery-categories');
+
+Route::livewire('/admin/settings', 'admin::settings')
+    ->middleware('auth')
+    ->name('admin.settings');

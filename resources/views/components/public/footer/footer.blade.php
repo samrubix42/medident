@@ -1,3 +1,5 @@
+@php($settings = $this->settings)
+
 <div>
     
 {{-- Appointment banner --}}
@@ -22,17 +24,21 @@
             </div>
 
             <div class="flex flex-col gap-3 sm:flex-row md:flex-col">
-                <a href="tel:+910000000000"
-                   class="inline-flex items-center justify-center gap-2 bg-med-red px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-red-700">
-                    <i class="ri-phone-line"></i>
-                    Call the Clinic
-                </a>
+                @if ($settings->phone)
+                    <a href="{{ $settings->phoneHref() }}"
+                       class="inline-flex items-center justify-center gap-2 bg-med-red px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-red-700">
+                        <i class="ri-phone-line"></i>
+                        Call the Clinic
+                    </a>
+                @endif
 
-                <a href="mailto:hello@medidentclinic.com"
-                   class="inline-flex items-center justify-center gap-2 border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10">
-                    <i class="ri-mail-line"></i>
-                    Email Us
-                </a>
+                @if ($settings->email)
+                    <a href="mailto:{{ $settings->email }}"
+                       class="inline-flex items-center justify-center gap-2 border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10">
+                        <i class="ri-mail-line"></i>
+                        Email Us
+                    </a>
+                @endif
             </div>
         </div>
     </div>
@@ -64,23 +70,45 @@
             </p>
 
             <div class="mt-5 flex items-center gap-3">
-                <a href="https://www.facebook.com/"
-                   aria-label="Facebook"
-                   class="grid h-10 w-10 place-items-center border border-slate-200 text-lg text-slate-600 transition hover:border-med-blue hover:text-med-blue">
-                    <i class="ri-facebook-fill"></i>
-                </a>
+                @if ($settings->facebook_url)
+                    <a href="{{ $settings->facebook_url }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Facebook"
+                       class="grid h-10 w-10 place-items-center border border-slate-200 text-lg text-slate-600 transition hover:border-med-blue hover:text-med-blue">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                @endif
 
-                <a href="https://www.instagram.com/"
-                   aria-label="Instagram"
-                   class="grid h-10 w-10 place-items-center border border-slate-200 text-lg text-slate-600 transition hover:border-med-blue hover:text-med-blue">
-                    <i class="ri-instagram-line"></i>
-                </a>
+                @if ($settings->instagram_url)
+                    <a href="{{ $settings->instagram_url }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Instagram"
+                       class="grid h-10 w-10 place-items-center border border-slate-200 text-lg text-slate-600 transition hover:border-med-blue hover:text-med-blue">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                @endif
 
-                <a href="https://wa.me/910000000000"
-                   aria-label="WhatsApp"
-                   class="grid h-10 w-10 place-items-center border border-slate-200 text-lg text-slate-600 transition hover:border-emerald-600 hover:text-emerald-600">
-                    <i class="ri-whatsapp-line"></i>
-                </a>
+                @if ($settings->linkedin_url)
+                    <a href="{{ $settings->linkedin_url }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="LinkedIn"
+                       class="grid h-10 w-10 place-items-center border border-slate-200 text-lg text-slate-600 transition hover:border-med-blue hover:text-med-blue">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                @endif
+
+                @if ($settings->whatsappUrl())
+                    <a href="{{ $settings->whatsappUrl() }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="WhatsApp"
+                       class="grid h-10 w-10 place-items-center border border-slate-200 text-lg text-slate-600 transition hover:border-emerald-600 hover:text-emerald-600">
+                        <i class="ri-whatsapp-line"></i>
+                    </a>
+                @endif
             </div>
         </div>
 
@@ -102,30 +130,51 @@
             <h3 class="text-sm font-bold text-med-navy">Get in Touch</h3>
 
             <ul class="mt-5 space-y-4 text-sm text-slate-500">
-                <li class="flex items-start gap-3">
-                    <i class="ri-phone-line mt-0.5 text-lg text-med-blue"></i>
-                    <a href="tel:+910000000000" class="transition hover:text-med-blue">
-                        +91 00000 00000
-                    </a>
-                </li>
+                @if ($settings->phone)
+                    <li class="flex items-start gap-3">
+                        <i class="ri-phone-line mt-0.5 text-lg text-med-blue"></i>
+                        <a href="{{ $settings->phoneHref() }}" class="transition hover:text-med-blue">
+                            {{ $settings->phone }}
+                        </a>
+                    </li>
+                @endif
 
-                <li class="flex items-start gap-3">
-                    <i class="ri-mail-line mt-0.5 text-lg text-med-blue"></i>
-                    <a href="mailto:hello@medidentclinic.com"
-                       class="break-all transition hover:text-med-blue">
-                        hello@medidentclinic.com
-                    </a>
-                </li>
+                @if ($settings->secondary_phone)
+                    <li class="flex items-start gap-3">
+                        <i class="ri-phone-line mt-0.5 text-lg text-med-blue"></i>
+                        <a href="{{ $settings->secondaryPhoneHref() }}" class="transition hover:text-med-blue">
+                            {{ $settings->secondary_phone }}
+                        </a>
+                    </li>
+                @endif
 
-                <li class="flex items-start gap-3">
-                    <i class="ri-time-line mt-0.5 text-lg text-med-blue"></i>
-                    <span>Monday – Saturday<br>9:00 AM – 8:00 PM</span>
-                </li>
+                @if ($settings->email)
+                    <li class="flex items-start gap-3">
+                        <i class="ri-mail-line mt-0.5 text-lg text-med-blue"></i>
+                        <a href="mailto:{{ $settings->email }}"
+                           class="break-all transition hover:text-med-blue">
+                            {{ $settings->email }}
+                        </a>
+                    </li>
+                @endif
 
-                <li class="flex items-start gap-3">
-                    <i class="ri-map-pin-line mt-0.5 text-lg text-med-blue"></i>
-                    <span>Clinic address goes here</span>
-                </li>
+                @if ($settings->opening_hours)
+                    <li class="flex items-start gap-3">
+                        <i class="ri-time-line mt-0.5 text-lg text-med-blue"></i>
+                        <span>
+                            @foreach ($settings->openingHoursLines() as $hours)
+                                {{ $hours }}@if (! $loop->last)<br>@endif
+                            @endforeach
+                        </span>
+                    </li>
+                @endif
+
+                @if ($settings->address)
+                    <li class="flex items-start gap-3">
+                        <i class="ri-map-pin-line mt-0.5 text-lg text-med-blue"></i>
+                        <span>{{ $settings->address }}</span>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

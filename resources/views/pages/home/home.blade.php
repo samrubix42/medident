@@ -5,22 +5,22 @@
 {{-- HERO SECTION --}}
 <section class="relative overflow-hidden bg-[#f5fafc]">
 
-    <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:px-8 lg:py-24">
+    <div class="mx-auto grid max-w-7xl items-center gap-8 px-5 py-12 sm:gap-10 sm:px-6 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:px-8 lg:py-24">
 
         {{-- Hero Content --}}
         <div>
-            <div class="inline-flex items-center gap-2 border border-sky-100 bg-white px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-med-blue">
-                <i class="ri-hospital-line text-base"></i>
-                MediDENT Multicare Clinic · Ghaziabad
+            <div class="inline-flex max-w-full items-center gap-2 border border-sky-100 bg-white px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-med-blue sm:text-xs sm:tracking-[0.16em]">
+                <i class="ri-hospital-line shrink-0 text-base"></i>
+                MediDENT Clinic &middot; Ghaziabad
             </div>
 
-            <h1 class="mt-6 max-w-2xl text-4xl font-bold leading-[1.15] tracking-tight text-med-navy sm:text-5xl lg:text-[3.5rem]">
+            <h1 class="mt-5 max-w-2xl text-[2rem] font-bold leading-[1.15] tracking-tight text-med-navy sm:mt-6 sm:text-5xl lg:text-[3.5rem]">
                 Welcome to
                 <span class="text-med-blue">MediDENT Multicare Clinic</span>
                 Ghaziabad
             </h1>
 
-            <p class="mt-6 max-w-xl text-base leading-8 text-slate-600">
+            <p class="mt-5 max-w-xl text-sm leading-7 text-slate-600 sm:mt-6 sm:text-base sm:leading-8">
                 MediDENT Multicare Clinic provides medical, diabetes and dental care for patients of all ages. Our healthcare team works to deliver comprehensive services tailored to your individual needs.
             </p>
 
@@ -29,22 +29,23 @@
             </p>
 
             {{-- Buttons --}}
-            <div class="mt-8 flex flex-wrap gap-3">
-                <a href="#contact"
-                   class="inline-flex items-center gap-3 bg-med-blue px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-sky-800">
+            <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                <button type="button"
+                   @click="$dispatch('open-booking-modal')"
+                   class="inline-flex w-full items-center justify-center gap-3 bg-med-blue px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-sky-800 sm:w-auto sm:px-6">
                     Book an Appointment
                     <i class="ri-arrow-right-up-line text-lg"></i>
-                </a>
+                </button>
 
                 <a href="{{ route('about') }}"
-                   class="inline-flex items-center gap-2 border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-med-navy transition hover:border-med-blue hover:text-med-blue">
+                   class="inline-flex w-full items-center justify-center gap-2 border border-slate-300 bg-white px-5 py-3.5 text-sm font-semibold text-med-navy transition hover:border-med-blue hover:text-med-blue sm:w-auto sm:px-6">
                     About Our Clinic
                     <i class="ri-arrow-right-line"></i>
                 </a>
             </div>
 
             {{-- Service Highlights --}}
-            <div class="mt-9 grid grid-cols-2 gap-4 border-t border-slate-200 pt-6 sm:gap-6">
+            <div class="mt-8 grid grid-cols-1 gap-4 border-t border-slate-200 pt-6 sm:grid-cols-2 sm:gap-6">
 
                 <div class="flex items-start gap-3">
                     <div class="grid h-10 w-10 shrink-0 place-items-center bg-white text-xl text-med-blue">
@@ -82,7 +83,7 @@
                     src="{{ asset('images/hero-img.jpg') }}"
                     alt="MediDENT Multicare Clinic"
                     fetchpriority="high"
-                    class="h-[300px] w-full object-cover sm:h-[400px] lg:h-[470px]"
+                    class="h-[280px] w-full object-cover sm:h-[400px] lg:h-[470px]"
                 >
             </div>
 
@@ -95,7 +96,7 @@
 
 {{-- GENERAL PHYSICIAN CONSULTATION --}}
 <section id="consultation"
-    class="scroll-mt-24 border-y border-slate-100 bg-white py-16 sm:py-20 lg:py-24">
+    class="scroll-mt-24 border-y border-slate-100 bg-white py-12 sm:py-20 lg:py-24">
 
     <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
@@ -116,16 +117,17 @@
                 </p>
             </div>
 
-            <a href="#contact"
+            <button type="button"
+                @click="$dispatch('open-booking-modal')"
                 class="inline-flex w-fit shrink-0 items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue transition hover:text-sky-800">
                 Book a Consultation
                 <i class="ri-arrow-right-line"></i>
-            </a>
+            </button>
 
         </div>
 
         {{-- Service cards --}}
-        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
 
             {{-- General Disease --}}
             <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
@@ -364,7 +366,7 @@
             </div>
 
             <a href="#contact"
-                class="inline-flex shrink-0 items-center justify-center gap-2 bg-med-blue px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800">
+                class="inline-flex w-full shrink-0 items-center justify-center gap-2 bg-med-blue px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800 sm:w-auto">
                 Contact the Clinic
                 <i class="ri-arrow-right-up-line"></i>
             </a>
@@ -376,7 +378,7 @@
 
 
     {{-- SERVICES --}}
-    <section id="services" class="scroll-mt-24 py-16 sm:py-20 lg:py-24">
+    <section id="services" class="scroll-mt-24 py-12 sm:py-20 lg:py-24">
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
             <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -394,13 +396,14 @@
                     </p>
                 </div>
 
-                <a href="#contact"
+                <button type="button"
+                    @click="$dispatch('open-booking-modal')"
                     class="inline-flex w-fit items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue hover:text-sky-800">
                     Book a Consultation <i class="ri-arrow-right-line"></i>
-                </a>
+                </button>
             </div>
 
-            <div class="mt-10 grid gap-5 md:grid-cols-3">
+            <div class="mt-8 grid gap-5 sm:mt-10 md:grid-cols-3">
 
                 {{-- Medical --}}
                 <article class="group border border-slate-200 bg-white p-7 transition hover:border-sky-200 hover:shadow-[0_15px_40px_rgba(18,50,74,0.07)] sm:p-8">
@@ -478,7 +481,7 @@
         </div>
     </section>
 
-    <section id="dental-services" class="scroll-mt-24 border-t border-slate-100 py-16 sm:py-20 lg:py-24">
+    <section id="dental-services" class="scroll-mt-24 border-t border-slate-100 py-12 sm:py-20 lg:py-24">
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
             <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -496,13 +499,14 @@
                     </p>
                 </div>
 
-                <a href="#contact"
+                <button type="button"
+                    @click="$dispatch('open-booking-modal')"
                     class="inline-flex w-fit items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue hover:text-sky-800">
                     Book a Dental Visit <i class="ri-arrow-right-line"></i>
-                </a>
+                </button>
             </div>
 
-            <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($this->dentalServices as $service)
                     <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 {{ $service['hover'] }} hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
                         <div class="relative h-52 overflow-hidden bg-slate-100">
@@ -545,15 +549,15 @@
 
 
     {{-- ABOUT --}}
-    <section id="about" class="scroll-mt-24 border-y border-slate-100 bg-[#f5fafc] py-16 sm:py-20 lg:py-24">
-        <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+    <section id="about" class="scroll-mt-24 border-y border-slate-100 bg-[#f5fafc] py-12 sm:py-20 lg:py-24">
+        <div class="mx-auto grid max-w-7xl items-center gap-8 px-5 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
 
             <div class="relative">
                 <img
                     src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1100&q=85"
                     alt="Healthcare professional consulting a patient"
                     loading="lazy"
-                    class="h-[330px] w-full object-cover sm:h-[430px]">
+                    class="h-[280px] w-full object-cover sm:h-[430px]">
 
               
             </div>
@@ -606,7 +610,7 @@
                 </div>
 
                 <a href="#contact"
-                    class="mt-8 inline-flex items-center gap-3 bg-med-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800">
+                    class="mt-8 inline-flex w-full items-center justify-center gap-3 bg-med-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 sm:w-auto sm:justify-start">
                     Get in Touch <i class="ri-arrow-right-up-line text-lg"></i>
                 </a>
             </div>
@@ -701,7 +705,7 @@
                 this.active = Math.min(closest, this.maxIndex);
             }
         }"
-        class="scroll-mt-24 py-16 sm:py-20 lg:py-24">
+        class="scroll-mt-24 py-12 sm:py-20 lg:py-24">
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
             <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -767,7 +771,7 @@
             @else
                 <div x-ref="track"
                      @scroll.debounce.300ms="syncActive()"
-                     class="mt-9 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                     class="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-3 sm:mt-9 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     @foreach ($reviews as $review)
                         @php($authorName = $review->author_title ?: 'Google user')
                         @php($rating = (float) $review->review_rating)

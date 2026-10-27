@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
 test('the about page is available at the about-us slug', function () {
     expect(route('about'))->toBe(url('/about-us'));
 });

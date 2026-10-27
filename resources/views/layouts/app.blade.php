@@ -35,6 +35,8 @@
 
     <livewire:public.footer />
 
+    <livewire:public.booking-modal />
+
     @livewireScripts
 </body>
 </html>

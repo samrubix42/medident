@@ -93,6 +93,21 @@
                     Gallery categories
                 </a>
 
+                <a href="{{ route('admin.settings') }}"
+                    wire:navigate
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.settings'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.settings'),
+                    ])>
+                    <i @class([
+                        'ri-settings-3-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.settings'),
+                        'text-slate-400' => ! request()->routeIs('admin.settings'),
+                    ])></i>
+                    Settings
+                </a>
+
                 <span class="flex cursor-default items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-400">
                     <i class="ri-calendar-check-line text-lg"></i>
                     Appointments

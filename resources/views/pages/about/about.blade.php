@@ -21,11 +21,12 @@
                 </p>
 
                 <div class="mt-8 flex flex-wrap gap-3">
-                    <a href="{{ url('/#contact') }}"
+                    <button type="button"
+                       @click="$dispatch('open-booking-modal')"
                        class="inline-flex items-center gap-3 bg-med-blue px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-sky-800">
                         Book an Appointment
                         <i class="ri-arrow-right-up-line text-lg"></i>
-                    </a>
+                    </button>
 
                     <a href="#doctors"
                        class="inline-flex items-center gap-2 border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-med-navy transition hover:border-med-blue hover:text-med-blue">
@@ -207,11 +208,12 @@
                         General health check-ups, treatment for common illnesses and injuries, and management of chronic conditions such as hypertension, diabetes and asthma. We also provide vaccinations, health screenings and preventive care to help you maintain your health and wellbeing.
                     </p>
 
-                    <a href="{{ url('/#contact') }}"
+                    <button type="button"
+                       @click="$dispatch('open-booking-modal')"
                        class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-med-blue">
                         Book a consultation
                         <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
+                    </button>
                 </article>
 
                 <article class="group flex h-full flex-col border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-red-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)] sm:p-8">
@@ -228,11 +230,12 @@
                         Regular blood sugar monitoring, dietary counselling, medication management and lifestyle recommendations to help you manage diabetes effectively. Our healthcare professionals work closely with you to develop a customised care plan tailored to your individual needs and goals.
                     </p>
 
-                    <a href="{{ url('/#contact') }}"
+                    <button type="button"
+                       @click="$dispatch('open-booking-modal')"
                        class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-med-red">
                         Plan your diabetes care
                         <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
+                    </button>
                 </article>
 
                 <article class="group flex h-full flex-col border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)] sm:p-8">
@@ -249,11 +252,12 @@
                         Preventive care including regular check-ups and cleanings, plus treatment for cavities, gum disease and tooth loss. We also offer cosmetic dental services such as teeth whitening, veneers and orthodontic treatment to help you achieve the smile you desire.
                     </p>
 
-                    <a href="{{ url('/#contact') }}"
+                    <button type="button"
+                       @click="$dispatch('open-booking-modal')"
                        class="mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-cyan-700">
                         Book a dental visit
                         <i class="ri-arrow-right-line transition group-hover:translate-x-1"></i>
-                    </a>
+                    </button>
                 </article>
             </div>
         </div>
@@ -276,11 +280,12 @@
                     </p>
                 </div>
 
-                <a href="{{ url('/#contact') }}"
+                <button type="button"
+                   @click="$dispatch('open-booking-modal')"
                    class="inline-flex w-fit shrink-0 items-center gap-2 border-b border-med-blue pb-1 text-sm font-semibold text-med-blue transition hover:text-sky-800">
                     Book an appointment
                     <i class="ri-arrow-right-line"></i>
-                </a>
+                </button>
             </div>
 
             <div class="mt-10 space-y-8">
@@ -426,11 +431,12 @@
                                     +91-8290582582
                                 </a>
 
-                                <a href="{{ url('/#contact') }}"
+                                <button type="button"
+                                   @click="$dispatch('open-booking-modal')"
                                    class="inline-flex items-center gap-2 border border-slate-300 px-4 py-2.5 text-sm font-semibold text-med-navy transition hover:border-cyan-700 hover:text-cyan-700">
                                     Book a dental visit
                                     <i class="ri-arrow-right-line"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
