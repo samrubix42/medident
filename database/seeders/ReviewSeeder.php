@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Review;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class ReviewSeeder extends Seeder
@@ -20,21 +21,44 @@ class ReviewSeeder extends Seeder
             self::REVIEWS,
         );
 
-        $updateColumns = array_values(array_diff(array_keys($records[0]), ['review_id', 'created_at']));
+        if (DB::connection()->getDriverName() === 'sqlite') {
+            $this->seedSqliteCompatible($records);
+        } else {
+            $updateColumns = array_values(array_diff(array_keys($records[0]), ['review_id', 'created_at']));
 
-        $batchSize = $this->batchSize(count($records[0]));
+            $batchSize = $this->batchSize(count($records[0]));
 
-        foreach (array_chunk($records, $batchSize) as $chunk) {
-            Review::upsert($chunk, ['review_id'], $updateColumns);
+            foreach (array_chunk($records, $batchSize) as $chunk) {
+                Review::upsert($chunk, ['review_id'], $updateColumns);
+            }
         }
 
         $this->command?->info('Seeded '.count($records).' reviews.');
     }
 
+    /**
+     * @param  array<int, array<string, mixed>>  $records
+     */
+    private function seedSqliteCompatible(array $records): void
+    {
+        foreach ($records as $record) {
+            $attributes = ['review_id' => $record['review_id']];
+
+            if (DB::table('reviews')->where($attributes)->exists()) {
+                DB::table('reviews')->where($attributes)->update(
+                    Arr::except($record, ['review_id', 'created_at']),
+                );
+
+                continue;
+            }
+
+            DB::table('reviews')->insert($record);
+        }
+    }
+
     private function batchSize(int $columnCount): int
     {
         $maxParameters = match (DB::connection()->getDriverName()) {
-            'sqlite' => 999,
             'sqlsrv' => 2100,
             'mysql', 'mariadb', 'pgsql' => 65535,
             default => 999,
