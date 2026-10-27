@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\GalleryCategory;
 use App\Models\GalleryImage;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class GalleryImageSeeder extends Seeder
 {
@@ -13,43 +15,47 @@ class GalleryImageSeeder extends Seeder
      */
     public function run(): void
     {
+        $extensions = ['jpg', 'jpeg', 'png', 'webp', 'avif', 'gif'];
+
         $categories = GalleryCategory::query()
-            ->whereIn('slug', ['general-physician', 'dental', 'camp'])
             ->get()
             ->keyBy('slug');
 
-        $images = [
-            ['category' => 'general-physician', 'link' => 'images/hero-img.jpg'],
-            ['category' => 'general-physician', 'link' => 'images/general-diseases.jpg'],
-            ['category' => 'general-physician', 'link' => 'images/vaccination.jpg'],
-            ['category' => 'general-physician', 'link' => 'images/gastro.jpg'],
-            ['category' => 'general-physician', 'link' => 'images/heart.jpg'],
-            ['category' => 'general-physician', 'link' => 'images/respiratory.jpg'],
-            ['category' => 'general-physician', 'link' => 'images/throid.jpg'],
-            ['category' => 'general-physician', 'link' => 'doctors/Dr.-Divya-Prakash.jpeg'],
-            ['category' => 'dental', 'link' => 'dental/cosmetic-dental.jpg'],
-            ['category' => 'dental', 'link' => 'dental/KIDSDENTISTRY.jpg'],
-            ['category' => 'dental', 'link' => 'dental/Dental-Implants.jpg'],
-            ['category' => 'dental', 'link' => 'dental/painless-extraction.jpg'],
-            ['category' => 'dental', 'link' => 'dental/dental-filling.jpg'],
-            ['category' => 'dental', 'link' => 'dental/root-canal.jpg'],
-            ['category' => 'dental', 'link' => 'doctors/Dr.-RatikaGupta.jpg'],
-        ];
+        $imageLinks = [];
 
-        foreach ($images as $image) {
-            $category = $categories->get($image['category']);
+        $folders = collect(File::directories(public_path('gallery')))
+            ->sort();
+
+        foreach ($folders as $directory) {
+            $folder = basename($directory);
+            $category = $categories->get(Str::slug($folder));
 
             if (! $category) {
                 continue;
             }
 
-            GalleryImage::updateOrCreate(
-                ['image_link' => $image['link']],
-                [
-                    'category_id' => $category->id,
-                    'is_active' => true,
-                ],
-            );
+            $images = collect(File::files($directory))
+                ->filter(fn ($file): bool => in_array(strtolower($file->getExtension()), $extensions, true))
+                ->sortBy(fn ($file): string => $file->getFilename());
+
+            foreach ($images as $image) {
+                $imageLink = 'gallery/'.rawurlencode($folder).'/'.rawurlencode($image->getFilename());
+
+                $imageLinks[] = $imageLink;
+
+                GalleryImage::updateOrCreate(
+                    ['image_link' => $imageLink],
+                    [
+                        'category_id' => $category->id,
+                        'is_active' => true,
+                    ],
+                );
+            }
         }
+
+        GalleryImage::query()
+            ->where('image_link', 'like', 'gallery/%')
+            ->whereNotIn('image_link', $imageLinks)
+            ->delete();
     }
 }
