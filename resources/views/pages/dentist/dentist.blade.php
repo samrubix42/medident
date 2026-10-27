@@ -218,28 +218,56 @@
             </div>
 
             <div class="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                @foreach ($services as $service)
-                    <article class="group flex h-full flex-col border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)] sm:p-6">
-                        <span class="grid h-11 w-11 place-items-center bg-cyan-50 text-xl text-cyan-700 transition group-hover:bg-cyan-700 group-hover:text-white">
-                            <i class="{{ $service['icon'] }}"></i>
-                        </span>
+                @forelse ($services as $service)
+                    <article class="group flex h-full flex-col overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-[0_16px_40px_rgba(18,50,74,0.08)]">
+                        @if ($service['image'])
+                            <div class="relative h-44 overflow-hidden bg-slate-100">
+                                <img
+                                    src="{{ $service['image'] }}"
+                                    alt="{{ $service['alt'] }}"
+                                    loading="lazy"
+                                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                >
 
-                        <h3 class="mt-4 text-lg font-bold leading-snug text-med-navy">
-                            {{ $service['title'] }}
-                        </h3>
+                                <span class="absolute left-4 top-4 grid h-9 w-9 place-items-center bg-white/95 text-lg text-cyan-700 shadow-sm">
+                                    <i class="{{ $service['icon'] }}"></i>
+                                </span>
+                            </div>
+                        @endif
 
-                        <p class="mt-2 flex-1 text-sm leading-6 text-slate-500">
-                            {{ $service['description'] }}
-                        </p>
+                        <div class="flex flex-1 flex-col p-5 sm:p-6">
+                            @if (! $service['image'])
+                                <span class="grid h-11 w-11 place-items-center bg-cyan-50 text-xl text-cyan-700 transition group-hover:bg-cyan-700 group-hover:text-white">
+                                    <i class="{{ $service['icon'] }}"></i>
+                                </span>
+                            @endif
 
-                        <button type="button"
-                                @click="$dispatch('open-booking-modal')"
-                                class="mt-5 inline-flex w-fit items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-cyan-700 transition hover:text-cyan-900">
-                            Book this consultation
-                            <i class="ri-arrow-right-line"></i>
-                        </button>
+                            <h3 @class([
+                                'text-lg font-bold leading-snug text-med-navy',
+                                'mt-4' => ! $service['image'],
+                            ])>
+                                {{ $service['title'] }}
+                            </h3>
+
+                            <p class="mt-2 flex-1 text-sm leading-6 text-slate-500">
+                                {{ $service['description'] }}
+                            </p>
+
+                            <button type="button"
+                                    @click="$dispatch('open-booking-modal')"
+                                    class="mt-5 inline-flex w-fit items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold text-cyan-700 transition hover:text-cyan-900">
+                                Book this consultation
+                                <i class="ri-arrow-right-line"></i>
+                            </button>
+                        </div>
                     </article>
-                @endforeach
+                @empty
+                    <div class="border border-slate-200 bg-white p-6 text-sm leading-7 text-slate-500 sm:col-span-2 lg:col-span-3">
+                        Dental service information is currently being updated. Please
+                        <a href="{{ route('contact') }}" class="font-semibold text-cyan-700 underline underline-offset-2 hover:text-cyan-900">contact the clinic</a>
+                        to ask about a treatment or book a consultation.
+                    </div>
+                @endforelse
             </div>
 
             <p class="mt-8 text-sm leading-7 text-slate-500">

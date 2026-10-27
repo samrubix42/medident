@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ClinicSetting;
 use App\Models\Review;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Computed;
@@ -21,6 +22,46 @@ new class extends Component
             ->orderByDesc('id')
             ->limit(12)
             ->get();
+    }
+
+    /**
+     * @return list<array{question: string, answer: string}>
+     */
+    #[Computed]
+    public function faqs(): array
+    {
+        $settings = ClinicSetting::current();
+        $phone = $settings->phone ?: '+91 88000 23032';
+        $address = $settings->address ?: 'Shastri Nagar, Ghaziabad';
+        $hours = $settings->openingHoursLines();
+        $hours = $hours !== [] ? implode(' and ', $hours) : 'Monday to Saturday';
+
+        return [
+            [
+                'question' => 'What services are available at MediDENT Multicare Clinic?',
+                'answer' => 'We provide general medical consultations, diabetes and chronic condition care, preventive health checks, vaccinations, and dental care for children and adults.',
+            ],
+            [
+                'question' => 'Do I need an appointment to visit the clinic?',
+                'answer' => "Appointments are recommended so the team can plan enough time for your concern. Call {$phone} to check availability and whether a same-day visit is possible.",
+            ],
+            [
+                'question' => 'What are the clinic timings?',
+                'answer' => "The clinic is open {$hours}. Please call ahead on public holidays to confirm availability.",
+            ],
+            [
+                'question' => 'Where is MediDENT Multicare Clinic located?',
+                'answer' => "{$address}.",
+            ],
+            [
+                'question' => 'Does the clinic provide dental care for children?',
+                'answer' => 'Yes. Our dental team provides gentle pediatric and preventive care, including first dental visits, routine check-ups, and guidance for parents.',
+            ],
+            [
+                'question' => 'How can I book an appointment?',
+                'answer' => "Call {$phone} or use the contact page to send an enquiry. The team will confirm a suitable consultation time with you.",
+            ],
+        ];
     }
 
     /**

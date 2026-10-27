@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\ClinicSetting;
+use App\Models\Service;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
@@ -13,43 +16,37 @@ new class extends Component
     }
 
     /**
-     * @return list<array{title: string, description: string, icon: string}>
+     * @return list<array{title: string, description: string, icon: string, image: string|null, alt: string}>
      */
     #[Computed]
     public function services(): array
     {
-        return [
-            [
-                'title' => 'General & Preventive Dentistry',
-                'description' => 'Routine dental check-ups, professional cleaning, cavity treatment, and gum health assessments to protect your smile before problems become painful.',
-                'icon' => 'ri-tooth-line',
-            ],
-            [
-                'title' => 'Pediatric & Preventive Dentistry',
-                'description' => 'Gentle dental care for children, including first-tooth guidance, preventive check-ups, and age-appropriate treatment in a calm, reassuring environment.',
-                'icon' => 'ri-user-smile-line',
-            ],
-            [
-                'title' => 'Cosmetic Dentistry',
-                'description' => 'Smile-focused care such as teeth whitening and veneers, planned around your dental health, facial features, and personal goals.',
-                'icon' => 'ri-magic-line',
-            ],
-            [
-                'title' => 'Dental Implants',
-                'description' => 'Implant-based solutions for missing teeth, with a careful assessment of your bone health, bite, and long-term oral function.',
-                'icon' => 'ri-surgical-mask-line',
-            ],
-            [
-                'title' => 'Root Canal Treatment',
-                'description' => 'Treatment for infected or badly inflamed teeth to relieve pain and preserve your natural tooth whenever possible.',
-                'icon' => 'ri-heart-pulse-line',
-            ],
-            [
-                'title' => 'Orthodontic Guidance',
-                'description' => 'Assessment and guidance for crowded, spaced, or misaligned teeth, including orthodontic treatment options suited to your needs.',
-                'icon' => 'ri-align-center',
-            ],
-        ];
+        return Service::query()
+            ->active()
+            ->whereHas('category', fn (Builder $query): Builder => $query->where('slug', 'dental')->where('is_active', true))
+            ->orderBy('id')
+            ->get()
+            ->map(fn (Service $service): array => [
+                'title' => $service->title,
+                'description' => $service->short_description ?: Str::limit(strip_tags($service->content), 180),
+                'icon' => $this->serviceIcon($service->slug),
+                'image' => $service->imageUrl(),
+                'alt' => $service->title.' at MediDENT Multicare Clinic, Ghaziabad',
+            ])
+            ->all();
+    }
+
+    private function serviceIcon(string $slug): string
+    {
+        return match ($slug) {
+            'cosmetic-dental' => 'ri-sparkling-line',
+            'kids-dentistry' => 'ri-user-smile-line',
+            'dental-implants' => 'ri-tooth-line',
+            'painless-extraction' => 'ri-shield-check-line',
+            'dental-filling' => 'ri-first-aid-kit-line',
+            'root-canal-treatment' => 'ri-heart-pulse-line',
+            default => 'ri-tooth-line',
+        };
     }
 
     /**
@@ -93,6 +90,8 @@ new class extends Component
         $image = asset('dental/Dr.-Ratika-Gupta-4.jpg');
         $title = 'Dr. Ratika Gupta: Best Dentist in Shastri Nagar, Ghaziabad';
         $description = 'Dr. Ratika Gupta, B.D.S., M.D.S., is an experienced dental surgeon in Shastri Nagar, Ghaziabad offering family, cosmetic and implant dentistry. Book a visit.';
+
+        $serviceNames = array_column($this->services, 'title');
 
         $services = collect($this->services)
             ->map(fn (array $service): array => [
@@ -164,7 +163,7 @@ new class extends Component
                             'name' => 'Master of Dental Surgery (M.D.S.)',
                         ],
                     ],
-                    'knowsAbout' => [
+                    'knowsAbout' => $serviceNames !== [] ? $serviceNames : [
                         'General dentistry',
                         'Pediatric and preventive dentistry',
                         'Cosmetic dentistry',

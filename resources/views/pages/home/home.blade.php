@@ -866,5 +866,56 @@
         </div>
     </section>
 
+    {{-- FAQ --}}
+    @php($faqs = $this->faqs)
+
+    <section id="faqs" class="scroll-mt-24 border-t border-slate-100 bg-[#f5fafc] py-12 sm:py-20 lg:py-24">
+        <div class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
+                    Frequently asked questions
+                </p>
+
+                <h2 class="mt-3 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl">
+                    Before you visit MediDENT
+                </h2>
+
+                <p class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                    Quick answers about appointments, clinic timings, services, and what to expect at your visit.
+                </p>
+            </div>
+
+            <div class="mt-8 divide-y divide-slate-200 border border-slate-200 bg-white">
+                @foreach ($faqs as $faq)
+                    <details class="group p-5 sm:p-6">
+                        <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-left">
+                            <h3 class="text-sm font-semibold leading-6 text-med-navy sm:text-base">
+                                {{ $faq['question'] }}
+                            </h3>
+
+                            <i class="ri-add-line mt-0.5 text-xl text-med-blue transition group-open:rotate-45"></i>
+                        </summary>
+
+                        <p class="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
+                            {{ $faq['answer'] }}
+                        </p>
+                    </details>
+                @endforeach
+            </div>
+
+            <div class="mt-6 flex flex-col items-center justify-between gap-3 border border-sky-100 bg-white px-5 py-4 text-center sm:flex-row sm:text-left">
+                <p class="text-sm text-slate-600">
+                    Still have a question about your care?
+                </p>
+
+                <a href="{{ route('contact') }}"
+                   class="inline-flex items-center gap-2 text-sm font-semibold text-med-blue transition hover:text-sky-800">
+                    Contact the clinic
+                    <i class="ri-arrow-right-line"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
 </div>
 </div>
