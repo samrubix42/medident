@@ -14,7 +14,7 @@ class GalleryCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $folders = collect(File::directories(public_path('gallery')))
+        $folders = collect(File::directories(public_path('images/gallery')))
             ->map(fn (string $directory): string => basename($directory))
             ->sort()
             ->values();

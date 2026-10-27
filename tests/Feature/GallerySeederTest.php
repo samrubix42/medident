@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 uses(RefreshDatabase::class);
 
 test('the gallery seeders build categories and images from the gallery folders', function () {
-    $galleryPath = public_path('gallery');
+    $galleryPath = public_path('images/gallery');
     $extensions = ['jpg', 'jpeg', 'png', 'webp', 'avif', 'gif'];
 
     $folders = collect(File::directories($galleryPath))
@@ -57,7 +57,7 @@ test('the gallery seeders build categories and images from the gallery folders',
         ->sortBy(fn ($file): string => $file->getFilename())
         ->first();
 
-    $firstImageLink = 'gallery/'.rawurlencode(basename($generalPhysicianFolder)).'/'.rawurlencode($firstImage->getFilename());
+    $firstImageLink = 'images/gallery/'.rawurlencode(basename($generalPhysicianFolder)).'/'.rawurlencode($firstImage->getFilename());
 
     expect(GalleryCategory::query()->count())->toBe($folders->count())
         ->and($generalPhysician->title)->toBe('General Physician')

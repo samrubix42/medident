@@ -23,7 +23,7 @@ class GalleryImageSeeder extends Seeder
 
         $imageLinks = [];
 
-        $folders = collect(File::directories(public_path('gallery')))
+        $folders = collect(File::directories(public_path('images/gallery')))
             ->sort();
 
         foreach ($folders as $directory) {
@@ -39,7 +39,7 @@ class GalleryImageSeeder extends Seeder
                 ->sortBy(fn ($file): string => $file->getFilename());
 
             foreach ($images as $image) {
-                $imageLink = 'gallery/'.rawurlencode($folder).'/'.rawurlencode($image->getFilename());
+                $imageLink = 'images/gallery/'.rawurlencode($folder).'/'.rawurlencode($image->getFilename());
 
                 $imageLinks[] = $imageLink;
 
@@ -54,8 +54,12 @@ class GalleryImageSeeder extends Seeder
         }
 
         GalleryImage::query()
-            ->where('image_link', 'like', 'gallery/%')
+            ->where('image_link', 'like', 'images/gallery/%')
             ->whereNotIn('image_link', $imageLinks)
+            ->delete();
+
+        GalleryImage::query()
+            ->where('image_link', 'like', 'gallery/%')
             ->delete();
     }
 }
