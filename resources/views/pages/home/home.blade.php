@@ -10,27 +10,27 @@
         {{-- Left: Content --}}
         <div class="flex flex-col justify-center">
 
-            <h1 class="text-4xl font-extrabold leading-[1.14] tracking-tight text-med-navy sm:text-5xl lg:text-[3.65rem]">
+            <h1 class="text-3xl font-extrabold leading-[1.16] tracking-tight text-med-navy sm:text-5xl lg:text-[3.65rem]">
                 Welcome to <br class="hidden sm:inline">
                 <span class="text-med-blue">MediDENT Multicare Clinic</span> <br class="hidden sm:inline">
                 Ghaziabad
             </h1>
 
-            <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg sm:leading-8">
+            <p class="mt-4 sm:mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg sm:leading-8">
                 MediDENT Multicare Clinic is a trusted destination for advanced general medicine, specialized diabetes management, and comprehensive family dental care in Shastri Nagar, Ghaziabad.
             </p>
 
             {{-- Action Buttons (Rounded pill design with icons as in reference) --}}
-            <div class="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+            <div class="mt-7 sm:mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
                 <button type="button"
                    @click="$dispatch('open-booking-modal')"
-                   class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-med-navy px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-med-blue hover:shadow-lg active:translate-y-0 sm:w-auto">
+                   class="group inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-med-navy px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-med-blue hover:shadow-lg active:translate-y-0">
                     <span>Book an Appointment</span>
                     <i class="ri-arrow-right-line text-base transition-transform duration-200 group-hover:translate-x-1"></i>
                 </button>
 
                 <a href="{{ route('about') }}"
-                   class="group inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow-md active:translate-y-0 sm:w-auto">
+                   class="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow-md active:translate-y-0">
                     <i class="ri-shield-check-line text-med-blue text-base"></i>
                     <span>Why Choose Us</span>
                 </a>
@@ -110,7 +110,7 @@
             class="group relative select-none"
         >
             {{-- Slider Card Container --}}
-            <div class="relative h-[380px] w-full overflow-hidden rounded-[2.5rem] bg-slate-100 shadow-[0_20px_50px_rgba(18,50,74,0.12)] sm:h-[460px] lg:h-[500px]">
+            <div class="relative h-[320px] w-full overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] bg-slate-100 shadow-[0_20px_50px_rgba(18,50,74,0.12)] sm:h-[440px] lg:h-[500px]">
 
                 {{-- Image Slides --}}
                 @foreach ($heroSlides as $index => $slide)
@@ -184,25 +184,25 @@
         <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
 
             <div class="max-w-2xl">
-                <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-med-navy">
                     General Physician Consultation<span class="text-med-blue">.</span>
                 </h2>
 
-                <p class="mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+                <p class="mt-3 sm:mt-4 max-w-xl text-sm sm:text-base leading-relaxed text-slate-600">
                     Expert medical guidance for common illnesses, ongoing health concerns, preventive care, and your family's lifelong wellbeing.
                 </p>
             </div>
 
-            <div class="flex flex-wrap items-center gap-3">
+            <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
                 <a href="{{ route('services', ['category' => 'physician']) }}"
-                   class="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-med-blue/20 bg-med-blue/5 px-6 py-2.5 text-sm font-semibold text-med-blue transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue/10">
+                   class="group inline-flex w-full sm:w-auto shrink-0 items-center justify-center gap-2 rounded-full border border-med-blue/20 bg-med-blue/5 px-6 py-2.5 text-sm font-semibold text-med-blue transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue/10 text-center">
                     <span>View all medical services</span>
                     <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                 </a>
 
                 <button type="button"
                     @click="$dispatch('open-booking-modal')"
-                    class="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-med-navy px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-md">
+                    class="group inline-flex w-full sm:w-auto shrink-0 items-center justify-center gap-2 rounded-full bg-med-navy px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-md text-center">
                     <span>Book a Consultation</span>
                     <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                 </button>
@@ -299,24 +299,24 @@
 
             <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div class="max-w-2xl">
-                    <h2 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-med-navy">
                         Complete care<span class="text-med-blue">.</span> One trusted clinic<span class="text-med-blue">.</span>
                     </h2>
 
-                    <p class="mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+                    <p class="mt-3 sm:mt-4 max-w-xl text-sm sm:text-base leading-relaxed text-slate-600">
                         Focused care for your everyday health, long-term diabetes management, and confident family smiles all under one roof.
                     </p>
                 </div>
 
                 <button type="button"
                     @click="$dispatch('open-booking-modal')"
-                    class="group inline-flex w-fit items-center gap-2.5 rounded-full bg-med-navy px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-lg">
+                    class="group inline-flex w-full sm:w-auto shrink-0 items-center justify-center gap-2.5 rounded-full bg-med-navy px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-lg">
                     <span>Book a Consultation</span>
                     <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                 </button>
             </div>
 
-            <div class="mt-10 grid gap-6 sm:mt-12 md:grid-cols-3">
+            <div class="mt-10 grid gap-6 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3 sm:[&>*:last-child]:col-span-2 lg:[&>*:last-child]:col-span-1">
 
                 {{-- Medical --}}
                 <article class="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
@@ -465,25 +465,25 @@
 
             <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div class="max-w-2xl">
-                    <h2 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-med-navy">
                         Complete care for every smile<span class="text-cyan-600">.</span>
                     </h2>
 
-                    <p class="mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+                    <p class="mt-3 sm:mt-4 max-w-xl text-sm sm:text-base leading-relaxed text-slate-600">
                         From preventive check-ups to restorative treatments, our dental services are designed to keep your smile healthy, bright, and comfortable.
                     </p>
                 </div>
 
-                <div class="flex flex-wrap items-center gap-3">
+                <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
                     <a href="{{ route('services', ['category' => 'dental']) }}"
-                       class="group inline-flex w-fit items-center gap-2 rounded-full border border-cyan-700/20 bg-cyan-50 px-6 py-2.5 text-sm font-semibold text-cyan-700 transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyan-100/70">
+                       class="group inline-flex w-full sm:w-auto shrink-0 items-center justify-center gap-2 rounded-full border border-cyan-700/20 bg-cyan-50 px-6 py-2.5 text-sm font-semibold text-cyan-700 transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyan-100/70 text-center">
                         <span>View all dental services</span>
                         <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                     </a>
 
                     <button type="button"
                         @click="$dispatch('open-booking-modal')"
-                        class="group inline-flex w-fit items-center gap-2 rounded-full bg-med-navy px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyan-700 hover:shadow-md">
+                        class="group inline-flex w-full sm:w-auto shrink-0 items-center justify-center gap-2 rounded-full bg-med-navy px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyan-700 hover:shadow-md text-center">
                         <span>Book a Dental Visit</span>
                         <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                     </button>
@@ -938,14 +938,14 @@
                 @endforeach
             </div>
 
-            <div class="mt-8 flex flex-col items-center justify-between gap-4 rounded-3xl border border-sky-100 bg-gradient-to-r from-sky-50/80 via-white to-sky-50/60 p-6 text-center shadow-sm sm:flex-row sm:p-8 sm:text-left">
+            <div class="mt-8 flex flex-col items-stretch sm:items-center justify-between gap-4 rounded-3xl border border-sky-100 bg-gradient-to-r from-sky-50/80 via-white to-sky-50/60 p-6 text-center shadow-sm sm:flex-row sm:p-8 sm:text-left">
                 <div>
                     <h4 class="text-base font-bold text-med-navy">Still have questions about your visit?</h4>
                     <p class="mt-1 text-sm text-slate-600">Our medical and dental staff will be glad to assist you.</p>
                 </div>
 
                 <a href="{{ route('contact') }}"
-                   class="inline-flex shrink-0 items-center gap-2 rounded-full bg-med-navy px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-lg">
+                   class="inline-flex w-full sm:w-auto shrink-0 items-center justify-center gap-2 rounded-full bg-med-navy px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-lg">
                     <span>Contact the Clinic</span>
                     <i class="ri-arrow-right-line"></i>
                 </a>
