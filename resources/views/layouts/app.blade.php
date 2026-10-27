@@ -8,7 +8,15 @@
     <title>{{ $title ?? config('app.name', 'MediDENT Multicare Clinic') }}</title>
 
     <meta name="theme-color" content="#12324a">
-    <meta name="description" content="Medical, diabetes and dental care for your whole family at MediDENT Multicare Clinic.">
+    <meta name="description" content="{{ $metaDescription ?? 'Medical, diabetes and dental care for your whole family at MediDENT Multicare Clinic.' }}">
+
+    @if (! empty($metaKeyword))
+        <meta name="keywords" content="{{ $metaKeyword }}">
+    @endif
+
+    @if (! empty($metaImage))
+        <meta property="og:image" content="{{ $metaImage }}">
+    @endif
 
     <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">

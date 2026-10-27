@@ -108,6 +108,36 @@
                     Gallery images
                 </a>
 
+                <a href="{{ route('admin.blog-categories') }}"
+                    wire:navigate
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.blog-categories'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.blog-categories'),
+                    ])>
+                    <i @class([
+                        'ri-bookmark-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.blog-categories'),
+                        'text-slate-400' => ! request()->routeIs('admin.blog-categories'),
+                    ])></i>
+                    Blog categories
+                </a>
+
+                <a href="{{ route('admin.blog-posts') }}"
+                    wire:navigate
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
+                    ])>
+                    <i @class([
+                        'ri-article-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
+                        'text-slate-400' => ! request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
+                    ])></i>
+                    Blog posts
+                </a>
+
                 <a href="{{ route('admin.settings') }}"
                     wire:navigate
                     @class([

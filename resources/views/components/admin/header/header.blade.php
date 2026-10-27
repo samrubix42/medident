@@ -11,6 +11,10 @@
         request()->routeIs('admin.reviews') => 'Reviews',
         request()->routeIs('admin.gallery-categories') => 'Gallery Categories',
         request()->routeIs('admin.gallery-images') => 'Gallery Images',
+        request()->routeIs('admin.blog-categories') => 'Blog Categories',
+        request()->routeIs('admin.blog-posts.create') => 'Create Blog Post',
+        request()->routeIs('admin.blog-posts.edit') => 'Edit Blog Post',
+        request()->routeIs('admin.blog-posts') => 'Blog Posts',
         request()->routeIs('admin.settings') => 'Clinic Settings',
         default => 'Admin',
     };

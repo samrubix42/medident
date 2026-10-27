@@ -146,6 +146,15 @@
                     Gallery
                 </a>
 
+                <a href="{{ route('blog') }}"
+                    @class([
+                        'text-sm font-semibold transition',
+                        'text-med-blue' => request()->routeIs('blog', 'blog.show'),
+                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('blog', 'blog.show'),
+                    ])>
+                    Blog
+                </a>
+
                 <a href="{{ url('/#testimonials') }}"
                     class="text-sm font-medium text-slate-600 transition hover:text-med-blue">
                     Testimonials
@@ -293,6 +302,20 @@
                         <span class="flex items-center gap-3">
                             <i class="ri-gallery-line text-lg"></i>
                             Gallery
+                        </span>
+                        <i class="ri-arrow-right-s-line text-lg text-slate-300"></i>
+                    </a>
+
+                    <a href="{{ route('blog') }}"
+                        @click="mobileOpen = false"
+                        @class([
+                            'flex items-center justify-between border-b border-slate-100 py-4 text-sm transition',
+                            'font-semibold text-med-blue' => request()->routeIs('blog', 'blog.show'),
+                            'font-medium text-slate-700 hover:text-med-blue' => ! request()->routeIs('blog', 'blog.show'),
+                        ])>
+                        <span class="flex items-center gap-3">
+                            <i class="ri-article-line text-lg"></i>
+                            Blog
                         </span>
                         <i class="ri-arrow-right-s-line text-lg text-slate-300"></i>
                     </a>

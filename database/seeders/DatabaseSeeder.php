@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ReviewSeeder::class);
         $this->call(GalleryCategorySeeder::class);
         $this->call(GalleryImageSeeder::class);
+        $this->call(BlogCategorySeeder::class);
+        $this->call(BlogPostSeeder::class);
         $this->call(ClinicSettingSeeder::class);
     }
 }

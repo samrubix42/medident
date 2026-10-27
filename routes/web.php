@@ -8,6 +8,10 @@ Route::livewire('/about-us', 'pages::about')->name('about');
 
 Route::livewire('/gallery', 'pages::gallery')->name('gallery');
 
+Route::livewire('/blog', 'pages::blog')->name('blog');
+
+Route::livewire('/blog/{slug}', 'pages::blog-show')->name('blog.show');
+
 Route::livewire('/contact-us', 'pages::contact')->name('contact');
 
 Route::livewire('/login', 'pages::auth.login')
@@ -29,6 +33,22 @@ Route::livewire('/admin/gallery-categories', 'admin::gallery-categories')
 Route::livewire('/admin/gallery-images', 'admin::gallery-images')
     ->middleware('auth')
     ->name('admin.gallery-images');
+
+Route::livewire('/admin/blog-categories', 'admin::blog-categories')
+    ->middleware('auth')
+    ->name('admin.blog-categories');
+
+Route::livewire('/admin/blog-posts', 'admin::blog-posts')
+    ->middleware('auth')
+    ->name('admin.blog-posts');
+
+Route::livewire('/admin/blog-posts/create', 'admin::blog-posts-form')
+    ->middleware('auth')
+    ->name('admin.blog-posts.create');
+
+Route::livewire('/admin/blog-posts/{blogPost}/edit', 'admin::blog-posts-form')
+    ->middleware('auth')
+    ->name('admin.blog-posts.edit');
 
 Route::livewire('/admin/settings', 'admin::settings')
     ->middleware('auth')
