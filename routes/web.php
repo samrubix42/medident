@@ -14,6 +14,11 @@ Route::livewire('/blog/{slug}', 'pages::blog-show')->name('blog.show');
 
 Route::livewire('/contact-us', 'pages::contact')->name('contact');
 
+Route::livewire('/best-dentist-ghaziabad', 'pages::dentist')->name('dentist');
+
+Route::redirect('/best-dentist-in-shastri-nagar-ghaziabad', '/best-dentist-ghaziabad', 301);
+Route::redirect('/dr-ratika-gupta', '/best-dentist-ghaziabad', 301);
+
 Route::livewire('/login', 'pages::auth.login')
     ->middleware('guest')
     ->name('login');

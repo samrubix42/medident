@@ -5,17 +5,47 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ $title ?? config('app.name', 'MediDENT Multicare Clinic') }}</title>
+    @php
+        $pageTitle = $title ?? config('app.name', 'MediDENT Multicare Clinic');
+        $pageDescription = $metaDescription ?? 'Medical, diabetes and dental care for your whole family at MediDENT Multicare Clinic.';
+        $canonicalUrl = $canonical ?? url()->current();
+        $sharingTitle = $ogTitle ?? $pageTitle;
+        $sharingDescription = $ogDescription ?? $pageDescription;
+        $sharingImage = $metaImage ?? null;
+    @endphp
+
+    <title>{{ $pageTitle }}</title>
 
     <meta name="theme-color" content="#12324a">
-    <meta name="description" content="{{ $metaDescription ?? 'Medical, diabetes and dental care for your whole family at MediDENT Multicare Clinic.' }}">
+    <meta name="description" content="{{ $pageDescription }}">
+    <meta name="robots" content="{{ $metaRobots ?? 'index, follow' }}">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
 
     @if (! empty($metaKeyword))
         <meta name="keywords" content="{{ $metaKeyword }}">
     @endif
 
-    @if (! empty($metaImage))
-        <meta property="og:image" content="{{ $metaImage }}">
+    <meta property="og:type" content="{{ $ogType ?? 'website' }}">
+    <meta property="og:site_name" content="{{ config('app.name', 'MediDENT Multicare Clinic') }}">
+    <meta property="og:title" content="{{ $sharingTitle }}">
+    <meta property="og:description" content="{{ $sharingDescription }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+
+    @if ($sharingImage)
+        <meta property="og:image" content="{{ $sharingImage }}">
+        <meta property="og:image:alt" content="{{ $pageTitle }}">
+    @endif
+
+    <meta name="twitter:card" content="{{ $sharingImage ? 'summary_large_image' : 'summary' }}">
+    <meta name="twitter:title" content="{{ $sharingTitle }}">
+    <meta name="twitter:description" content="{{ $sharingDescription }}">
+
+    @if ($sharingImage)
+        <meta name="twitter:image" content="{{ $sharingImage }}">
+    @endif
+
+    @if (! empty($schema))
+        <script type="application/ld+json">{!! $schema !!}</script>
     @endif
 
     <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">

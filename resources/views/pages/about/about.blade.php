@@ -387,7 +387,9 @@
                             </p>
 
                             <h3 class="mt-2 text-2xl font-bold tracking-tight text-med-navy sm:text-3xl">
-                                Dr. Ratika Gupta
+                                <a href="{{ route('dentist') }}" class="transition hover:text-cyan-700">
+                                    Dr. Ratika Gupta
+                                </a>
                             </h3>
 
                             <p class="mt-2 text-sm font-semibold text-cyan-700">
@@ -429,6 +431,12 @@
                                    class="inline-flex items-center gap-2 bg-cyan-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-cyan-800">
                                     <i class="ri-phone-line"></i>
                                     +91-8290582582
+                                </a>
+
+                                <a href="{{ route('dentist') }}"
+                                   class="inline-flex items-center gap-2 border border-slate-300 px-4 py-2.5 text-sm font-semibold text-med-navy transition hover:border-cyan-700 hover:text-cyan-700">
+                                    View full profile
+                                    <i class="ri-arrow-right-line"></i>
                                 </a>
 
                                 <button type="button"
