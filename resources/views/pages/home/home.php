@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ClinicSetting;
+use App\Models\PageSeo;
 use App\Models\Review;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Builder;
@@ -204,5 +205,23 @@ new class extends Component
                     'hover' => 'hover:border-sky-200',
                 ],
         };
+    }
+
+    public function render()
+    {
+        $metadata = PageSeo::metadataFor(
+            'home',
+            'MediDENT Multicare Clinic | Doctor & Dentist in Shastri Nagar, Ghaziabad',
+            'Visit MediDENT Multicare Clinic in Shastri Nagar, Ghaziabad for general physician care, diabetes management, dental treatments and preventive health checks.',
+            'MediDENT Multicare Clinic, doctor in Shastri Nagar, dentist in Ghaziabad, diabetes care Ghaziabad, general physician Ghaziabad, dental clinic Shastri Nagar',
+        );
+
+        return $this->view()
+            ->title($metadata['title'])
+            ->layoutData([
+                'canonical' => route('home'),
+                'metaDescription' => $metadata['description'],
+                'metaKeyword' => $metadata['keywords'],
+            ]);
     }
 };

@@ -1,5 +1,20 @@
+@php
+    $engagementActive = request()->routeIs('admin.reviews', 'admin.inquiries');
+    $servicesActive = request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit', 'admin.service-categories');
+    $blogActive = request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit', 'admin.blog-categories');
+    $galleryActive = request()->routeIs('admin.gallery-images', 'admin.gallery-categories');
+    $websiteActive = request()->routeIs('admin.page-seos', 'admin.page-seos.create', 'admin.page-seos.edit', 'admin.settings');
+@endphp
+
 <aside
-    x-data="{ open: false }"
+    x-data="{
+        open: false,
+        engagementOpen: {{ $engagementActive ? 'true' : 'false' }},
+        servicesOpen: {{ $servicesActive ? 'true' : 'false' }},
+        blogOpen: {{ $blogActive ? 'true' : 'false' }},
+        galleryOpen: {{ $galleryActive ? 'true' : 'false' }},
+        websiteOpen: {{ $websiteActive ? 'true' : 'false' }},
+    }"
     @admin-sidebar-toggle.window="open = !open"
     @keydown.escape.window="open = false">
 
@@ -50,6 +65,7 @@
             <div class="space-y-0.5">
                 <a href="{{ route('admin.dashboard') }}"
                     wire:navigate
+                    @click="open = false"
                     @class([
                         'flex items-center gap-3 px-3 py-2.5 text-sm transition',
                         'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.dashboard'),
@@ -63,141 +79,284 @@
                     Dashboard
                 </a>
 
-                <a href="{{ route('admin.reviews') }}"
-                    wire:navigate
-                    @class([
-                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
-                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.reviews'),
-                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.reviews'),
-                    ])>
-                    <i @class([
-                        'ri-star-line text-lg',
-                        'text-med-blue' => request()->routeIs('admin.reviews'),
-                        'text-slate-400' => ! request()->routeIs('admin.reviews'),
-                    ])></i>
-                    Reviews
-                </a>
+                {{-- Patient engagement --}}
+                <div>
+                    <button
+                        type="button"
+                        @click="engagementOpen = ! engagementOpen"
+                        :aria-expanded="engagementOpen"
+                        aria-controls="admin-engagement-menu"
+                        @class([
+                            'flex w-full items-center gap-3 px-3 py-2.5 text-sm transition',
+                            'bg-sky-50 font-semibold text-med-blue' => $engagementActive,
+                            'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! $engagementActive,
+                        ])>
+                        <i @class([
+                            'ri-message-3-line text-lg',
+                            'text-med-blue' => $engagementActive,
+                            'text-slate-400' => ! $engagementActive,
+                        ])></i>
+                        <span class="flex-1 text-left">Patient Engagement</span>
+                        <i class="ri-arrow-down-s-line text-base transition-transform"
+                           :class="engagementOpen && 'rotate-180'"></i>
+                    </button>
 
-                <a href="{{ route('admin.inquiries') }}"
-                    wire:navigate
-                    @class([
-                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
-                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.inquiries'),
-                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.inquiries'),
-                    ])>
-                    <i @class([
-                        'ri-mail-line text-lg',
-                        'text-med-blue' => request()->routeIs('admin.inquiries'),
-                        'text-slate-400' => ! request()->routeIs('admin.inquiries'),
-                    ])></i>
-                    Inquiries
-                </a>
+                    <div
+                        id="admin-engagement-menu"
+                        x-cloak
+                        x-show="engagementOpen"
+                        x-transition
+                        class="mt-0.5 ml-4 space-y-0.5 border-l border-slate-200 pl-3">
+                        <a href="{{ route('admin.reviews') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.reviews'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.reviews'),
+                            ])>
+                            <i class="ri-star-line text-base"></i>
+                            Reviews
+                        </a>
 
-                <a href="{{ route('admin.gallery-categories') }}"
-                    wire:navigate
-                    @class([
-                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
-                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.gallery-categories'),
-                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.gallery-categories'),
-                    ])>
-                    <i @class([
-                        'ri-gallery-line text-lg',
-                        'text-med-blue' => request()->routeIs('admin.gallery-categories'),
-                        'text-slate-400' => ! request()->routeIs('admin.gallery-categories'),
-                    ])></i>
-                    Gallery categories
-                </a>
+                        <a href="{{ route('admin.inquiries') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.inquiries'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.inquiries'),
+                            ])>
+                            <i class="ri-mail-line text-base"></i>
+                            Inquiries
+                        </a>
+                    </div>
+                </div>
 
-                <a href="{{ route('admin.gallery-images') }}"
-                    wire:navigate
-                    @class([
-                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
-                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.gallery-images'),
-                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.gallery-images'),
-                    ])>
-                    <i @class([
-                        'ri-image-2-line text-lg',
-                        'text-med-blue' => request()->routeIs('admin.gallery-images'),
-                        'text-slate-400' => ! request()->routeIs('admin.gallery-images'),
-                    ])></i>
-                    Gallery images
-                </a>
+                {{-- Services --}}
+                <div>
+                    <button
+                        type="button"
+                        @click="servicesOpen = ! servicesOpen"
+                        :aria-expanded="servicesOpen"
+                        aria-controls="admin-services-menu"
+                        @class([
+                            'flex w-full items-center gap-3 px-3 py-2.5 text-sm transition',
+                            'bg-sky-50 font-semibold text-med-blue' => $servicesActive,
+                            'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! $servicesActive,
+                        ])>
+                        <i @class([
+                            'ri-service-line text-lg',
+                            'text-med-blue' => $servicesActive,
+                            'text-slate-400' => ! $servicesActive,
+                        ])></i>
+                        <span class="flex-1 text-left">Services</span>
+                        <i class="ri-arrow-down-s-line text-base transition-transform"
+                           :class="servicesOpen && 'rotate-180'"></i>
+                    </button>
 
-                <a href="{{ route('admin.blog-categories') }}"
-                    wire:navigate
-                    @class([
-                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
-                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.blog-categories'),
-                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.blog-categories'),
-                    ])>
-                    <i @class([
-                        'ri-bookmark-line text-lg',
-                        'text-med-blue' => request()->routeIs('admin.blog-categories'),
-                        'text-slate-400' => ! request()->routeIs('admin.blog-categories'),
-                    ])></i>
-                    Blog categories
-                </a>
+                    <div
+                        id="admin-services-menu"
+                        x-cloak
+                        x-show="servicesOpen"
+                        x-transition
+                        class="mt-0.5 ml-4 space-y-0.5 border-l border-slate-200 pl-3">
+                        <a href="{{ route('admin.services') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
+                            ])>
+                            <i class="ri-list-check text-base"></i>
+                            All services
+                        </a>
 
-                <a href="{{ route('admin.blog-posts') }}"
-                    wire:navigate
-                    @class([
-                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
-                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
-                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
-                    ])>
-                    <i @class([
-                        'ri-article-line text-lg',
-                        'text-med-blue' => request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
-                        'text-slate-400' => ! request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
-                    ])></i>
-                    Blog posts
-                </a>
+                        <a href="{{ route('admin.service-categories') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.service-categories'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.service-categories'),
+                            ])>
+                            <i class="ri-folders-line text-base"></i>
+                            Categories
+                        </a>
+                    </div>
+                </div>
 
-                <a href="{{ route('admin.service-categories') }}"
-                    wire:navigate
-                    @class([
-                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
-                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.service-categories'),
-                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.service-categories'),
-                    ])>
-                    <i @class([
-                        'ri-folders-line text-lg',
-                        'text-med-blue' => request()->routeIs('admin.service-categories'),
-                        'text-slate-400' => ! request()->routeIs('admin.service-categories'),
-                    ])></i>
-                    Service categories
-                </a>
+                {{-- Blog --}}
+                <div>
+                    <button
+                        type="button"
+                        @click="blogOpen = ! blogOpen"
+                        :aria-expanded="blogOpen"
+                        aria-controls="admin-blog-menu"
+                        @class([
+                            'flex w-full items-center gap-3 px-3 py-2.5 text-sm transition',
+                            'bg-sky-50 font-semibold text-med-blue' => $blogActive,
+                            'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! $blogActive,
+                        ])>
+                        <i @class([
+                            'ri-article-line text-lg',
+                            'text-med-blue' => $blogActive,
+                            'text-slate-400' => ! $blogActive,
+                        ])></i>
+                        <span class="flex-1 text-left">Blog</span>
+                        <i class="ri-arrow-down-s-line text-base transition-transform"
+                           :class="blogOpen && 'rotate-180'"></i>
+                    </button>
 
-                <a href="{{ route('admin.services') }}"
-                    wire:navigate
-                    @class([
-                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
-                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
-                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
-                    ])>
-                    <i @class([
-                        'ri-service-line text-lg',
-                        'text-med-blue' => request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
-                        'text-slate-400' => ! request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
-                    ])></i>
-                    Services
-                </a>
+                    <div
+                        id="admin-blog-menu"
+                        x-cloak
+                        x-show="blogOpen"
+                        x-transition
+                        class="mt-0.5 ml-4 space-y-0.5 border-l border-slate-200 pl-3">
+                        <a href="{{ route('admin.blog-posts') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.blog-posts', 'admin.blog-posts.create', 'admin.blog-posts.edit'),
+                            ])>
+                            <i class="ri-file-text-line text-base"></i>
+                            Posts
+                        </a>
 
-                <a href="{{ route('admin.settings') }}"
-                    wire:navigate
-                    @class([
-                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
-                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.settings'),
-                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.settings'),
-                    ])>
-                    <i @class([
-                        'ri-settings-3-line text-lg',
-                        'text-med-blue' => request()->routeIs('admin.settings'),
-                        'text-slate-400' => ! request()->routeIs('admin.settings'),
-                    ])></i>
-                    Settings
-                </a>
+                        <a href="{{ route('admin.blog-categories') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.blog-categories'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.blog-categories'),
+                            ])>
+                            <i class="ri-bookmark-line text-base"></i>
+                            Categories
+                        </a>
+                    </div>
+                </div>
 
+                {{-- Gallery --}}
+                <div>
+                    <button
+                        type="button"
+                        @click="galleryOpen = ! galleryOpen"
+                        :aria-expanded="galleryOpen"
+                        aria-controls="admin-gallery-menu"
+                        @class([
+                            'flex w-full items-center gap-3 px-3 py-2.5 text-sm transition',
+                            'bg-sky-50 font-semibold text-med-blue' => $galleryActive,
+                            'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! $galleryActive,
+                        ])>
+                        <i @class([
+                            'ri-gallery-line text-lg',
+                            'text-med-blue' => $galleryActive,
+                            'text-slate-400' => ! $galleryActive,
+                        ])></i>
+                        <span class="flex-1 text-left">Gallery</span>
+                        <i class="ri-arrow-down-s-line text-base transition-transform"
+                           :class="galleryOpen && 'rotate-180'"></i>
+                    </button>
+
+                    <div
+                        id="admin-gallery-menu"
+                        x-cloak
+                        x-show="galleryOpen"
+                        x-transition
+                        class="mt-0.5 ml-4 space-y-0.5 border-l border-slate-200 pl-3">
+                        <a href="{{ route('admin.gallery-images') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.gallery-images'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.gallery-images'),
+                            ])>
+                            <i class="ri-image-2-line text-base"></i>
+                            Images
+                        </a>
+
+                        <a href="{{ route('admin.gallery-categories') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.gallery-categories'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.gallery-categories'),
+                            ])>
+                            <i class="ri-folder-image-line text-base"></i>
+                            Categories
+                        </a>
+                    </div>
+                </div>
+
+                {{-- Website --}}
+                <div>
+                    <button
+                        type="button"
+                        @click="websiteOpen = ! websiteOpen"
+                        :aria-expanded="websiteOpen"
+                        aria-controls="admin-website-menu"
+                        @class([
+                            'flex w-full items-center gap-3 px-3 py-2.5 text-sm transition',
+                            'bg-sky-50 font-semibold text-med-blue' => $websiteActive,
+                            'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! $websiteActive,
+                        ])>
+                        <i @class([
+                            'ri-global-line text-lg',
+                            'text-med-blue' => $websiteActive,
+                            'text-slate-400' => ! $websiteActive,
+                        ])></i>
+                        <span class="flex-1 text-left">Website</span>
+                        <i class="ri-arrow-down-s-line text-base transition-transform"
+                           :class="websiteOpen && 'rotate-180'"></i>
+                    </button>
+
+                    <div
+                        id="admin-website-menu"
+                        x-cloak
+                        x-show="websiteOpen"
+                        x-transition
+                        class="mt-0.5 ml-4 space-y-0.5 border-l border-slate-200 pl-3">
+                        <a href="{{ route('admin.page-seos') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.page-seos', 'admin.page-seos.create', 'admin.page-seos.edit'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.page-seos', 'admin.page-seos.create', 'admin.page-seos.edit'),
+                            ])>
+                            <i class="ri-seo-line text-base"></i>
+                            Page SEO
+                        </a>
+
+                        <a href="{{ route('admin.settings') }}"
+                            wire:navigate
+                            @click="open = false"
+                            @class([
+                                'flex items-center gap-2.5 px-3 py-2 text-sm transition',
+                                'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.settings'),
+                                'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.settings'),
+                            ])>
+                            <i class="ri-settings-3-line text-base"></i>
+                            Settings
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-5 h-px bg-slate-100"></div>
+
+            <p class="px-3 pb-2 text-[10px] font-medium uppercase tracking-[0.16em] text-slate-400">
+                Coming soon
+            </p>
+
+            <div class="space-y-0.5">
                 <span class="flex cursor-default items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-400">
                     <i class="ri-calendar-check-line text-lg"></i>
                     Appointments

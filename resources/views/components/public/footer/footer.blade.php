@@ -188,9 +188,14 @@
                 &copy; {{ date('Y') }} MediDENT Multicare Clinic. All rights reserved.
             </p>
 
-            <p class="flex items-center gap-2">
-                <i class="ri-heart-pulse-line text-med-blue"></i>
-                Medical · Diabetes · Dental Care
+            <p>
+                Powered by
+                <a href="https://techonika.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="font-semibold text-med-red transition hover:text-med-navy">
+                    Techonika
+                </a>
             </p>
         </div>
     </div>

@@ -2,11 +2,11 @@
 
 use App\Models\ClinicSetting;
 use App\Models\ContactMessage;
+use App\Models\PageSeo;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Contact Us')] class extends Component
+new class extends Component
 {
     private const MAP_EMBED_URL = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500.4913929423965!2d77.4632996!3d28.674943799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf175f325dba9%3A0x24bb042cbe7d8a2f!2sMedident%20Multicare%20Clinic%3A%20Medical%2C%20Diabetes%2C%20Dental%20%26%20Physician%20Care!5e0!3m2!1sen!2sin!4v1793096116708!5m2!1sen!2sin';
 
@@ -77,5 +77,23 @@ new #[Title('Contact Us')] class extends Component
     private function mapQuery(): string
     {
         return $this->settings->address ?: 'MediDENT Multicare Clinic, Ghaziabad';
+    }
+
+    public function render()
+    {
+        $metadata = PageSeo::metadataFor(
+            'contact',
+            'Contact MediDENT Multicare Clinic in Shastri Nagar, Ghaziabad',
+            'Get the address, phone number, opening hours and map directions for MediDENT Multicare Clinic in Shastri Nagar, Ghaziabad. Book an appointment online.',
+            'contact MediDENT clinic, clinic address Shastri Nagar Ghaziabad, book doctor appointment Ghaziabad, dental appointment Shastri Nagar',
+        );
+
+        return $this->view()
+            ->title($metadata['title'])
+            ->layoutData([
+                'canonical' => route('contact'),
+                'metaDescription' => $metadata['description'],
+                'metaKeyword' => $metadata['keywords'],
+            ]);
     }
 };

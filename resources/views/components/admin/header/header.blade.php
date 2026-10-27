@@ -20,6 +20,9 @@
         request()->routeIs('admin.services.create') => 'Create Service',
         request()->routeIs('admin.services.edit') => 'Edit Service',
         request()->routeIs('admin.services') => 'Services',
+        request()->routeIs('admin.page-seos.create') => 'Create Page SEO',
+        request()->routeIs('admin.page-seos.edit') => 'Edit Page SEO',
+        request()->routeIs('admin.page-seos') => 'Page SEO',
         request()->routeIs('admin.settings') => 'Clinic Settings',
         default => 'Admin',
     };

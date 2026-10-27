@@ -79,6 +79,18 @@ Route::livewire('/admin/services/{service}/edit', 'admin::services-form')
     ->middleware('auth')
     ->name('admin.services.edit');
 
+Route::livewire('/admin/page-seos', 'admin::page-seos')
+    ->middleware('auth')
+    ->name('admin.page-seos');
+
+Route::livewire('/admin/page-seos/create', 'admin::page-seos-form')
+    ->middleware('auth')
+    ->name('admin.page-seos.create');
+
+Route::livewire('/admin/page-seos/{pageSeo}/edit', 'admin::page-seos-form')
+    ->middleware('auth')
+    ->name('admin.page-seos.edit');
+
 Route::livewire('/admin/settings', 'admin::settings')
     ->middleware('auth')
     ->name('admin.settings');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\PageSeo;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\Database\Eloquent\Builder;
@@ -69,12 +70,19 @@ new class extends Component
 
     public function render()
     {
+        $metadata = PageSeo::metadataFor(
+            'services',
+            'Medical & Dental Services in Shastri Nagar, Ghaziabad',
+            'Explore medical, preventive and dental services at MediDENT Multicare Clinic in Shastri Nagar, Ghaziabad, including general physician care, heart health, vaccination and family dentistry.',
+            'medical services Ghaziabad, dental services Shastri Nagar, general physician Ghaziabad, dental clinic Ghaziabad, MediDENT services',
+        );
+
         return $this->view()
-            ->title('Medical & Dental Services in Shastri Nagar, Ghaziabad')
+            ->title($metadata['title'])
             ->layoutData([
                 'canonical' => route('services'),
-                'metaDescription' => 'Explore medical, preventive and dental services at MediDENT Multicare Clinic in Shastri Nagar, Ghaziabad, including general physician care, heart health, vaccination and family dentistry.',
-                'metaKeyword' => 'medical services Ghaziabad, dental services Shastri Nagar, general physician Ghaziabad, dental clinic Ghaziabad, MediDENT services',
+                'metaDescription' => $metadata['description'],
+                'metaKeyword' => $metadata['keywords'],
                 'metaImage' => asset('images/hero-img.jpg'),
             ]);
     }

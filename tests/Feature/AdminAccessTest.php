@@ -27,6 +27,20 @@ test('authenticated users can view the admin dashboard', function () {
         ->assertSee('Recent appointments');
 });
 
+test('the admin sidebar renders grouped menus and submenus', function () {
+    $this->actingAs(User::factory()->create())
+        ->get('/admin')
+        ->assertOk()
+        ->assertSee('Patient Engagement')
+        ->assertSee('All services')
+        ->assertSee('Posts')
+        ->assertSee('Images')
+        ->assertSee('Page SEO')
+        ->assertSee('Settings')
+        ->assertSee('aria-controls="admin-services-menu"', false)
+        ->assertSee('x-show="servicesOpen"', false);
+});
+
 test('an admin can sign in with valid credentials', function () {
     User::factory()->create([
         'email' => 'admin@medidentclinic.com',

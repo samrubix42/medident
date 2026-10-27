@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BlogPostSeeder::class);
         $this->call(ServiceCategorySeeder::class);
         $this->call(ServiceSeeder::class);
+        $this->call(PageSeoSeeder::class);
         $this->call(ClinicSettingSeeder::class);
     }
 }

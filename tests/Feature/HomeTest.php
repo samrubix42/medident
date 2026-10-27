@@ -104,3 +104,12 @@ test('the home page displays frequently asked questions with clinic details', fu
         ->assertSee('Monday to Friday, 9:00 AM to 6:00 PM')
         ->assertSee('+91 90000 00000');
 });
+
+test('the footer shows the Techonika credit', function () {
+    $this->get('/')
+        ->assertOk()
+        ->assertSee('Powered by')
+        ->assertSee('href="https://techonika.com/"', false)
+        ->assertSee('Techonika')
+        ->assertDontSee('Medical · Diabetes · Dental Care');
+});

@@ -2,13 +2,13 @@
 
 use App\Models\GalleryCategory;
 use App\Models\GalleryImage;
+use App\Models\PageSeo;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Gallery')] class extends Component
+new class extends Component
 {
     public string $category = 'all';
 
@@ -49,5 +49,23 @@ new #[Title('Gallery')] class extends Component
     public function selectCategory(string $category): void
     {
         $this->category = $category;
+    }
+
+    public function render()
+    {
+        $metadata = PageSeo::metadataFor(
+            'gallery',
+            'Clinic Gallery | MediDENT Multicare Clinic, Ghaziabad',
+            'Explore photos of MediDENT Multicare Clinic in Shastri Nagar, Ghaziabad, including our consultation rooms, dental care facilities and patient care spaces.',
+            'MediDENT clinic photos, medical clinic gallery Ghaziabad, dental clinic gallery Shastri Nagar, clinic facilities Ghaziabad',
+        );
+
+        return $this->view()
+            ->title($metadata['title'])
+            ->layoutData([
+                'canonical' => route('gallery'),
+                'metaDescription' => $metadata['description'],
+                'metaKeyword' => $metadata['keywords'],
+            ]);
     }
 };

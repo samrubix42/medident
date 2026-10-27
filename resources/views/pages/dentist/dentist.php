@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ClinicSetting;
+use App\Models\PageSeo;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
@@ -88,8 +89,16 @@ new class extends Component
         $settings = $this->settings;
         $url = route('dentist');
         $image = asset('dental/Dr.-Ratika-Gupta-4.jpg');
-        $title = 'Dr. Ratika Gupta: Best Dentist in Shastri Nagar, Ghaziabad';
-        $description = 'Dr. Ratika Gupta, B.D.S., M.D.S., is an experienced dental surgeon in Shastri Nagar, Ghaziabad offering family, cosmetic and implant dentistry. Book a visit.';
+
+        $metadata = PageSeo::metadataFor(
+            'dentist',
+            'Dr. Ratika Gupta: Best Dentist in Shastri Nagar, Ghaziabad',
+            'Dr. Ratika Gupta, B.D.S., M.D.S., is an experienced dental surgeon in Shastri Nagar, Ghaziabad offering family, cosmetic and implant dentistry. Book a visit.',
+            'best dentist in Shastri Nagar, dentist in Shastri Nagar Ghaziabad, Dr Ratika Gupta, dental surgeon Ghaziabad, pediatric dentist Ghaziabad, cosmetic dentistry Ghaziabad, dental implants Ghaziabad, root canal treatment Ghaziabad',
+        );
+
+        $title = $metadata['title'];
+        $description = $metadata['description'];
 
         $serviceNames = array_column($this->services, 'title');
 
@@ -265,7 +274,7 @@ new class extends Component
             ->layoutData([
                 'canonical' => $url,
                 'metaDescription' => $description,
-                'metaKeyword' => 'best dentist in Shastri Nagar, dentist in Shastri Nagar Ghaziabad, Dr Ratika Gupta, dental surgeon Ghaziabad, pediatric dentist Ghaziabad, cosmetic dentistry Ghaziabad, dental implants Ghaziabad, root canal treatment Ghaziabad',
+                'metaKeyword' => $metadata['keywords'],
                 'metaImage' => $image,
                 'metaRobots' => 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
                 'ogType' => 'profile',
