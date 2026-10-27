@@ -61,7 +61,7 @@
             </a>
 
             {{-- Desktop menu --}}
-            <nav class="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
+            <nav class="hidden items-center gap-6 xl:gap-7 lg:flex" aria-label="Main navigation">
 
                 <a href="{{ route('home') }}"
                     @class([
@@ -136,6 +136,15 @@
                         </a>
                     </div>
                 </div>
+
+                <a href="{{ route('gallery') }}"
+                    @class([
+                        'text-sm font-semibold transition',
+                        'text-med-blue' => request()->routeIs('gallery'),
+                        'text-slate-600 hover:text-med-blue' => ! request()->routeIs('gallery'),
+                    ])>
+                    Gallery
+                </a>
 
                 <a href="{{ url('/#testimonials') }}"
                     class="text-sm font-medium text-slate-600 transition hover:text-med-blue">
@@ -273,6 +282,20 @@
                             <i class="ri-tooth-line text-cyan-700"></i> Dental Care
                         </a>
                     </div>
+
+                    <a href="{{ route('gallery') }}"
+                        @click="mobileOpen = false"
+                        @class([
+                            'flex items-center justify-between border-b border-slate-100 py-4 text-sm transition',
+                            'font-semibold text-med-blue' => request()->routeIs('gallery'),
+                            'font-medium text-slate-700 hover:text-med-blue' => ! request()->routeIs('gallery'),
+                        ])>
+                        <span class="flex items-center gap-3">
+                            <i class="ri-gallery-line text-lg"></i>
+                            Gallery
+                        </span>
+                        <i class="ri-arrow-right-s-line text-lg text-slate-300"></i>
+                    </a>
 
                     <a href="{{ url('/#testimonials') }}"
                         @click="mobileOpen = false"

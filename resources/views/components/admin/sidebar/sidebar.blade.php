@@ -93,6 +93,21 @@
                     Gallery categories
                 </a>
 
+                <a href="{{ route('admin.gallery-images') }}"
+                    wire:navigate
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.gallery-images'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.gallery-images'),
+                    ])>
+                    <i @class([
+                        'ri-image-2-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.gallery-images'),
+                        'text-slate-400' => ! request()->routeIs('admin.gallery-images'),
+                    ])></i>
+                    Gallery images
+                </a>
+
                 <a href="{{ route('admin.settings') }}"
                     wire:navigate
                     @class([

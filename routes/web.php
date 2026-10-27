@@ -6,6 +6,8 @@ Route::livewire('/', 'pages::home')->name('home');
 
 Route::livewire('/about-us', 'pages::about')->name('about');
 
+Route::livewire('/gallery', 'pages::gallery')->name('gallery');
+
 Route::livewire('/contact-us', 'pages::contact')->name('contact');
 
 Route::livewire('/login', 'pages::auth.login')
@@ -23,6 +25,10 @@ Route::livewire('/admin/reviews', 'admin::reviews')
 Route::livewire('/admin/gallery-categories', 'admin::gallery-categories')
     ->middleware('auth')
     ->name('admin.gallery-categories');
+
+Route::livewire('/admin/gallery-images', 'admin::gallery-images')
+    ->middleware('auth')
+    ->name('admin.gallery-images');
 
 Route::livewire('/admin/settings', 'admin::settings')
     ->middleware('auth')

@@ -120,6 +120,7 @@
                 <li><a href="{{ route('home') }}" class="transition hover:text-med-blue">Home</a></li>
                 <li><a href="{{ route('about') }}" class="transition hover:text-med-blue">About Us</a></li>
                 <li><a href="{{ url('/#services') }}" class="transition hover:text-med-blue">Our Services</a></li>
+                <li><a href="{{ route('gallery') }}" class="transition hover:text-med-blue">Gallery</a></li>
                 <li><a href="{{ url('/#testimonials') }}" class="transition hover:text-med-blue">Testimonials</a></li>
                 <li><a href="{{ route('contact') }}" class="transition hover:text-med-blue">Contact Us</a></li>
             </ul>
