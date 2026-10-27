@@ -5,11 +5,11 @@
     x-effect="document.body.classList.toggle('overflow-hidden', mobileOpen)"
     @keydown.escape.window="mobileOpen = false; servicesOpen = false"
     @resize.window.debounce.150ms="if (window.innerWidth >= 1024) { mobileOpen = false; servicesOpen = false }"
-    class="relative z-50">
+    class="sticky top-0 z-50 py-3 sm:py-4 transition-all">
 
     {{-- Main navigation --}}
-    <header class="sticky top-4 z-50 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between gap-5 rounded-full border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-[0_10px_40px_rgba(18,50,74,0.08)] backdrop-blur-xl sm:px-6 lg:px-8">
+    <header class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-5 rounded-full border border-slate-200/80 bg-white/95 px-4 py-2.5 shadow-[0_10px_35px_rgba(18,50,74,0.06)] backdrop-blur-xl sm:px-6 lg:px-8">
 
             {{-- Brand logo --}}
             <a href="{{ url('/') }}" class="group flex shrink-0 items-center gap-3" aria-label="MediDENT home">

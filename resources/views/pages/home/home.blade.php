@@ -3,98 +3,171 @@
 
 
 {{-- HERO SECTION --}}
-<section class="relative overflow-hidden bg-gradient-to-br from-[#f5fafc] via-white to-[#f8fbfd]">
+<section class="relative overflow-hidden bg-[#FAFDFE] py-8 sm:py-12 lg:py-16">
 
-    <div class="absolute -left-40 top-20 h-80 w-80 rounded-full bg-med-blue/5 blur-3xl"></div>
-    <div class="absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-cyan-400/5 blur-3xl"></div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
 
-    <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:gap-12 sm:px-6 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:gap-16 lg:px-8 lg:py-28">
+        {{-- Left: Content --}}
+        <div class="flex flex-col justify-center">
 
-        {{-- Hero Content --}}
-        <div>
-            <div class="inline-flex max-w-full items-center gap-2 rounded-full border border-sky-100 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-med-blue shadow-sm">
-                <i class="ri-hospital-line shrink-0 text-base"></i>
-                MediDENT Clinic &middot; Ghaziabad
-            </div>
-
-            <h1 class="mt-6 max-w-2xl text-4xl font-bold leading-[1.12] tracking-tight text-med-navy sm:mt-8 sm:text-5xl lg:text-[3.75rem]">
-                Welcome to
-                <span class="bg-gradient-to-r from-med-blue to-cyan-600 bg-clip-text text-transparent">MediDENT Multicare Clinic</span>
-                <br class="hidden sm:block">Ghaziabad
+            <h1 class="text-4xl font-extrabold leading-[1.14] tracking-tight text-med-navy sm:text-5xl lg:text-[3.65rem]">
+                Welcome to <br class="hidden sm:inline">
+                <span class="text-med-blue">MediDENT Multicare Clinic</span> <br class="hidden sm:inline">
+                Ghaziabad
             </h1>
 
-            <p class="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg sm:leading-9">
-                MediDENT Multicare Clinic provides medical, diabetes and dental care for patients of all ages. Our healthcare team works to deliver comprehensive services tailored to your individual needs.
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg sm:leading-8">
+                MediDENT Multicare Clinic is a trusted destination for advanced general medicine, specialized diabetes management, and comprehensive family dental care in Shastri Nagar, Ghaziabad.
             </p>
 
-            <p class="mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base sm:leading-8">
-                From general health check-ups and common illnesses to chronic condition management, vaccinations and preventive screenings, we offer a range of services to support your health and wellbeing.
-            </p>
-
-            {{-- Buttons --}}
-            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            {{-- Action Buttons (Rounded pill design with icons as in reference) --}}
+            <div class="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
                 <button type="button"
                    @click="$dispatch('open-booking-modal')"
-                   class="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-med-blue to-sky-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-med-blue/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-med-blue/35 sm:w-auto sm:px-8">
-                    Book an Appointment
-                    <i class="ri-arrow-right-up-line text-lg transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+                   class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-med-navy px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-med-blue hover:shadow-lg active:translate-y-0 sm:w-auto">
+                    <span>Book an Appointment</span>
+                    <i class="ri-arrow-right-line text-base transition-transform duration-200 group-hover:translate-x-1"></i>
                 </button>
 
                 <a href="{{ route('about') }}"
-                   class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-med-navy shadow-sm transition-all hover:-translate-y-0.5 hover:border-med-blue hover:text-med-blue hover:shadow-md sm:w-auto sm:px-8">
-                    About Our Clinic
-                    <i class="ri-arrow-right-line"></i>
+                   class="group inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow-md active:translate-y-0 sm:w-auto">
+                    <i class="ri-shield-check-line text-med-blue text-base"></i>
+                    <span>Why Choose Us</span>
                 </a>
             </div>
 
-            {{-- Service Highlights --}}
-            <div class="mt-10 grid grid-cols-1 gap-4 rounded-2xl border border-slate-100 bg-white/80 p-6 shadow-sm backdrop-blur-sm sm:grid-cols-2 sm:gap-6">
-
-                <div class="group flex items-start gap-4">
-                    <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-sky-50 to-sky-100/50 text-xl text-med-blue transition group-hover:scale-105">
-                        <i class="ri-stethoscope-line"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm font-semibold text-med-navy">Medical Care</p>
-                        <p class="mt-1 text-xs leading-5 text-slate-500">
-                            General health and consultations
-                        </p>
-                    </div>
-                </div>
-
-                <div class="group flex items-start gap-4">
-                    <div class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-red-50 to-red-100/50 text-xl text-med-red transition group-hover:scale-105">
-                        <i class="ri-heart-pulse-line"></i>
-                    </div>
-                    <div>
-                        <p class="text-sm font-semibold text-med-navy">Diabetes Care</p>
-                        <p class="mt-1 text-xs leading-5 text-slate-500">
-                            Monitoring and ongoing support
-                        </p>
-                    </div>
-                </div>
-
-            </div>
         </div>
 
-        {{-- Hero Image --}}
-        <div class="relative">
-            <div class="absolute -right-4 -top-4 h-28 w-28 rounded-full bg-gradient-to-br from-med-blue/10 to-transparent sm:-right-6 sm:-top-6 sm:h-36 sm:w-36"></div>
-            <div class="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-cyan-400/10 blur-2xl"></div>
+        {{-- Right: Hero Slider (Clean rounded card with bottom indicators as in reference) --}}
+        @php
+            $heroSlides = [
+                [
+                    'image' => asset('images/gallery/general physician/Dr.-Divya-Prakash.jpg'),
+                    'alt' => 'Dr. Divya Prakash - General Physician & Diabetologist at MediDENT Clinic',
+                ],
+                [
+                    'image' => asset('images/gallery/dental/Dr.-Ratika-Gupta.jpg'),
+                    'alt' => 'Dr. Ratika Gupta - Dental Surgeon at MediDENT Clinic',
+                ],
+                [
+                    'image' => asset('images/hero-img.jpg'),
+                    'alt' => 'MediDENT Multicare Clinic Ghaziabad',
+                ],
+                [
+                    'image' => asset('images/gallery/dental/ECG-and-medication-Room.jpg'),
+                    'alt' => 'MediDENT Clinic Modern ECG & Treatment Room',
+                ],
+            ];
+        @endphp
 
-            <div class="relative overflow-hidden rounded-3xl border-[6px] border-white bg-white shadow-[0_40px_80px_rgba(18,50,74,0.16)]">
-                <img
-                    src="{{ asset('images/hero-img.jpg') }}"
-                    alt="MediDENT Multicare Clinic"
-                    fetchpriority="high"
-                    class="h-[320px] w-full object-cover sm:h-[440px] lg:h-[520px]"
-                >
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-med-navy/40 to-transparent p-6">
-                    <p class="text-sm font-medium text-white">Compassionate care. Trusted results.</p>
+        <div
+            x-data="{
+                activeSlide: 0,
+                totalSlides: {{ count($heroSlides) }},
+                touchStartX: 0,
+                touchEndX: 0,
+                autoplayTimer: null,
+                init() {
+                    this.startAutoplay();
+                },
+                startAutoplay() {
+                    this.stopAutoplay();
+                    this.autoplayTimer = setInterval(() => {
+                        this.next();
+                    }, 5000);
+                },
+                stopAutoplay() {
+                    if (this.autoplayTimer) {
+                        clearInterval(this.autoplayTimer);
+                        this.autoplayTimer = null;
+                    }
+                },
+                next() {
+                    this.activeSlide = (this.activeSlide + 1) % this.totalSlides;
+                },
+                prev() {
+                    this.activeSlide = (this.activeSlide - 1 + this.totalSlides) % this.totalSlides;
+                },
+                goTo(index) {
+                    this.activeSlide = index;
+                },
+                handleTouchStart(e) {
+                    this.touchStartX = e.changedTouches[0].screenX;
+                },
+                handleTouchEnd(e) {
+                    this.touchEndX = e.changedTouches[0].screenX;
+                    if (this.touchStartX - this.touchEndX > 45) {
+                        this.next();
+                    } else if (this.touchEndX - this.touchStartX > 45) {
+                        this.prev();
+                    }
+                }
+            }"
+            @mouseenter="stopAutoplay()"
+            @mouseleave="startAutoplay()"
+            @touchstart="handleTouchStart($event)"
+            @touchend="handleTouchEnd($event)"
+            class="group relative select-none"
+        >
+            {{-- Slider Card Container --}}
+            <div class="relative h-[380px] w-full overflow-hidden rounded-[2.5rem] bg-slate-100 shadow-[0_20px_50px_rgba(18,50,74,0.12)] sm:h-[460px] lg:h-[500px]">
+
+                {{-- Image Slides --}}
+                @foreach ($heroSlides as $index => $slide)
+                    <div
+                        x-show="activeSlide === {{ $index }}"
+                        x-transition:enter="transition ease-out duration-700"
+                        x-transition:enter-start="opacity-0 scale-[1.02]"
+                        x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-500"
+                        x-transition:leave-start="opacity-100 scale-100"
+                        x-transition:leave-end="opacity-0 scale-[0.98]"
+                        class="absolute inset-0"
+                    >
+                        <img
+                            src="{{ $slide['image'] }}"
+                            alt="{{ $slide['alt'] }}"
+                            @if ($loop->first) fetchpriority="high" @else loading="lazy" @endif
+                            class="h-full w-full object-cover"
+                        >
+                    </div>
+                @endforeach
+
+                {{-- Bottom Subtle Gradient Vignette --}}
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/50 via-black/15 to-transparent"></div>
+
+                {{-- Pagination Pill Indicators (Exact Match with Reference Design) --}}
+                <div class="absolute bottom-5 inset-x-0 z-20 flex items-center justify-center gap-1.5">
+                    @foreach ($heroSlides as $index => $slide)
+                        <button
+                            type="button"
+                            @click.stop="goTo({{ $index }})"
+                            aria-label="Go to slide {{ $index + 1 }}"
+                            class="h-1.5 rounded-full transition-all duration-300 focus:outline-none"
+                            :class="activeSlide === {{ $index }} ? 'w-7 bg-emerald-400' : 'w-2 bg-white/70 hover:bg-white'"
+                        ></button>
+                    @endforeach
                 </div>
+
+                {{-- Prev & Next Navigation Buttons (Subtle on hover) --}}
+                <button
+                    type="button"
+                    @click.stop="prev()"
+                    aria-label="Previous slide"
+                    class="absolute left-4 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/80 text-med-navy opacity-0 shadow-md backdrop-blur-sm transition-all duration-200 hover:bg-white hover:text-med-blue group-hover:opacity-100 focus:opacity-100 focus:outline-none">
+                    <i class="ri-arrow-left-s-line text-2xl"></i>
+                </button>
+
+                <button
+                    type="button"
+                    @click.stop="next()"
+                    aria-label="Next slide"
+                    class="absolute right-4 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/80 text-med-navy opacity-0 shadow-md backdrop-blur-sm transition-all duration-200 hover:bg-white hover:text-med-blue group-hover:opacity-100 focus:opacity-100 focus:outline-none">
+                    <i class="ri-arrow-right-s-line text-2xl"></i>
+                </button>
+
             </div>
 
-        
         </div>
 
     </div>
@@ -103,7 +176,7 @@
 
 {{-- GENERAL PHYSICIAN CONSULTATION --}}
 <section id="consultation"
-    class="scroll-mt-24 border-y border-slate-100 bg-white py-12 sm:py-16 lg:py-24">
+    class="scroll-mt-24 border-t border-slate-100 bg-white py-12 sm:py-16 lg:py-24">
 
     <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
 
@@ -111,32 +184,27 @@
         <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
 
             <div class="max-w-2xl">
-                <div class="inline-flex items-center gap-2 rounded-full bg-med-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-med-red">
-                    <i class="ri-stethoscope-line"></i>
-                    General Healthcare
-                </div>
-
-                <h2 class="mt-5 text-3xl font-bold leading-tight tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
-                    General Physician Consultation
+                <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                    General Physician Consultation<span class="text-med-blue">.</span>
                 </h2>
 
-                <p class="mt-4 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
-                    Expert medical guidance for common illnesses, ongoing health concerns, preventive care and your family's wellbeing.
+                <p class="mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+                    Expert medical guidance for common illnesses, ongoing health concerns, preventive care, and your family's lifelong wellbeing.
                 </p>
             </div>
 
             <div class="flex flex-wrap items-center gap-3">
                 <a href="{{ route('services', ['category' => 'physician']) }}"
-                   class="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-med-blue/20 bg-med-blue/5 px-6 py-2.5 text-sm font-semibold text-med-blue transition-all hover:-translate-y-0.5 hover:bg-med-blue/10">
-                    View all medical services
-                    <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+                   class="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-med-blue/20 bg-med-blue/5 px-6 py-2.5 text-sm font-semibold text-med-blue transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue/10">
+                    <span>View all medical services</span>
+                    <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                 </a>
 
                 <button type="button"
                     @click="$dispatch('open-booking-modal')"
-                    class="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-slate-200 px-6 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-med-blue hover:text-med-blue">
-                    Book a Consultation
-                    <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+                    class="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-med-navy px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-md">
+                    <span>Book a Consultation</span>
+                    <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                 </button>
             </div>
 
@@ -147,58 +215,54 @@
             @forelse ($this->physicianServices as $service)
                 <article
                     wire:key="home-physician-service-{{ $service['slug'] }}"
-                    class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)]">
+                    class="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)]">
 
-                    <div class="relative h-52 overflow-hidden">
+                    <div class="relative h-56 overflow-hidden">
                         @if ($service['image'])
                             <img
                                 src="{{ $service['image'] }}"
                                 alt="{{ $service['alt'] }}"
                                 loading="lazy"
-                                class="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                             >
                         @else
                             <span class="flex h-full w-full items-center justify-center bg-gradient-to-br from-sky-50 via-white to-slate-50">
                                 <i class="{{ $service['icon'] }} text-6xl text-sky-200"></i>
                             </span>
                         @endif
-                        <div class="absolute inset-0 bg-gradient-to-t from-med-navy/20 to-transparent"></div>
-
-                        <span class="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold {{ $service['accent'] }} shadow-sm backdrop-blur-sm">
-                            {{ $service['tag'] }}
-                        </span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-med-navy/30 via-transparent to-transparent"></div>
                     </div>
 
                     <div class="flex flex-1 flex-col p-6 sm:p-7">
                         <div class="flex items-start justify-between gap-3">
-                            <h3 class="text-xl font-bold text-med-navy">
+                            <h3 class="text-xl font-bold text-med-navy group-hover:text-med-blue transition-colors">
                                 {{ $service['title'] }}
                             </h3>
 
-                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-50 {{ $service['accent'] }} transition group-hover:scale-105">
+                            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-slate-50 {{ $service['accent'] }} transition group-hover:scale-110">
                                 <i class="{{ $service['icon'] }} text-xl"></i>
                             </span>
                         </div>
 
-                        <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
+                        <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
                             {{ $service['description'] }}
                         </p>
 
                         <a href="{{ route('services.show', $service['slug']) }}"
                             class="group/btn mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold {{ $service['accent'] }}">
-                            View Details
-                            <i class="ri-arrow-right-line transition-transform group-hover/btn:translate-x-1"></i>
+                            <span>View Details</span>
+                            <i class="ri-arrow-right-line transition-transform duration-200 group-hover/btn:translate-x-1"></i>
                         </a>
                     </div>
                 </article>
             @empty
-                <div class="rounded-2xl border border-slate-100 bg-gradient-to-br from-[#f8fbfd] to-white px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
+                <div class="rounded-3xl border border-slate-100 bg-gradient-to-br from-[#f8fbfd] to-white px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
                     <span class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-white text-2xl text-med-blue shadow-sm">
                         <i class="ri-stethoscope-line"></i>
                     </span>
 
                     <h3 class="mt-5 text-lg font-bold text-med-navy">Medical service information is being updated.</h3>
-                    <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
+                    <p class="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-500">
                         Contact the clinic to ask about available consultations or book an appointment.
                     </p>
                 </div>
@@ -206,21 +270,21 @@
         </div>
 
         {{-- Bottom CTA --}}
-        <div class="mt-12 flex flex-col gap-6 rounded-2xl border border-slate-100 bg-gradient-to-br from-[#f8fbfd] to-white p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-8 lg:p-10">
+        <div class="mt-12 flex flex-col gap-6 rounded-3xl border border-slate-100 bg-gradient-to-br from-[#f8fbfd] via-white to-sky-50/30 p-6 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:p-8 lg:p-10">
             <div class="max-w-xl">
                 <h3 class="text-xl font-bold text-med-navy">
                     Need help choosing the right consultation?
                 </h3>
 
-                <p class="mt-2 text-sm leading-6 text-slate-600">
-                    Contact our clinic to discuss your concerns and available services. Our team will guide you to the right care.
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                    Contact our clinic to discuss your concerns and available services. Our medical team will guide you to the right care.
                 </p>
             </div>
 
             <a href="{{ route('contact') }}"
-                class="group inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-med-blue to-sky-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-med-blue/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-med-blue/35 sm:w-auto">
-                Contact the Clinic
-                <i class="ri-arrow-right-up-line transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+                class="group inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-med-navy px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-lg sm:w-auto">
+                <span>Contact the Clinic</span>
+                <i class="ri-arrow-right-up-line transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
             </a>
         </div>
 
@@ -235,108 +299,161 @@
 
             <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div class="max-w-2xl">
-                    <div class="inline-flex items-center gap-2 rounded-full bg-med-blue/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-med-blue">
-                        <i class="ri-hospital-line"></i>
-                        Our Healthcare Services
-                    </div>
-
-                    <h2 class="mt-5 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
-                        Complete care. One trusted clinic.
+                    <h2 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                        Complete care<span class="text-med-blue">.</span> One trusted clinic<span class="text-med-blue">.</span>
                     </h2>
 
-                    <p class="mt-4 max-w-xl leading-7 text-slate-600 sm:text-base">
-                        Focused care for your everyday health, long-term wellbeing and confident smile under one roof.
+                    <p class="mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+                        Focused care for your everyday health, long-term diabetes management, and confident family smiles all under one roof.
                     </p>
                 </div>
 
                 <button type="button"
                     @click="$dispatch('open-booking-modal')"
-                    class="group inline-flex w-fit items-center gap-2 rounded-full border border-med-blue/20 bg-med-blue/5 px-6 py-2.5 text-sm font-semibold text-med-blue transition-all hover:-translate-y-0.5 hover:bg-med-blue/10">
-                    Book a Consultation <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+                    class="group inline-flex w-fit items-center gap-2.5 rounded-full bg-med-navy px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-lg">
+                    <span>Book a Consultation</span>
+                    <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                 </button>
             </div>
 
             <div class="mt-10 grid gap-6 sm:mt-12 md:grid-cols-3">
 
                 {{-- Medical --}}
-                <article class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
-                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-sky-50/50 transition group-hover:scale-150"></div>
+                <article class="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
+                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-sky-50/50 transition duration-500 group-hover:scale-150"></div>
+                    
                     <div class="relative">
                         <div class="flex items-center justify-between">
-                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100/50 text-2xl text-med-blue transition group-hover:scale-110">
+                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100/50 text-2xl text-med-blue transition duration-300 group-hover:scale-110">
                                 <i class="ri-stethoscope-line"></i>
                             </div>
 
-                            <span class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-xl text-slate-400 transition group-hover:border-med-blue group-hover:text-med-blue">
-                                <i class="ri-arrow-up-right-line"></i>
+                            <span class="text-xs font-mono font-bold tracking-widest text-slate-300 uppercase">
+                                01 / MED
                             </span>
                         </div>
 
-                        <h3 class="mt-8 text-xl font-bold text-med-navy">Medical Care</h3>
+                        <h3 class="mt-8 text-2xl font-bold text-med-navy group-hover:text-med-blue transition-colors">
+                            Medical Care
+                        </h3>
 
-                        <p class="mt-3 text-sm leading-7 text-slate-600">
-                            Medical consultations and guidance for everyday health concerns and your family's general healthcare needs.
+                        <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                            Comprehensive consultations and diagnosis for everyday health concerns, infections, fever, and preventive wellness.
                         </p>
 
-                        <a href="{{ route('services', ['category' => 'physician']) }}"
-                            class="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-med-blue">
-                            Learn More <i class="ri-arrow-right-line transition-transform group-hover/link:translate-x-1"></i>
-                        </a>
+                        <ul class="mt-6 space-y-2.5 text-xs font-medium text-slate-600">
+                            <li class="flex items-center gap-2">
+                                <i class="ri-check-line text-sm text-med-blue"></i>
+                                <span>General physician consultations</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="ri-check-line text-sm text-med-blue"></i>
+                                <span>Viral illness, cough & pain management</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="ri-check-line text-sm text-med-blue"></i>
+                                <span>Preventive health checkups</span>
+                            </li>
+                        </ul>
                     </div>
+
+                    <a href="{{ route('services', ['category' => 'physician']) }}"
+                        class="group/link mt-8 inline-flex items-center gap-2 text-sm font-semibold text-med-navy transition-colors group-hover:text-med-blue">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line transition-transform duration-200 group-hover/link:translate-x-1"></i>
+                    </a>
                 </article>
 
                 {{-- Diabetes --}}
-                <article class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
-                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-red-50/50 transition group-hover:scale-150"></div>
+                <article class="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
+                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-red-50/50 transition duration-500 group-hover:scale-150"></div>
+                    
                     <div class="relative">
                         <div class="flex items-center justify-between">
-                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-red-50 to-red-100/50 text-2xl text-med-red transition group-hover:scale-110">
+                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-red-50 to-red-100/50 text-2xl text-med-red transition duration-300 group-hover:scale-110">
                                 <i class="ri-heart-pulse-line"></i>
                             </div>
 
-                            <span class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-xl text-slate-400 transition group-hover:border-med-red group-hover:text-med-red">
-                                <i class="ri-arrow-up-right-line"></i>
+                            <span class="text-xs font-mono font-bold tracking-widest text-slate-300 uppercase">
+                                02 / DIAB
                             </span>
                         </div>
 
-                        <h3 class="mt-8 text-xl font-bold text-med-navy">Diabetes Care</h3>
+                        <h3 class="mt-8 text-2xl font-bold text-med-navy group-hover:text-med-red transition-colors">
+                            Diabetes Care
+                        </h3>
 
-                        <p class="mt-3 text-sm leading-7 text-slate-600">
-                            Support with diabetes monitoring, ongoing management and guidance to help you care for your health effectively.
+                        <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                            Expert blood sugar monitoring, personalized diet guidance, and proactive care to prevent long-term diabetic complications.
                         </p>
 
-                        <a href="{{ route('services') }}"
-                            class="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-med-red">
-                            Learn More <i class="ri-arrow-right-line transition-transform group-hover/link:translate-x-1"></i>
-                        </a>
+                        <ul class="mt-6 space-y-2.5 text-xs font-medium text-slate-600">
+                            <li class="flex items-center gap-2">
+                                <i class="ri-check-line text-sm text-med-red"></i>
+                                <span>HbA1c & blood glucose tracking</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="ri-check-line text-sm text-med-red"></i>
+                                <span>Dietary & lifestyle counseling</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="ri-check-line text-sm text-med-red"></i>
+                                <span>Diabetic foot & nerve health</span>
+                            </li>
+                        </ul>
                     </div>
+
+                    <a href="{{ route('services') }}"
+                        class="group/link mt-8 inline-flex items-center gap-2 text-sm font-semibold text-med-navy transition-colors group-hover:text-med-red">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line transition-transform duration-200 group-hover/link:translate-x-1"></i>
+                    </a>
                 </article>
 
                 {{-- Dental --}}
-                <article class="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-7 transition-all hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
-                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-cyan-50/50 transition group-hover:scale-150"></div>
+                <article class="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)] sm:p-8">
+                    <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-cyan-50/50 transition duration-500 group-hover:scale-150"></div>
+                    
                     <div class="relative">
                         <div class="flex items-center justify-between">
-                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-cyan-50 to-cyan-100/50 text-2xl text-cyan-700 transition group-hover:scale-110">
+                            <div class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-cyan-50 to-cyan-100/50 text-2xl text-cyan-700 transition duration-300 group-hover:scale-110">
                                 <i class="ri-tooth-line"></i>
                             </div>
 
-                            <span class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 text-xl text-slate-400 transition group-hover:border-cyan-700 group-hover:text-cyan-700">
-                                <i class="ri-arrow-up-right-line"></i>
+                            <span class="text-xs font-mono font-bold tracking-widest text-slate-300 uppercase">
+                                03 / DENT
                             </span>
                         </div>
 
-                        <h3 class="mt-8 text-xl font-bold text-med-navy">Dental Care</h3>
+                        <h3 class="mt-8 text-2xl font-bold text-med-navy group-hover:text-cyan-700 transition-colors">
+                            Dental Care
+                        </h3>
 
-                        <p class="mt-3 text-sm leading-7 text-slate-600">
-                            Oral health consultations, preventive dental care and treatment options to help maintain a healthy, confident smile.
+                        <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                            Modern dentistry with painless treatments, hygiene cleanings, root canal therapy, and aesthetic smile enhancements.
                         </p>
 
-                        <a href="{{ route('services', ['category' => 'dental']) }}"
-                            class="group/link mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700">
-                            Learn More <i class="ri-arrow-right-line transition-transform group-hover/link:translate-x-1"></i>
-                        </a>
+                        <ul class="mt-6 space-y-2.5 text-xs font-medium text-slate-600">
+                            <li class="flex items-center gap-2">
+                                <i class="ri-check-line text-sm text-cyan-700"></i>
+                                <span>Painless fillings & root canals</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="ri-check-line text-sm text-cyan-700"></i>
+                                <span>Teeth cleaning & polishing</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="ri-check-line text-sm text-cyan-700"></i>
+                                <span>Dental crowns & smile styling</span>
+                            </li>
+                        </ul>
                     </div>
+
+                    <a href="{{ route('services', ['category' => 'dental']) }}"
+                        class="group/link mt-8 inline-flex items-center gap-2 text-sm font-semibold text-med-navy transition-colors group-hover:text-cyan-700">
+                        <span>Learn More</span>
+                        <i class="ri-arrow-right-line transition-transform duration-200 group-hover/link:translate-x-1"></i>
+                    </a>
                 </article>
 
             </div>
@@ -348,30 +465,27 @@
 
             <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div class="max-w-2xl">
-                    <div class="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700">
-                        <i class="ri-tooth-line"></i>
-                        Dental Services
-                    </div>
-
-                    <h2 class="mt-5 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
-                        Complete care for every smile.
+                    <h2 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                        Complete care for every smile<span class="text-cyan-600">.</span>
                     </h2>
 
-                    <p class="mt-4 max-w-xl leading-7 text-slate-600 sm:text-base">
-                        From preventive check-ups to restorative treatments, our dental services are designed to keep your smile healthy and comfortable.
+                    <p class="mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+                        From preventive check-ups to restorative treatments, our dental services are designed to keep your smile healthy, bright, and comfortable.
                     </p>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-3">
                     <a href="{{ route('services', ['category' => 'dental']) }}"
-                       class="group inline-flex w-fit items-center gap-2 rounded-full border border-cyan-700/20 bg-cyan-50 px-6 py-2.5 text-sm font-semibold text-cyan-700 transition-all hover:-translate-y-0.5 hover:bg-cyan-100/70">
-                        View all dental services <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+                       class="group inline-flex w-fit items-center gap-2 rounded-full border border-cyan-700/20 bg-cyan-50 px-6 py-2.5 text-sm font-semibold text-cyan-700 transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyan-100/70">
+                        <span>View all dental services</span>
+                        <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                     </a>
 
                     <button type="button"
                         @click="$dispatch('open-booking-modal')"
-                        class="group inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 px-6 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-med-blue hover:text-med-blue">
-                        Book a Dental Visit <i class="ri-arrow-right-line transition-transform group-hover:translate-x-1"></i>
+                        class="group inline-flex w-fit items-center gap-2 rounded-full bg-med-navy px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyan-700 hover:shadow-md">
+                        <span>Book a Dental Visit</span>
+                        <i class="ri-arrow-right-line transition-transform duration-200 group-hover:translate-x-1"></i>
                     </button>
                 </div>
             </div>
@@ -380,57 +494,53 @@
                 @forelse ($this->dentalServices as $service)
                     <article
                         wire:key="home-dental-service-{{ $service['slug'] }}"
-                        class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)]">
-                        <div class="relative h-52 overflow-hidden">
+                        class="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)]">
+                        <div class="relative h-56 overflow-hidden">
                             @if ($service['image'])
                                 <img
                                     src="{{ $service['image'] }}"
                                     alt="{{ $service['alt'] }}"
                                     loading="lazy"
-                                    class="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                                    class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                                 >
                             @else
                                 <span class="flex h-full w-full items-center justify-center bg-gradient-to-br from-cyan-50 via-white to-slate-50">
                                     <i class="{{ $service['icon'] }} text-6xl text-cyan-200"></i>
                                 </span>
                             @endif
-                            <div class="absolute inset-0 bg-gradient-to-t from-med-navy/20 to-transparent"></div>
-
-                            <span class="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold {{ $service['accent'] }} shadow-sm backdrop-blur-sm">
-                                {{ $service['tag'] }}
-                            </span>
+                            <div class="absolute inset-0 bg-gradient-to-t from-med-navy/30 via-transparent to-transparent"></div>
                         </div>
 
                         <div class="flex flex-1 flex-col p-6 sm:p-7">
                             <div class="flex items-start justify-between gap-3">
-                                <h3 class="text-xl font-bold text-med-navy">
+                                <h3 class="text-xl font-bold text-med-navy group-hover:text-cyan-700 transition-colors">
                                     {{ $service['title'] }}
                                 </h3>
 
-                                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-50 {{ $service['accent'] }} transition group-hover:scale-105">
+                                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-slate-50 {{ $service['accent'] }} transition group-hover:scale-110">
                                     <i class="{{ $service['icon'] }} text-xl"></i>
                                 </span>
                             </div>
 
-                            <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
+                            <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
                                 {{ $service['description'] }}
                             </p>
 
                             <a href="{{ route('services.show', $service['slug']) }}"
                                 class="group/btn mt-6 inline-flex items-center gap-2 border-t border-slate-100 pt-4 text-sm font-semibold {{ $service['accent'] }}">
-                                View Details
-                                <i class="ri-arrow-right-line transition-transform group-hover/btn:translate-x-1"></i>
+                                <span>View Details</span>
+                                <i class="ri-arrow-right-line transition-transform duration-200 group-hover/btn:translate-x-1"></i>
                             </a>
                         </div>
                     </article>
                 @empty
-                    <div class="rounded-2xl border border-slate-100 bg-gradient-to-br from-[#f8fbfd] to-white px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
+                    <div class="rounded-3xl border border-slate-100 bg-gradient-to-br from-[#f8fbfd] to-white px-6 py-12 text-center sm:col-span-2 lg:col-span-3">
                         <span class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-white text-2xl text-cyan-700 shadow-sm">
                             <i class="ri-tooth-line"></i>
                         </span>
 
                         <h3 class="mt-5 text-lg font-bold text-med-navy">Dental service information is being updated.</h3>
-                        <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
+                        <p class="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-500">
                             Contact the clinic to ask about available dental treatments or book a consultation.
                         </p>
                     </div>
@@ -462,13 +572,8 @@
             </div>
 
             <div class="pt-3 lg:pt-0">
-                <div class="inline-flex items-center gap-2 rounded-full bg-med-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-med-red">
-                    <i class="ri-hospital-line"></i>
-                    About MediDENT
-                </div>
-
-                <h2 class="mt-5 text-3xl font-bold leading-tight tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
-                    Healthcare should feel personal, not complicated.
+                <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                    Healthcare should feel personal, not complicated<span class="text-med-blue">.</span>
                 </h2>
 
                 <p class="mt-6 text-base leading-8 text-slate-600">
@@ -616,56 +721,71 @@
 
             <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div class="max-w-2xl">
-                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
-                        Google Reviews
-                    </p>
-
-                    <h2 class="mt-3 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl">
-                        What our patients say.
+                    <h2 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                        What our patients say<span class="text-med-blue">.</span>
                     </h2>
 
-                    <p class="mt-4 leading-7 text-slate-600">
-                        Read genuine feedback from patients who visited MediDENT Multicare Clinic.
+                    <p class="mt-4 max-w-xl text-base leading-relaxed text-slate-600">
+                        Authentic patient stories and reviews from individuals and families treated at MediDENT Multicare Clinic.
                     </p>
 
-                    @if ($googleReviewsUrl)
-                        <a href="{{ $googleReviewsUrl }}"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-med-blue transition hover:text-sky-800">
-                            <img src="{{ asset('google-img.png') }}"
-                                 alt=""
-                                 class="h-4 w-4"
-                                 decoding="async">
-                            View all Google reviews
-                            <i class="ri-arrow-right-up-line"></i>
-                        </a>
-                    @endif
+                    {{-- Clean Trust Metric Lockup (No badge pill) --}}
+                    <div class="mt-6 flex flex-wrap items-center gap-4">
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-base text-amber-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <span class="text-base font-extrabold text-med-navy">4.9</span>
+                            <span class="text-xs font-semibold text-slate-400">/ 5.0</span>
+                        </div>
+
+                        <span class="h-3.5 w-px bg-slate-200"></span>
+
+                        <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-600">
+                            <img src="{{ asset('google-img.png') }}" alt="" class="h-4 w-4" loading="lazy" decoding="async">
+                            <span>Google Reviews</span>
+                        </div>
+
+                        @if ($googleReviewsUrl)
+                            <span class="h-3.5 w-px bg-slate-200"></span>
+                            <a href="{{ $googleReviewsUrl }}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="group/link inline-flex items-center gap-1 text-xs font-semibold text-med-blue transition hover:text-sky-800">
+                                <span>View all on Google</span>
+                                <i class="ri-arrow-right-up-line transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"></i>
+                            </a>
+                        @endif
+                    </div>
                 </div>
 
                 @if ($reviews->count() > 1)
-                    <div class="flex gap-2">
+                    <div class="flex items-center gap-3">
                         <button
                             type="button"
                             @click="prev()"
                             aria-label="Previous review"
-                            class="grid h-11 w-11 place-items-center border border-slate-300 text-xl text-med-navy transition hover:border-med-blue hover:text-med-blue">
-                            <i class="ri-arrow-left-line"></i>
+                            class="grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow-md active:scale-95">
+                            <i class="ri-arrow-left-line text-lg"></i>
                         </button>
 
                         <button
                             type="button"
                             @click="next()"
                             aria-label="Next review"
-                            class="grid h-11 w-11 place-items-center bg-med-blue text-xl text-white transition hover:bg-sky-800">
-                            <i class="ri-arrow-right-line"></i>
+                            class="grid h-12 w-12 place-items-center rounded-full bg-med-navy text-white shadow-md transition-all duration-200 hover:bg-med-blue hover:shadow-lg active:scale-95">
+                            <i class="ri-arrow-right-line text-lg"></i>
                         </button>
                     </div>
                 @endif
             </div>
 
             @if ($reviews->isEmpty())
-                <div class="mt-9 border border-slate-200 bg-white p-8 text-center">
+                <div class="mt-9 rounded-3xl border border-slate-100 bg-white p-8 text-center shadow-sm">
                     <img src="{{ asset('google-img.png') }}"
                          alt=""
                          class="mx-auto h-10 w-10"
@@ -677,7 +797,7 @@
             @else
                 <div x-ref="track"
                      @scroll.debounce.300ms="syncActive()"
-                     class="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-3 sm:mt-9 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                     class="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-3 sm:mt-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     @foreach ($reviews as $review)
                         @php($authorName = $review->author_title ?: 'Google user')
                         @php($rating = (float) $review->review_rating)
@@ -686,53 +806,65 @@
                             role="group"
                             aria-roledescription="slide"
                             aria-label="Review {{ $loop->iteration }} of {{ $reviews->count() }}"
-                            class="flex w-[86%] shrink-0 snap-start flex-col border border-slate-200 bg-white p-6 shadow-sm transition hover:border-sky-200 hover:shadow-md sm:w-[calc(50%-0.625rem)] sm:p-7 lg:w-[calc(33.333%-0.834rem)]">
-                            <div class="flex items-start justify-between gap-3">
-                                <div class="flex items-center gap-1 text-amber-500" aria-label="{{ number_format($rating, 1) }} out of 5 stars">
-                                    @for ($star = 1; $star <= 5; $star++)
-                                        @if ($rating >= $star)
-                                            <i class="ri-star-fill"></i>
-                                        @elseif ($rating >= $star - 0.5)
-                                            <i class="ri-star-half-fill"></i>
-                                        @else
-                                            <i class="ri-star-line"></i>
-                                        @endif
-                                    @endfor
+                            class="group relative flex w-[86%] shrink-0 snap-start flex-col justify-between overflow-hidden rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_10px_35px_rgba(18,50,74,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:border-sky-200 hover:shadow-[0_20px_50px_rgba(18,50,74,0.10)] sm:w-[calc(50%-0.625rem)] sm:p-8 lg:w-[calc(33.333%-0.834rem)]">
+                            
+                            {{-- Decorative quotation watermark --}}
+                            <div class="pointer-events-none absolute right-6 top-5 select-none font-serif text-6xl text-slate-100 transition-colors duration-300 group-hover:text-sky-100/70">&ldquo;</div>
+
+                            <div class="relative">
+                                <div class="flex items-center justify-between gap-3">
+                                    <div class="flex items-center gap-1 text-sm text-amber-400" aria-label="{{ number_format($rating, 1) }} out of 5 stars">
+                                        @for ($star = 1; $star <= 5; $star++)
+                                            @if ($rating >= $star)
+                                                <i class="ri-star-fill"></i>
+                                            @elseif ($rating >= $star - 0.5)
+                                                <i class="ri-star-half-fill"></i>
+                                            @else
+                                                <i class="ri-star-line text-slate-200"></i>
+                                            @endif
+                                        @endfor
+                                    </div>
+
+                                    <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400">
+                                        <img src="{{ asset('google-img.png') }}"
+                                             alt=""
+                                             class="h-4 w-4"
+                                             loading="lazy"
+                                             decoding="async">
+                                        Google
+                                    </span>
                                 </div>
 
-                                <span class="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-400">
-                                    <img src="{{ asset('google-img.png') }}"
-                                         alt=""
-                                         class="h-4 w-4"
-                                         loading="lazy"
-                                         decoding="async">
-                                    Google
-                                </span>
+                                <p class="relative z-10 mt-5 flex-1 line-clamp-6 text-sm leading-relaxed text-slate-600">
+                                    &ldquo;{{ $review->review_text }}&rdquo;
+                                </p>
                             </div>
 
-                            <p class="mt-5 flex-1 line-clamp-6 text-sm leading-7 text-slate-600">
-                                {{ $review->review_text }}
-                            </p>
-
-                            <div class="mt-6 flex items-center gap-3 border-t border-slate-100 pt-5">
+                            <div class="relative z-10 mt-6 flex items-center gap-3 border-t border-slate-100 pt-5">
                                 @if ($review->author_image)
                                     <img src="{{ $review->author_image }}"
                                          alt="{{ $authorName }}"
                                          loading="lazy"
                                          decoding="async"
                                          referrerpolicy="no-referrer"
-                                         class="h-10 w-10 shrink-0 rounded-full object-cover">
+                                         class="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-slate-100">
                                 @else
-                                    <div class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sky-50 text-sm font-bold text-med-blue">
+                                    <div class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-sky-50 to-med-blue/15 text-sm font-bold text-med-navy ring-2 ring-slate-100">
                                         {{ mb_substr($authorName, 0, 1) }}
                                     </div>
                                 @endif
 
-                                <div class="min-w-0">
+                                <div class="min-w-0 flex-1">
                                     <p class="truncate text-sm font-bold text-med-navy">{{ $authorName }}</p>
-                                    <p class="mt-0.5 text-xs text-slate-500">
-                                        {{ $review->review_datetime_utc?->format('M j, Y') ?? 'Google review' }}
-                                    </p>
+                                    <div class="mt-0.5 flex items-center gap-1.5">
+                                        <span class="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-600">
+                                            <i class="ri-checkbox-circle-fill text-xs"></i> Verified Patient
+                                        </span>
+                                        <span class="text-slate-300">&bull;</span>
+                                        <span class="text-[11px] text-slate-400">
+                                            {{ $review->review_datetime_utc?->format('M Y') ?? 'Recent' }}
+                                        </span>
+                                    </div>
                                 </div>
 
                                 @if ($review->review_link)
@@ -740,9 +872,8 @@
                                        target="_blank"
                                        rel="noopener noreferrer"
                                        aria-label="Read {{ $authorName }}'s review on Google"
-                                       class="ml-auto inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-med-blue transition hover:text-sky-800">
-                                        Read
-                                        <i class="ri-arrow-right-up-line"></i>
+                                       class="grid h-8 w-8 place-items-center rounded-full bg-slate-50 text-slate-400 transition hover:bg-med-blue hover:text-white">
+                                        <i class="ri-arrow-right-up-line text-sm"></i>
                                     </a>
                                 @endif
                             </div>
@@ -751,22 +882,22 @@
                 </div>
 
                 @if ($reviews->count() > 1)
-                    <div class="mt-6 flex flex-wrap items-center justify-center gap-2">
+                    <div class="mt-8 flex flex-wrap items-center justify-center gap-2">
                         <template x-for="index in total" :key="index">
                             <button
                                 type="button"
                                 @click="goTo(index - 1)"
                                 :aria-label="`Show review ${index}`"
                                 :aria-current="active === index - 1 ? 'true' : 'false'"
-                                class="h-2.5 rounded-full transition-all duration-300"
-                                :class="active === index - 1 ? 'w-8 bg-med-blue' : 'w-2.5 bg-slate-300 hover:bg-slate-400'">
+                                class="h-2 rounded-full transition-all duration-300 focus:outline-none"
+                                :class="active === index - 1 ? 'w-8 bg-med-blue' : 'w-2 bg-slate-300 hover:bg-slate-400'">
                             </button>
                         </template>
                     </div>
                 @endif
             @endif
 
-            <p class="mt-4 text-center text-xs text-slate-400">
+            <p class="mt-6 text-center text-xs text-slate-400">
                 Showing Google reviews rated 4.5 stars and above.
             </p>
         </div>
@@ -775,48 +906,47 @@
     {{-- FAQ --}}
     @php($faqs = $this->faqs)
 
-    <section id="faqs" class="scroll-mt-24 border-t border-slate-100 bg-[#f5fafc] py-12 sm:py-20 lg:py-24">
+    <section id="faqs" class="scroll-mt-24 border-t border-slate-100 bg-[#FAFDFE] py-12 sm:py-20 lg:py-24">
         <div class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
             <div class="text-center">
-                <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
-                    Frequently asked questions
-                </p>
-
-                <h2 class="mt-3 text-3xl font-bold tracking-tight text-med-navy sm:text-4xl">
-                    Before you visit MediDENT
+                <h2 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                    Frequently Asked Questions<span class="text-med-blue">.</span>
                 </h2>
 
-                <p class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                    Quick answers about appointments, clinic timings, services, and what to expect at your visit.
+                <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
+                    Quick answers about appointments, clinic timings, treatments, and visiting MediDENT Multicare Clinic.
                 </p>
             </div>
 
-            <div class="mt-8 divide-y divide-slate-200 border border-slate-200 bg-white">
+            <div class="mt-10 space-y-3.5">
                 @foreach ($faqs as $faq)
-                    <details class="group p-5 sm:p-6">
-                        <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-left">
-                            <h3 class="text-sm font-semibold leading-6 text-med-navy sm:text-base">
+                    <details class="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-200 hover:border-med-blue/40 hover:shadow-md sm:p-6 [&_summary::-webkit-details-marker]:hidden">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left focus:outline-none">
+                            <h3 class="text-base font-bold text-med-navy transition-colors group-hover:text-med-blue">
                                 {{ $faq['question'] }}
                             </h3>
 
-                            <i class="ri-add-line mt-0.5 text-xl text-med-blue transition group-open:rotate-45"></i>
+                            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-slate-100 text-slate-600 transition-all duration-300 group-open:rotate-45 group-open:bg-med-blue group-open:text-white">
+                                <i class="ri-add-line text-lg"></i>
+                            </span>
                         </summary>
 
-                        <p class="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
+                        <div class="mt-4 border-t border-slate-100 pt-4 text-sm leading-relaxed text-slate-600">
                             {{ $faq['answer'] }}
-                        </p>
+                        </div>
                     </details>
                 @endforeach
             </div>
 
-            <div class="mt-6 flex flex-col items-center justify-between gap-3 border border-sky-100 bg-white px-5 py-4 text-center sm:flex-row sm:text-left">
-                <p class="text-sm text-slate-600">
-                    Still have a question about your care?
-                </p>
+            <div class="mt-8 flex flex-col items-center justify-between gap-4 rounded-3xl border border-sky-100 bg-gradient-to-r from-sky-50/80 via-white to-sky-50/60 p-6 text-center shadow-sm sm:flex-row sm:p-8 sm:text-left">
+                <div>
+                    <h4 class="text-base font-bold text-med-navy">Still have questions about your visit?</h4>
+                    <p class="mt-1 text-sm text-slate-600">Our medical and dental staff will be glad to assist you.</p>
+                </div>
 
                 <a href="{{ route('contact') }}"
-                   class="inline-flex items-center gap-2 text-sm font-semibold text-med-blue transition hover:text-sky-800">
-                    Contact the clinic
+                   class="inline-flex shrink-0 items-center gap-2 rounded-full bg-med-navy px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-med-blue hover:shadow-lg">
+                    <span>Contact the Clinic</span>
                     <i class="ri-arrow-right-line"></i>
                 </a>
             </div>

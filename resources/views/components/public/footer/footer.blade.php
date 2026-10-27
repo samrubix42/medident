@@ -11,13 +11,8 @@
 
         <div class="relative grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div class="max-w-2xl">
-                <div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 backdrop-blur-sm">
-                    <i class="ri-heart-pulse-line"></i>
-                    Your health matters
-                </div>
-
-                <h2 class="mt-6 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
-                    Let's take care of your health, together.
+                <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+                    Let's take care of your health, together<span class="text-cyan-400">.</span>
                 </h2>
 
                 <p class="mt-4 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
