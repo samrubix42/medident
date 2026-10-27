@@ -55,6 +55,22 @@ Route::livewire('/admin/blog-posts/{blogPost}/edit', 'admin::blog-posts-form')
     ->middleware('auth')
     ->name('admin.blog-posts.edit');
 
+Route::livewire('/admin/service-categories', 'admin::service-categories')
+    ->middleware('auth')
+    ->name('admin.service-categories');
+
+Route::livewire('/admin/services', 'admin::services')
+    ->middleware('auth')
+    ->name('admin.services');
+
+Route::livewire('/admin/services/create', 'admin::services-form')
+    ->middleware('auth')
+    ->name('admin.services.create');
+
+Route::livewire('/admin/services/{service}/edit', 'admin::services-form')
+    ->middleware('auth')
+    ->name('admin.services.edit');
+
 Route::livewire('/admin/settings', 'admin::settings')
     ->middleware('auth')
     ->name('admin.settings');

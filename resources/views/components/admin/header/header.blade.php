@@ -15,6 +15,10 @@
         request()->routeIs('admin.blog-posts.create') => 'Create Blog Post',
         request()->routeIs('admin.blog-posts.edit') => 'Edit Blog Post',
         request()->routeIs('admin.blog-posts') => 'Blog Posts',
+        request()->routeIs('admin.service-categories') => 'Service Categories',
+        request()->routeIs('admin.services.create') => 'Create Service',
+        request()->routeIs('admin.services.edit') => 'Edit Service',
+        request()->routeIs('admin.services') => 'Services',
         request()->routeIs('admin.settings') => 'Clinic Settings',
         default => 'Admin',
     };

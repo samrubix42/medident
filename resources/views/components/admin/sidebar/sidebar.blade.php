@@ -138,6 +138,36 @@
                     Blog posts
                 </a>
 
+                <a href="{{ route('admin.service-categories') }}"
+                    wire:navigate
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.service-categories'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.service-categories'),
+                    ])>
+                    <i @class([
+                        'ri-folders-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.service-categories'),
+                        'text-slate-400' => ! request()->routeIs('admin.service-categories'),
+                    ])></i>
+                    Service categories
+                </a>
+
+                <a href="{{ route('admin.services') }}"
+                    wire:navigate
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
+                    ])>
+                    <i @class([
+                        'ri-service-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
+                        'text-slate-400' => ! request()->routeIs('admin.services', 'admin.services.create', 'admin.services.edit'),
+                    ])></i>
+                    Services
+                </a>
+
                 <a href="{{ route('admin.settings') }}"
                     wire:navigate
                     @class([
@@ -161,11 +191,6 @@
                 <span class="flex cursor-default items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-400">
                     <i class="ri-user-line text-lg"></i>
                     Patients
-                </span>
-
-                <span class="flex cursor-default items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-400">
-                    <i class="ri-stethoscope-line text-lg"></i>
-                    Services
                 </span>
 
                 <span class="flex cursor-default items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-400">
