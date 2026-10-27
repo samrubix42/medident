@@ -21,6 +21,11 @@ test('the blog seeders import the live articles with local feature images', func
         expect($post->feature_image)->not->toBeNull()
             ->and(file_exists(public_path($post->feature_image)))->toBeTrue()
             ->and($post->content)->toContain('<p>')
+            ->and($post->content)->toContain('<h2>')
+            ->and(str_word_count(strip_tags($post->content)))->toBeGreaterThan(500)
+            ->and($post->meta_title)->not->toBeEmpty()
+            ->and($post->meta_description)->not->toBeEmpty()
+            ->and(mb_strlen($post->meta_description))->toBeLessThanOrEqual(160)
             ->and($post->category)->not->toBeNull()
             ->and($post->is_active)->toBeTrue();
     });

@@ -31,7 +31,19 @@
     <meta property="og:description" content="{{ $sharingDescription }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
 
-    @if ($sharingImage)
+    @if (! empty($articlePublishedTime))
+        <meta property="article:published_time" content="{{ $articlePublishedTime }}">
+    @endif
+
+    @if (! empty($articleModifiedTime))
+        <meta property="article:modified_time" content="{{ $articleModifiedTime }}">
+    @endif
+
+    @if (! empty($articleSection))
+        <meta property="article:section" content="{{ $articleSection }}">
+    @endif
+
+    @if (! empty($sharingImage))
         <meta property="og:image" content="{{ $sharingImage }}">
         <meta property="og:image:alt" content="{{ $pageTitle }}">
     @endif
