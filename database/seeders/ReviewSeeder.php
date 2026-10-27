@@ -490,7 +490,7 @@ class ReviewSeeder extends Seeder
             'author_title' => 'PRADEEP DUBEY',
             'author_id' => '108046758067283978500',
             'author_image' => 'https://lh3.googleusercontent.com/a-/ALV-UjVpC9R8KFKC81b-RxI7bUCv1kieQwr54wAsPwnMDOh4gI3mqKo=s64-c-rp-mo-br100',
-            'review_text' => 'Really a nice doctor with good clinical experience....<br>Taking diabetes treatment for my mother... It\'s well controlled now....',
+            'review_text' => 'Really a nice doctor with good clinical experience....Taking diabetes treatment for my mother... It\'s well controlled now....',
             'review_img_urls' => null,
             'review_img_url' => null,
             'owner_answer' => null,
