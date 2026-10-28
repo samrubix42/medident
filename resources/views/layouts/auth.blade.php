@@ -22,7 +22,7 @@
     @livewireStyles
 </head>
 
-<body class="min-h-screen bg-slate-50 font-sans text-slate-700 antialiased">
+<body class="min-h-screen bg-[#FAFDFE] font-sans text-slate-700 antialiased selection:bg-med-blue selection:text-white">
     {{ $slot }}
 
     @livewireScripts
