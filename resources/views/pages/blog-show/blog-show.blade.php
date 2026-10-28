@@ -156,7 +156,7 @@
                 @if ($this->relatedPosts->isNotEmpty())
                     <div class="rounded-3xl border border-slate-100 bg-white p-6 sm:p-7 shadow-sm">
                         <div class="flex items-center justify-between gap-3 border-b border-slate-100 pb-4">
-                            <h2 class="text-base font-bold text-med-navy">Related Articles</h2>
+                            <h2 class="text-base font-bold text-med-navy">Related articles</h2>
                             <i class="ri-article-line text-lg text-med-blue"></i>
                         </div>
 

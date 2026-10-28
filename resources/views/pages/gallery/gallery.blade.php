@@ -57,7 +57,7 @@
                     </p>
 
                     <h2 class="mt-2 text-2xl font-extrabold tracking-tight text-med-navy sm:text-3xl lg:text-4xl">
-                        Browse the clinic gallery<span class="text-med-blue">.</span>
+                        Browse the gallery.
                     </h2>
 
                     <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
@@ -111,7 +111,7 @@
                         <i class="ri-image-line"></i>
                     </span>
 
-                    <h3 class="mt-4 text-xl font-bold text-med-navy">No photos here yet</h3>
+                    <h3 class="mt-4 text-xl font-bold text-med-navy">No photos here yet.</h3>
                     <p class="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-500">
                         New gallery photos will be added soon. In the meantime, you can explore all available clinic photos.
                     </p>

@@ -18,7 +18,9 @@
 
             <div class="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,.85fr)] lg:gap-14">
                 <div>
-                    <h1 class="text-3xl font-extrabold leading-[1.12] tracking-tight text-med-navy sm:text-5xl lg:text-[3.5rem]">
+                    <span class="text-xs font-bold uppercase tracking-widest text-med-blue">Diabetologist &amp; General Physician in Ghaziabad</span>
+
+                    <h1 class="mt-3 text-3xl font-extrabold leading-[1.12] tracking-tight text-med-navy sm:text-5xl lg:text-[3.5rem]">
                         Dr. Divya Prakash<span class="text-med-blue">.</span>
                         <span class="mt-2 block text-2xl sm:text-3xl lg:text-4xl font-bold text-med-blue">Best Physician Doctor &amp; Consultant in Ghaziabad</span>
                     </h1>
@@ -353,7 +355,8 @@
                             <div>
                                 <p class="font-bold text-white">MediDENT Multicare Clinic</p>
                                 <p class="mt-0.5 text-xs text-slate-300">{{ $settings->address }}</p>
-                                <p class="mt-1 text-xs text-cyan-200">Mon–Sat: 5:00 PM–8:30 PM &bull; Sun: 10:00 AM–12:00 Noon</p>
+                                <p class="mt-1 text-xs text-cyan-200">Mon to Sat: 5:00 PM to 8:30 PM</p>
+                                <p class="text-xs text-cyan-200">Sunday: 10:00 AM to 12:00 noon</p>
                             </div>
                         </div>
 
@@ -362,7 +365,7 @@
                             <div>
                                 <p class="font-bold text-white">Yashoda Superspeciality Hospital</p>
                                 <p class="mt-0.5 text-xs text-slate-300">Sanjay Nagar, Ghaziabad</p>
-                                <p class="mt-1 text-xs text-cyan-200">Mon–Sat: 11:00 AM–3:00 PM</p>
+                                <p class="mt-1 text-xs text-cyan-200">Mon to Sat: 11:00 AM to 3:00 PM</p>
                             </div>
                         </div>
 

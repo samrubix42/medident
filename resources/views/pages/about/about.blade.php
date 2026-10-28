@@ -101,7 +101,7 @@
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 gap-4 sm:gap-6 rounded-3xl bg-med-navy p-6 sm:p-10 text-white shadow-xl lg:grid-cols-4">
                 <div class="text-center">
-                    <p class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">5,000+</p>
+                    <p class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">5000+</p>
                     <p class="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-300">Treated Patients</p>
                 </div>
 
@@ -379,7 +379,7 @@
                             </h3>
 
                             <p class="mt-1.5 text-sm font-bold text-med-blue">
-                                Consultant Physician &amp; Diabetologist
+                                Diabetologist &amp; General Physician
                             </p>
 
                             <p class="mt-1 text-xs font-medium tracking-wide text-slate-400">
@@ -427,7 +427,7 @@
 
                                 <a href="{{ route('physician') }}"
                                    class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-med-navy shadow-sm transition hover:border-med-blue hover:text-med-blue">
-                                    <span>View Profile</span>
+                                    <span>View full profile</span>
                                     <i class="ri-arrow-right-line"></i>
                                 </a>
                             </div>
@@ -462,7 +462,7 @@
                             </h3>
 
                             <p class="mt-1.5 text-sm font-bold text-cyan-700">
-                                Best Dentist &amp; Dental Surgeon
+                                Best Dentist, Dental Surgeon
                             </p>
 
                             <p class="mt-1 text-xs font-medium tracking-wide text-slate-400">

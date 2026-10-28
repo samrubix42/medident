@@ -40,7 +40,7 @@
             <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between border-b border-slate-100 pb-8">
                 <div class="max-w-2xl">
                     <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-red">
-                        Clinical Insights
+                        Health Journal
                     </p>
 
                     <h2 class="mt-2 text-2xl font-extrabold tracking-tight text-med-navy sm:text-3xl lg:text-4xl">
