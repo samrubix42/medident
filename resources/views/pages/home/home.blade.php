@@ -856,15 +856,6 @@
 
                                 <div class="min-w-0 flex-1">
                                     <p class="truncate text-sm font-bold text-med-navy">{{ $authorName }}</p>
-                                    <div class="mt-0.5 flex items-center gap-1.5">
-                                        <span class="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-600">
-                                            <i class="ri-checkbox-circle-fill text-xs"></i> Verified Patient
-                                        </span>
-                                        <span class="text-slate-300">&bull;</span>
-                                        <span class="text-[11px] text-slate-400">
-                                            {{ $review->review_datetime_utc?->format('M Y') ?? 'Recent' }}
-                                        </span>
-                                    </div>
                                 </div>
 
                                 @if ($review->review_link)
@@ -909,8 +900,9 @@
     <section id="faqs" class="scroll-mt-24 border-t border-slate-100 bg-[#FAFDFE] py-12 sm:py-20 lg:py-24">
         <div class="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
-                    Frequently Asked Questions<span class="text-med-blue">.</span>
+                <span class="text-xs font-bold uppercase tracking-widest text-med-blue">Before you visit MediDENT</span>
+                <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-med-navy sm:text-4xl lg:text-5xl">
+                    Frequently asked questions<span class="text-med-blue">.</span>
                 </h2>
 
                 <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
