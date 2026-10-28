@@ -57,7 +57,7 @@
                             type="button"
                             wire:click="selectCategory('all')"
                             @class([
-                                'rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer',
+                                'rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer',
                                 'bg-med-navy text-white shadow-md' => $category === 'all',
                                 'border border-slate-200 bg-white text-slate-600 hover:border-med-blue hover:text-med-blue shadow-sm' => $category !== 'all',
                             ])>
@@ -70,7 +70,7 @@
                                 wire:key="service-filter-{{ $serviceCategory->id }}"
                                 wire:click="selectCategory(@js($serviceCategory->slug))"
                                 @class([
-                                    'rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer',
+                                    'rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer',
                                     'bg-med-navy text-white shadow-md' => $category === $serviceCategory->slug,
                                     'border border-slate-200 bg-white text-slate-600 hover:border-med-blue hover:text-med-blue shadow-sm' => $category !== $serviceCategory->slug,
                                 ])>
@@ -126,7 +126,7 @@
                             class="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)]">
 
                             <a href="{{ route('services.show', $service->slug) }}"
-                               class="relative block h-56 overflow-hidden bg-slate-100"
+                               class="relative block h-48 sm:h-56 overflow-hidden bg-slate-100"
                                aria-label="View {{ $service->title }}">
                                 @if ($serviceImage)
                                     <img

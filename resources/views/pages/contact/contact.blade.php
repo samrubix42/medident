@@ -338,17 +338,17 @@
                 <a href="{{ $this->mapDirectionsUrl }}"
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs sm:text-sm font-semibold text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:bg-slate-50">
+                   class="inline-flex w-full sm:w-fit justify-center sm:justify-start items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs sm:text-sm font-semibold text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:bg-slate-50">
                     <span>Open in Google Maps</span>
                     <i class="ri-arrow-right-up-line text-xs"></i>
                 </a>
             </div>
 
-            <div class="mt-10 overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-[0_20px_50px_rgba(18,50,74,0.08)]">
+            <div class="mt-8 sm:mt-10 overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-[0_20px_50px_rgba(18,50,74,0.08)]">
                 <iframe
                     src="{{ $this->mapEmbedUrl }}"
                     title="Map showing MediDENT Multicare Clinic in Ghaziabad"
-                    class="h-[340px] w-full border-0 sm:h-[440px] lg:h-[480px]"
+                    class="h-[280px] w-full border-0 sm:h-[440px] lg:h-[480px]"
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
                     allowfullscreen

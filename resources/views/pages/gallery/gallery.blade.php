@@ -71,7 +71,7 @@
                             type="button"
                             wire:click="selectCategory('all')"
                             @class([
-                                'inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm',
+                                'inline-flex items-center gap-2 rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm',
                                 'bg-med-navy text-white shadow-md shadow-med-navy/15 ring-2 ring-med-navy' => $category === 'all',
                                 'border border-slate-200 bg-white text-slate-600 hover:border-med-blue hover:text-med-blue hover:bg-slate-50' => $category !== 'all',
                             ])>
@@ -89,7 +89,7 @@
                                 wire:key="gallery-filter-{{ $galleryCategory->id }}"
                                 wire:click="selectCategory('{{ $galleryCategory->slug }}')"
                                 @class([
-                                    'inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm',
+                                    'inline-flex items-center gap-2 rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm',
                                     'bg-med-navy text-white shadow-md shadow-med-navy/15 ring-2 ring-med-navy' => $category === $galleryCategory->slug,
                                     'border border-slate-200 bg-white text-slate-600 hover:border-med-blue hover:text-med-blue hover:bg-slate-50' => $category !== $galleryCategory->slug,
                                 ])>

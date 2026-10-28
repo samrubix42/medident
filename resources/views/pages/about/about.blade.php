@@ -35,7 +35,7 @@
                 </div>
 
                 {{-- Specialties Pills --}}
-                <div class="mt-10 grid grid-cols-3 gap-3 border-t border-slate-100 pt-6">
+                <div class="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-slate-100 pt-6">
                     <div class="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-3.5 shadow-sm">
                         <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sky-50 text-xl text-med-blue">
                             <i class="ri-stethoscope-line"></i>
@@ -99,7 +99,7 @@
     {{-- STATS SECTION --}}
     <section class="border-y border-slate-100 bg-white py-10 sm:py-12">
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 gap-6 rounded-3xl bg-med-navy p-8 text-white shadow-xl sm:p-10 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-4 sm:gap-6 rounded-3xl bg-med-navy p-6 sm:p-10 text-white shadow-xl lg:grid-cols-4">
                 <div class="text-center">
                     <p class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">5,000+</p>
                     <p class="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-300">Treated Patients</p>
@@ -412,21 +412,21 @@
                                 </div>
                             </div>
 
-                            <div class="mt-6 flex flex-wrap items-center gap-3">
+                            <div class="mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
                                 <a href="tel:+918800023032"
-                                   class="inline-flex items-center gap-2 rounded-full bg-med-navy px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-med-blue hover:shadow-md">
+                                   class="inline-flex items-center justify-center gap-2 rounded-full bg-med-navy px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-med-blue hover:shadow-md">
                                     <i class="ri-phone-line"></i>
                                     <span>+91-8800023032</span>
                                 </a>
 
                                 <a href="tel:+911204169996"
-                                   class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-med-navy shadow-sm transition hover:border-med-blue hover:text-med-blue">
+                                   class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-med-navy shadow-sm transition hover:border-med-blue hover:text-med-blue">
                                     <i class="ri-phone-line"></i>
                                     <span>0120-4169996</span>
                                 </a>
 
                                 <a href="{{ route('physician') }}"
-                                   class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-med-navy shadow-sm transition hover:border-med-blue hover:text-med-blue">
+                                   class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-med-navy shadow-sm transition hover:border-med-blue hover:text-med-blue">
                                     <span>View Profile</span>
                                     <i class="ri-arrow-right-line"></i>
                                 </a>
@@ -495,22 +495,22 @@
                                 </div>
                             </div>
 
-                            <div class="mt-6 flex flex-wrap items-center gap-3">
+                            <div class="mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
                                 <a href="tel:+918290582582"
-                                   class="inline-flex items-center gap-2 rounded-full bg-cyan-700 px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-cyan-800 hover:shadow-md">
+                                   class="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-700 px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-cyan-800 hover:shadow-md">
                                     <i class="ri-phone-line"></i>
                                     <span>+91-8290582582</span>
                                 </a>
 
                                 <a href="{{ route('dentist') }}"
-                                   class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-med-navy shadow-sm transition hover:border-cyan-700 hover:text-cyan-700">
+                                   class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-med-navy shadow-sm transition hover:border-cyan-700 hover:text-cyan-700">
                                     <span>View Profile</span>
                                     <i class="ri-arrow-right-line"></i>
                                 </a>
 
                                 <button type="button"
                                    @click="$dispatch('open-booking-modal')"
-                                   class="inline-flex items-center gap-2 rounded-full border border-cyan-700/30 bg-cyan-50/70 px-5 py-2.5 text-xs font-semibold text-cyan-700 transition hover:bg-cyan-100">
+                                   class="inline-flex items-center justify-center gap-2 rounded-full border border-cyan-700/30 bg-cyan-50/70 px-5 py-2.5 text-xs font-semibold text-cyan-700 transition hover:bg-cyan-100">
                                     <span>Book Dental Visit</span>
                                     <i class="ri-arrow-right-line"></i>
                                 </button>
