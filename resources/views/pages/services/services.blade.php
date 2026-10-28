@@ -15,7 +15,7 @@
                 </h1>
 
                 <p class="mt-4 sm:mt-5 text-base leading-relaxed text-slate-600 sm:text-lg sm:leading-8">
-                    Explore our medical, diabetes, and dental services in Shastri Nagar, Ghaziabad. Each treatment is delivered with attentive clinical care, modern equipment, and clear guidance.
+                    Find the care you need. Explore our medical, diabetes, and dental services in Shastri Nagar, Ghaziabad. Each treatment is delivered with attentive clinical care, modern equipment, and clear guidance.
                 </p>
 
                 <div class="mt-7 flex flex-col gap-3.5 sm:flex-row sm:items-center">

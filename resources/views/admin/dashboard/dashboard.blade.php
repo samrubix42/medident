@@ -10,6 +10,22 @@
 
     $actions = [
         [
+            'label' => 'View bookings',
+            'hint' => 'Patient appointments',
+            'icon' => 'ri-calendar-check-line',
+            'iconClass' => 'bg-sky-50 text-med-blue',
+            'url' => route('admin.bookings'),
+            'navigate' => true,
+        ],
+        [
+            'label' => 'View inquiries',
+            'hint' => 'Respond to messages',
+            'icon' => 'ri-chat-3-line',
+            'iconClass' => 'bg-amber-50 text-amber-600',
+            'url' => route('admin.inquiries'),
+            'navigate' => true,
+        ],
+        [
             'label' => 'Manage services',
             'hint' => 'Update offerings',
             'icon' => 'ri-stethoscope-line',
@@ -21,25 +37,9 @@
             'label' => 'Add blog post',
             'hint' => 'Publish an article',
             'icon' => 'ri-article-line',
-            'iconClass' => 'bg-sky-50 text-med-blue',
+            'iconClass' => 'bg-slate-100 text-slate-700',
             'url' => route('admin.blog-posts.create'),
             'navigate' => false,
-        ],
-        [
-            'label' => 'View inquiries',
-            'hint' => 'Respond to messages',
-            'icon' => 'ri-chat-3-line',
-            'iconClass' => 'bg-amber-50 text-amber-600',
-            'url' => route('admin.inquiries'),
-            'navigate' => true,
-        ],
-        [
-            'label' => 'Manage gallery',
-            'hint' => 'Update clinic photos',
-            'icon' => 'ri-image-line',
-            'iconClass' => 'bg-emerald-50 text-emerald-600',
-            'url' => route('admin.gallery-images'),
-            'navigate' => true,
         ],
     ];
 @endphp
@@ -103,9 +103,17 @@
 
         {{-- Recent appointments --}}
         <section class="border border-slate-200 bg-white xl:col-span-2">
-            <div class="border-b border-slate-100 p-5">
-                <h3 class="font-bold text-med-navy">Recent appointments</h3>
-                <p class="mt-1 text-xs text-slate-500">Newest booking requests from the website.</p>
+            <div class="flex items-center justify-between border-b border-slate-100 p-5">
+                <div>
+                    <h3 class="font-bold text-med-navy">Recent appointments</h3>
+                    <p class="mt-1 text-xs text-slate-500">Newest booking requests from the website.</p>
+                </div>
+
+                <a href="{{ route('admin.bookings') }}"
+                    wire:navigate
+                    class="text-xs font-semibold text-med-blue transition hover:underline">
+                    View all bookings &rarr;
+                </a>
             </div>
 
             <div class="overflow-x-auto">

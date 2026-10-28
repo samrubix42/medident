@@ -77,6 +77,22 @@
                     Dashboard
                 </a>
 
+                <a href="{{ route('admin.bookings') }}"
+                    wire:navigate
+                    @click="open = false"
+                    @class([
+                        'flex items-center gap-3 px-3 py-2.5 text-sm transition',
+                        'bg-sky-50 font-semibold text-med-blue' => request()->routeIs('admin.bookings'),
+                        'font-medium text-slate-500 hover:bg-slate-50 hover:text-med-navy' => ! request()->routeIs('admin.bookings'),
+                    ])>
+                    <i @class([
+                        'ri-calendar-check-line text-lg',
+                        'text-med-blue' => request()->routeIs('admin.bookings'),
+                        'text-slate-400' => ! request()->routeIs('admin.bookings'),
+                    ])></i>
+                    Bookings
+                </a>
+
                 <a href="{{ route('admin.reviews') }}"
                     wire:navigate
                     @click="open = false"
