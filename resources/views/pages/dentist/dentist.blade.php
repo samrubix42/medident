@@ -18,12 +18,7 @@
 
             <div class="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,.85fr)] lg:gap-14">
                 <div>
-                    <div class="inline-flex items-center gap-2 rounded-full border border-cyan-100 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-700 shadow-sm">
-                        <i class="ri-tooth-line text-sm"></i>
-                        <span>Dental Surgeon in Shastri Nagar</span>
-                    </div>
-
-                    <h1 class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-tight text-med-navy sm:text-5xl lg:text-[3.5rem]">
+                    <h1 class="text-3xl font-extrabold leading-[1.12] tracking-tight text-med-navy sm:text-5xl lg:text-[3.5rem]">
                         Dr. Ratika Gupta<span class="text-cyan-600">.</span>
                         <span class="mt-2 block text-2xl sm:text-3xl lg:text-4xl font-bold text-med-blue">Best Dentist in Shastri Nagar, Ghaziabad</span>
                     </h1>
@@ -32,17 +27,19 @@
                         Dr. Ratika Gupta is an experienced dental surgeon providing thoughtful, family-friendly dental care at MediDENT Multicare Clinic in Shastri Nagar, Ghaziabad. With over 12 years of clinical experience, she helps children and adults protect their oral health through painless preventive, cosmetic, and restorative dentistry.
                     </p>
 
-                    <div class="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-slate-600">
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 shadow-sm">
-                            <i class="ri-award-line text-cyan-700"></i>
-                            <span>12+ years experience</span>
+                    <div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-5 text-sm font-medium text-slate-600">
+                        <span class="inline-flex items-center gap-2">
+                            <i class="ri-award-line text-cyan-700 text-base"></i>
+                            <strong class="text-med-navy font-semibold">12+ years</strong> experience
                         </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 shadow-sm">
-                            <i class="ri-graduation-cap-line text-cyan-700"></i>
-                            <span>B.D.S., M.D.S.</span>
+                        <span class="h-1 w-1 rounded-full bg-slate-300"></span>
+                        <span class="inline-flex items-center gap-2">
+                            <i class="ri-graduation-cap-line text-cyan-700 text-base"></i>
+                            <strong class="text-med-navy font-semibold">B.D.S., M.D.S.</strong>
                         </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 shadow-sm">
-                            <i class="ri-parent-line text-cyan-700"></i>
+                        <span class="h-1 w-1 rounded-full bg-slate-300"></span>
+                        <span class="inline-flex items-center gap-2">
+                            <i class="ri-parent-line text-cyan-700 text-base"></i>
                             <span>Pediatric &amp; preventive care</span>
                         </span>
                     </div>
@@ -81,12 +78,6 @@
                             <p class="mt-0.5 text-lg font-bold text-med-navy">Dr. Ratika Gupta</p>
                             <p class="mt-0.5 text-xs text-slate-500">B.D.S., M.D.S. · MediDENT Multicare Clinic</p>
                         </div>
-                    </div>
-
-                    {{-- Experience Badge --}}
-                    <div class="absolute -left-3 top-6 hidden rounded-2xl bg-med-navy px-4 py-3 text-white shadow-xl sm:block">
-                        <p class="text-2xl font-extrabold leading-none">12+</p>
-                        <p class="mt-1 text-[10px] font-semibold uppercase tracking-wider text-cyan-200">Years of Care</p>
                     </div>
                 </div>
             </div>
@@ -236,26 +227,19 @@
                                 >
 
                                 <div class="absolute inset-0 bg-gradient-to-t from-med-navy/30 via-transparent to-transparent"></div>
-
-                                <span class="absolute left-4 top-4 grid h-10 w-10 place-items-center rounded-2xl bg-white/95 text-xl text-cyan-700 shadow-sm backdrop-blur">
-                                    <i class="{{ $service['icon'] }}"></i>
-                                </span>
                             </div>
                         @endif
 
                         <div class="flex flex-1 flex-col p-6 sm:p-7">
-                            @if (! $service['image'])
-                                <span class="grid h-12 w-12 place-items-center rounded-2xl bg-cyan-50 text-2xl text-cyan-700 transition group-hover:scale-110">
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-xl font-bold leading-snug text-med-navy group-hover:text-cyan-700 transition-colors">
+                                    {{ $service['title'] }}
+                                </h3>
+
+                                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-cyan-50 text-xl text-cyan-700 transition group-hover:scale-110">
                                     <i class="{{ $service['icon'] }}"></i>
                                 </span>
-                            @endif
-
-                            <h3 @class([
-                                'text-xl font-bold leading-snug text-med-navy group-hover:text-cyan-700 transition-colors',
-                                'mt-4' => ! $service['image'],
-                            ])>
-                                {{ $service['title'] }}
-                            </h3>
+                            </div>
 
                             <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
                                 {{ $service['description'] }}

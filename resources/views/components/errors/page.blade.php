@@ -64,10 +64,9 @@
                 <div class="pointer-events-none absolute bottom-0 left-10 h-80 w-80 rounded-full bg-teal-50/50 blur-3xl"></div>
 
                 <div class="relative mx-auto max-w-3xl px-5 text-center sm:px-6 lg:px-8">
-                    <span class="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-med-blue shadow-sm">
-                        <i class="ri-alert-line text-sm"></i>
-                        <span>Error {{ $code }}</span>
-                    </span>
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-blue">
+                        Error {{ $code }}
+                    </p>
 
                     <p class="mt-8 text-[6rem] font-extrabold leading-none tracking-[-0.06em] text-slate-200/80 sm:text-[9rem]" aria-hidden="true">
                         {{ $code }}

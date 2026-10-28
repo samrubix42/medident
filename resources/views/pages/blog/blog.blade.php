@@ -6,12 +6,7 @@
 
         <div class="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-med-blue shadow-sm">
-                    <i class="ri-article-line text-sm"></i>
-                    <span>Health Journal</span>
-                </div>
-
-                <h1 class="mt-6 text-3xl font-extrabold tracking-tight text-med-navy sm:text-5xl lg:text-6xl">
+                <h1 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-5xl lg:text-6xl">
                     Clear health guidance from our <br class="hidden sm:inline" />
                     <span class="text-med-blue">care team<span class="text-med-red">.</span></span>
                 </h1>
@@ -132,14 +127,15 @@
                                     </span>
                                 @endif
 
-                                @if ($post->category)
-                                    <span class="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-med-blue shadow-sm backdrop-blur-md">
-                                        {{ $post->category->title }}
-                                    </span>
-                                @endif
                             </a>
 
                             <div class="flex flex-1 flex-col p-6 sm:p-7">
+                                @if ($post->category)
+                                    <p class="text-xs font-bold uppercase tracking-wider text-med-blue mb-2.5">
+                                        {{ $post->category->title }}
+                                    </p>
+                                @endif
+
                                 <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-slate-400">
                                     <span class="inline-flex items-center gap-1.5">
                                         <i class="ri-calendar-line text-sm text-med-blue"></i>

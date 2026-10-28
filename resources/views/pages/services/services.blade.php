@@ -143,15 +143,15 @@
                                 @endif
 
                                 <div class="absolute inset-0 bg-gradient-to-t from-med-navy/30 via-transparent to-transparent"></div>
-
-                                @if ($service->category)
-                                    <span class="absolute left-4 top-4 rounded-full bg-white/95 px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-med-blue shadow-sm backdrop-blur">
-                                        {{ $service->category->title }}
-                                    </span>
-                                @endif
                             </a>
 
                             <div class="flex flex-1 flex-col p-6 sm:p-7">
+                                @if ($service->category)
+                                    <p class="text-xs font-bold uppercase tracking-wider text-med-blue mb-2.5">
+                                        {{ $service->category->title }}
+                                    </p>
+                                @endif
+
                                 <h3 class="text-xl font-bold leading-snug tracking-tight text-med-navy transition-colors group-hover:text-med-blue">
                                     <a href="{{ route('services.show', $service->slug) }}">
                                         {{ $service->title }}

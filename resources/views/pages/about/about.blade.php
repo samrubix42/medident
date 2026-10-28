@@ -365,10 +365,6 @@
                             >
 
                             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-med-navy/50 via-transparent to-transparent"></div>
-
-                            <span class="absolute left-5 top-5 rounded-full bg-white/95 px-4 py-1.5 text-xs font-bold text-med-blue shadow-sm backdrop-blur">
-                                Diabetologist &amp; General Physician
-                            </span>
                         </div>
 
                         <div class="p-6 sm:p-8 lg:p-10">
@@ -452,10 +448,6 @@
                             >
 
                             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-med-navy/50 via-transparent to-transparent"></div>
-
-                            <span class="absolute right-5 top-5 rounded-full bg-white/95 px-4 py-1.5 text-xs font-bold text-cyan-700 shadow-sm backdrop-blur">
-                                Dental Surgeon
-                            </span>
                         </div>
 
                         <div class="p-6 sm:p-8 lg:p-10">

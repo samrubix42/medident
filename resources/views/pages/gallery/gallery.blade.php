@@ -26,12 +26,7 @@
 
         <div class="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-med-blue shadow-sm">
-                    <i class="ri-gallery-line text-sm"></i>
-                    <span>Clinic Gallery</span>
-                </div>
-
-                <h1 class="mt-6 text-3xl font-extrabold tracking-tight text-med-navy sm:text-5xl lg:text-6xl">
+                <h1 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-5xl lg:text-6xl">
                     A closer look at <br class="hidden sm:inline" />
                     <span class="text-med-blue">care at MediDENT<span class="text-med-red">.</span></span>
                 </h1>
@@ -40,10 +35,8 @@
                     Explore moments from our modern clinic, meet our doctors, and see the medical and dental care spaces that support your family's health and wellness.
                 </p>
 
-                <div class="mt-8 inline-flex items-center gap-3 rounded-full border border-slate-200/80 bg-white/90 backdrop-blur-sm px-5 py-2.5 text-xs sm:text-sm font-medium text-slate-600 shadow-sm">
-                    <span class="grid h-7 w-7 place-items-center rounded-full bg-sky-50 text-med-blue">
-                        <i class="ri-image-2-line"></i>
-                    </span>
+                <div class="mt-7 flex items-center gap-3 text-sm text-slate-500">
+                    <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
                     <span>
                         <strong class="font-bold text-med-navy">{{ $this->categories->sum('images_count') }}</strong>
                         photos across <span class="font-semibold text-med-navy">{{ $this->categories->count() }} categories</span>
@@ -160,12 +153,12 @@
 
                             <span class="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                                 @if ($image->category)
-                                    <span class="inline-flex rounded-full bg-white/90 backdrop-blur-md px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-med-navy shadow-sm">
+                                    <span class="block text-xs font-bold uppercase tracking-wider text-cyan-300 mb-1">
                                         {{ $image->category->title }}
                                     </span>
                                 @endif
 
-                                <span class="mt-2.5 flex items-end justify-between gap-3">
+                                <span class="mt-1 flex items-end justify-between gap-3">
                                     <span class="text-base font-bold leading-tight text-white sm:text-lg">
                                         {{ $imageTitle }}
                                     </span>

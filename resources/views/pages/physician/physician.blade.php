@@ -18,12 +18,7 @@
 
             <div class="mt-8 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,.85fr)] lg:gap-14">
                 <div>
-                    <div class="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-med-blue shadow-sm">
-                        <i class="ri-stethoscope-line text-sm"></i>
-                        <span>Diabetologist &amp; General Physician in Ghaziabad</span>
-                    </div>
-
-                    <h1 class="mt-5 text-3xl font-extrabold leading-[1.12] tracking-tight text-med-navy sm:text-5xl lg:text-[3.5rem]">
+                    <h1 class="text-3xl font-extrabold leading-[1.12] tracking-tight text-med-navy sm:text-5xl lg:text-[3.5rem]">
                         Dr. Divya Prakash<span class="text-med-blue">.</span>
                         <span class="mt-2 block text-2xl sm:text-3xl lg:text-4xl font-bold text-med-blue">Best Physician Doctor &amp; Consultant in Ghaziabad</span>
                     </h1>
@@ -32,17 +27,19 @@
                         Dr. Divya Prakash is a diabetologist and general physician with over 10 years of experience. He is one of the most trusted physicians in Ghaziabad and Delhi NCR, providing comprehensive medical care at MediDENT Multicare Clinic in Shastri Nagar.
                     </p>
 
-                    <div class="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-slate-600">
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 shadow-sm">
-                            <i class="ri-award-line text-med-blue"></i>
-                            <span>10+ years experience</span>
+                    <div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-5 text-sm font-medium text-slate-600">
+                        <span class="inline-flex items-center gap-2">
+                            <i class="ri-award-line text-med-blue text-base"></i>
+                            <strong class="text-med-navy font-semibold">10+ years</strong> experience
                         </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 shadow-sm">
-                            <i class="ri-graduation-cap-line text-med-blue"></i>
-                            <span>M.B.B.S., D.N.B., MNAMS</span>
+                        <span class="h-1 w-1 rounded-full bg-slate-300"></span>
+                        <span class="inline-flex items-center gap-2">
+                            <i class="ri-graduation-cap-line text-med-blue text-base"></i>
+                            <strong class="text-med-navy font-semibold">M.B.B.S., D.N.B., MNAMS</strong>
                         </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 shadow-sm">
-                            <i class="ri-heart-pulse-line text-med-red"></i>
+                        <span class="h-1 w-1 rounded-full bg-slate-300"></span>
+                        <span class="inline-flex items-center gap-2">
+                            <i class="ri-heart-pulse-line text-med-red text-base"></i>
                             <span>CCEBDM (Diabetology)</span>
                         </span>
                     </div>
@@ -81,12 +78,6 @@
                             <p class="mt-0.5 text-lg font-bold text-med-navy">Dr. Divya Prakash</p>
                             <p class="mt-0.5 text-xs text-slate-500">M.B.B.S., D.N.B., MNAMS, CCEBDM · MediDENT Multicare Clinic</p>
                         </div>
-                    </div>
-
-                    {{-- Experience Badge --}}
-                    <div class="absolute -left-3 top-6 hidden rounded-2xl bg-med-navy px-4 py-3 text-white shadow-xl sm:block">
-                        <p class="text-2xl font-extrabold leading-none">10+</p>
-                        <p class="mt-1 text-[10px] font-semibold uppercase tracking-wider text-cyan-200">Years of Care</p>
                     </div>
                 </div>
             </div>
@@ -273,26 +264,19 @@
                                 >
 
                                 <div class="absolute inset-0 bg-gradient-to-t from-med-navy/30 via-transparent to-transparent"></div>
-
-                                <span class="absolute left-4 top-4 grid h-10 w-10 place-items-center rounded-2xl bg-white/95 text-xl text-med-blue shadow-sm backdrop-blur">
-                                    <i class="{{ $service['icon'] }}"></i>
-                                </span>
                             </div>
                         @endif
 
                         <div class="flex flex-1 flex-col p-6 sm:p-7">
-                            @if (! $service['image'])
-                                <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-2xl text-med-blue transition group-hover:scale-110">
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-xl font-bold leading-snug text-med-navy group-hover:text-med-blue transition-colors">
+                                    {{ $service['title'] }}
+                                </h3>
+
+                                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-sky-50 text-xl text-med-blue transition group-hover:scale-110">
                                     <i class="{{ $service['icon'] }}"></i>
                                 </span>
-                            @endif
-
-                            <h3 @class([
-                                'text-xl font-bold leading-snug text-med-navy group-hover:text-med-blue transition-colors',
-                                'mt-4' => ! $service['image'],
-                            ])>
-                                {{ $service['title'] }}
-                            </h3>
+                            </div>
 
                             <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
                                 {{ $service['description'] }}

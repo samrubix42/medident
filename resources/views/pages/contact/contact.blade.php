@@ -12,12 +12,7 @@
 
         <div class="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-med-blue shadow-sm">
-                    <i class="ri-customer-service-2-line text-sm"></i>
-                    <span>Contact Us</span>
-                </div>
-
-                <h1 class="mt-6 text-3xl font-extrabold tracking-tight text-med-navy sm:text-5xl lg:text-6xl">
+                <h1 class="text-3xl font-extrabold tracking-tight text-med-navy sm:text-5xl lg:text-6xl">
                     We're here to help with your <br class="hidden sm:inline" />
                     <span class="text-med-blue">healthcare questions<span class="text-med-red">.</span></span>
                 </h1>

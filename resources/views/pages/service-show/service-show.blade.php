@@ -19,10 +19,9 @@
             </nav>
 
             @if ($service->category)
-                <div class="mt-5 inline-flex items-center gap-2 rounded-full border border-sky-100 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-med-blue shadow-sm">
-                    <i class="ri-first-aid-kit-line text-sm"></i>
-                    <span>{{ $service->category->title }}</span>
-                </div>
+                <p class="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-med-blue">
+                    {{ $service->category->title }}
+                </p>
             @endif
 
             <h1 class="mt-4 text-3xl font-extrabold leading-[1.16] tracking-tight text-med-navy sm:text-5xl lg:text-[3.25rem]">
