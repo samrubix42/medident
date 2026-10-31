@@ -263,4 +263,96 @@
             </button>
         </div>
     </form>
+
+    <section class="border border-slate-200 bg-white">
+        <div class="flex items-start gap-3 border-b border-slate-100 px-5 py-4 sm:px-6">
+            <span class="grid h-10 w-10 shrink-0 place-items-center bg-amber-50 text-xl text-amber-600">
+                <i class="ri-lock-password-line"></i>
+            </span>
+
+            <div>
+                <h3 class="font-bold text-med-navy">Change password</h3>
+                <p class="mt-1 text-xs text-slate-500">
+                    Confirm your current password before choosing a new one.
+                </p>
+            </div>
+        </div>
+
+        <form wire:submit="changePassword" class="space-y-5 p-5 sm:p-6">
+            <div>
+                <label for="settings-current-password" class="text-sm font-semibold text-med-navy">
+                    Current password
+                </label>
+
+                <input
+                    id="settings-current-password"
+                    type="password"
+                    wire:model="currentPassword"
+                    autocomplete="current-password"
+                    class="{{ $inputClasses }} @error('currentPassword') border-red-300 @enderror"
+                >
+
+                @error('currentPassword')
+                    <p class="mt-1.5 text-xs font-medium text-med-red">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                    <label for="settings-new-password" class="text-sm font-semibold text-med-navy">
+                        New password
+                    </label>
+
+                    <input
+                        id="settings-new-password"
+                        type="password"
+                        wire:model="newPassword"
+                        autocomplete="new-password"
+                        class="{{ $inputClasses }} @error('newPassword') border-red-300 @enderror"
+                    >
+
+                    @error('newPassword')
+                        <p class="mt-1.5 text-xs font-medium text-med-red">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="settings-confirm-password" class="text-sm font-semibold text-med-navy">
+                        Confirm new password
+                    </label>
+
+                    <input
+                        id="settings-confirm-password"
+                        type="password"
+                        wire:model="newPassword_confirmation"
+                        autocomplete="new-password"
+                        class="{{ $inputClasses }} @error('newPassword_confirmation') border-red-300 @enderror"
+                    >
+
+                    @error('newPassword_confirmation')
+                        <p class="mt-1.5 text-xs font-medium text-med-red">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4 border-t border-slate-100 pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <p class="flex items-start gap-2 text-sm leading-6 text-slate-500">
+                    <i class="ri-shield-check-line mt-0.5 text-base text-med-blue"></i>
+                    Use at least 8 characters and keep your password private.
+                </p>
+
+                <button
+                    type="submit"
+                    wire:loading.attr="disabled"
+                    wire:target="changePassword"
+                    class="inline-flex shrink-0 items-center justify-center gap-2 bg-med-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-800 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                    <i class="ri-loader-4-line animate-spin" wire:loading wire:target="changePassword"></i>
+                    <i class="ri-lock-password-line" wire:loading.remove wire:target="changePassword"></i>
+                    <span wire:loading.remove wire:target="changePassword">Update password</span>
+                    <span wire:loading wire:target="changePassword">Updating...</span>
+                </button>
+            </div>
+        </form>
+    </section>
 </div>

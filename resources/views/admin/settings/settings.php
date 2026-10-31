@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ClinicSetting;
+use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -26,6 +27,12 @@ new #[Layout('layouts::admin')] #[Title('Clinic Settings')] class extends Compon
     public string $instagramUrl = '';
 
     public string $linkedinUrl = '';
+
+    public string $currentPassword = '';
+
+    public string $newPassword = '';
+
+    public string $newPassword_confirmation = '';
 
     public function mount(): void
     {
@@ -82,5 +89,22 @@ new #[Layout('layouts::admin')] #[Title('Clinic Settings')] class extends Compon
         ]);
 
         $this->dispatch('toast-show', message: 'Clinic settings updated successfully.', type: 'success');
+    }
+
+    public function changePassword(): void
+    {
+        abort_unless(auth()->user() instanceof User, 403);
+
+        $validated = $this->validate([
+            'currentPassword' => ['required', 'string', 'current_password'],
+            'newPassword' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user = auth()->user();
+        $user->password = $validated['newPassword'];
+        $user->save();
+
+        $this->reset(['currentPassword', 'newPassword', 'newPassword_confirmation']);
+        $this->dispatch('toast-show', message: 'Password changed successfully.', type: 'success');
     }
 };

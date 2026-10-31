@@ -4,6 +4,7 @@ use App\Models\ClinicSetting;
 use App\Models\User;
 use Database\Seeders\ClinicSettingSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
@@ -21,8 +22,69 @@ test('an authenticated admin can view the clinic settings page', function () {
     $this->get('/admin/settings')
         ->assertOk()
         ->assertSee('Clinic settings')
+        ->assertSee('Change password')
+        ->assertSee('Current password')
+        ->assertSee('New password')
+        ->assertSee('Confirm new password')
         ->assertSee($settings->phone)
         ->assertSee($settings->address);
+});
+
+test('an admin can change their password after confirming the current password', function () {
+    $user = User::factory()->create([
+        'password' => 'current-password',
+    ]);
+
+    $this->actingAs($user);
+
+    Livewire::test('admin::settings')
+        ->set('currentPassword', 'current-password')
+        ->set('newPassword', 'new-secure-password')
+        ->set('newPassword_confirmation', 'new-secure-password')
+        ->call('changePassword')
+        ->assertHasNoErrors()
+        ->assertSet('currentPassword', '')
+        ->assertSet('newPassword', '')
+        ->assertSet('newPassword_confirmation', '')
+        ->assertDispatched('toast-show');
+
+    expect(Hash::check('new-secure-password', $user->fresh()->password))->toBeTrue();
+});
+
+test('an admin cannot change their password with an incorrect current password', function () {
+    $user = User::factory()->create([
+        'password' => 'current-password',
+    ]);
+
+    $this->actingAs($user);
+
+    Livewire::test('admin::settings')
+        ->set('currentPassword', 'incorrect-password')
+        ->set('newPassword', 'new-secure-password')
+        ->set('newPassword_confirmation', 'new-secure-password')
+        ->call('changePassword')
+        ->assertHasErrors(['currentPassword' => 'current_password']);
+
+    expect(Hash::check('current-password', $user->fresh()->password))->toBeTrue();
+});
+
+test('an admin must confirm a sufficiently long new password before changing it', function () {
+    $user = User::factory()->create([
+        'password' => 'current-password',
+    ]);
+
+    $this->actingAs($user);
+
+    Livewire::test('admin::settings')
+        ->set('currentPassword', 'current-password')
+        ->set('newPassword', 'short')
+        ->set('newPassword_confirmation', 'different')
+        ->call('changePassword')
+        ->assertHasErrors([
+            'newPassword' => ['min', 'confirmed'],
+        ]);
+
+    expect(Hash::check('current-password', $user->fresh()->password))->toBeTrue();
 });
 
 test('an admin can update the clinic settings', function () {
