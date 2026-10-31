@@ -154,7 +154,7 @@ test('an admin can delete page seo metadata', function () {
 test('the page seo seeder creates metadata for the public pages', function () {
     $this->seed(PageSeoSeeder::class);
 
-    expect(PageSeo::count())->toBe(8)
+    expect(PageSeo::count())->toBe(9)
         ->and(PageSeo::query()->where('page_slug', 'home')->exists())->toBeTrue()
         ->and(PageSeo::query()->where('page_slug', 'about')->exists())->toBeTrue()
         ->and(PageSeo::query()->where('page_slug', 'gallery')->exists())->toBeTrue()
@@ -162,9 +162,10 @@ test('the page seo seeder creates metadata for the public pages', function () {
         ->and(PageSeo::query()->where('page_slug', 'services')->exists())->toBeTrue()
         ->and(PageSeo::query()->where('page_slug', 'contact')->exists())->toBeTrue()
         ->and(PageSeo::query()->where('page_slug', 'dentist')->exists())->toBeTrue()
-        ->and(PageSeo::query()->where('page_slug', 'physician')->exists())->toBeTrue();
+        ->and(PageSeo::query()->where('page_slug', 'physician')->exists())->toBeTrue()
+        ->and(PageSeo::query()->where('page_slug', 'gastroenterologist')->exists())->toBeTrue();
 
     $this->seed(PageSeoSeeder::class);
 
-    expect(PageSeo::count())->toBe(8);
+    expect(PageSeo::count())->toBe(9);
 });

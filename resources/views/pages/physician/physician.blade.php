@@ -22,11 +22,11 @@
 
                     <h1 class="mt-3 text-3xl font-extrabold leading-[1.12] tracking-tight text-med-navy sm:text-5xl lg:text-[3.5rem]">
                         Dr. Divya Prakash<span class="text-med-blue">.</span>
-                        <span class="mt-2 block text-2xl sm:text-3xl lg:text-4xl font-bold text-med-blue">Best Physician Doctor &amp; Consultant in Ghaziabad</span>
+                        <span class="mt-2 block text-2xl sm:text-3xl lg:text-4xl font-bold text-med-blue">Consultant Diabetologist &amp; General Physician in Ghaziabad</span>
                     </h1>
 
                     <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg sm:leading-8">
-                        Dr. Divya Prakash is a diabetologist and general physician with over 10 years of experience. He is one of the most trusted physicians in Ghaziabad and Delhi NCR, providing comprehensive medical care at MediDENT Multicare Clinic in Shastri Nagar.
+                        Dr. Divya Prakash is a diabetologist and general physician with over 10 years of experience. He is an experienced physician in Ghaziabad and Delhi NCR, providing comprehensive medical care at MediDENT Multicare Clinic in Shastri Nagar.
                     </p>
 
                     <div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-5 text-sm font-medium text-slate-600">

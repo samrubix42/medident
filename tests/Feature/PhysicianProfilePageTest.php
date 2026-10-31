@@ -41,11 +41,11 @@ test('the physician profile page is available at its keyword slug', function () 
 test('the physician profile page renders its canonical seo metadata', function () {
     $this->get(route('physician'))
         ->assertOk()
-        ->assertSee('<title>Best Physician Doctor in Ghaziabad | Dr. Divya Prakash</title>', false)
+        ->assertSee('<title>Dr. Divya Prakash | Diabetologist &amp; General Physician in Ghaziabad</title>', false)
         ->assertSee('<link rel="canonical" href="'.route('physician').'">', false)
         ->assertSee('<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">', false)
         ->assertSee('<meta property="og:type" content="profile">', false)
-        ->assertSee('<meta property="og:title" content="Best Physician Doctor in Ghaziabad | Dr. Divya Prakash">', false)
+        ->assertSee('<meta property="og:title" content="Dr. Divya Prakash | Diabetologist &amp; General Physician in Ghaziabad">', false)
         ->assertSee('doctors/Dr.-Divya-Prakash-2.jpg')
         ->assertSee('Dr. Divya Prakash, diabetologist and general physician in Ghaziabad');
 });
@@ -53,7 +53,7 @@ test('the physician profile page renders its canonical seo metadata', function (
 test('the physician profile page shows qualifications, services, associations, and contact details', function () {
     $this->get(route('physician'))
         ->assertOk()
-        ->assertSee('Best Physician Doctor &amp; Consultant in Ghaziabad', false)
+        ->assertSee('Consultant Diabetologist &amp; General Physician in Ghaziabad', false)
         ->assertSee('Diabetologist &amp; General Physician', false)
         ->assertSee('Rajiv Gandhi University of Health Sciences, Karnataka')
         ->assertSee('Maharaja Agrasen Hospital, Punjabi Bagh, New Delhi')

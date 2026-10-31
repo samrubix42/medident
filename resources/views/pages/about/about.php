@@ -10,8 +10,8 @@ new class extends Component
         $metadata = PageSeo::metadataFor(
             'about',
             'About MediDENT Multicare Clinic | Doctors in Ghaziabad',
-            'Meet the doctors and learn about MediDENT Multicare Clinic\'s approach to general medicine, diabetes care and family dentistry in Shastri Nagar, Ghaziabad.',
-            'about MediDENT Multicare Clinic, doctors in Shastri Nagar Ghaziabad, Dr Divya Prakash, Dr Ratika Gupta, clinic in Ghaziabad',
+            'Meet the doctors and learn about MediDENT Multicare Clinic\'s approach to general medicine, diabetes care, pediatric gastroenterology and family dentistry in Shastri Nagar, Ghaziabad.',
+            'about MediDENT Multicare Clinic, doctors in Shastri Nagar Ghaziabad, Dr Divya Prakash, Dr Ratika Gupta, Dr Megha Rustagi, pediatric gastroenterologist Ghaziabad, clinic in Ghaziabad',
         );
 
         return $this->view()

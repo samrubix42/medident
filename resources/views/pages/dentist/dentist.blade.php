@@ -20,7 +20,7 @@
                 <div>
                     <h1 class="text-3xl font-extrabold leading-[1.12] tracking-tight text-med-navy sm:text-5xl lg:text-[3.5rem]">
                         Dr. Ratika Gupta<span class="text-cyan-600">.</span>
-                        <span class="mt-2 block text-2xl sm:text-3xl lg:text-4xl font-bold text-med-blue">Best Dentist in Shastri Nagar, Ghaziabad</span>
+                        <span class="mt-2 block text-2xl sm:text-3xl lg:text-4xl font-bold text-med-blue">Dental Surgeon in Shastri Nagar, Ghaziabad</span>
                     </h1>
 
                     <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg sm:leading-8">

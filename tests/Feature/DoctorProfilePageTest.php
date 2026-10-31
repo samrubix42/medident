@@ -50,11 +50,11 @@ test('legacy doctor urls redirect permanently to the profile page', function (st
 test('the doctor profile page renders its canonical seo metadata', function () {
     $this->get(route('dentist'))
         ->assertOk()
-        ->assertSee('<title>Dr. Ratika Gupta: Best Dentist in Shastri Nagar, Ghaziabad</title>', false)
+        ->assertSee('<title>Dr. Ratika Gupta | Dental Surgeon in Shastri Nagar, Ghaziabad</title>', false)
         ->assertSee('<link rel="canonical" href="'.route('dentist').'">', false)
         ->assertSee('<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">', false)
         ->assertSee('<meta property="og:type" content="profile">', false)
-        ->assertSee('<meta property="og:title" content="Dr. Ratika Gupta: Best Dentist in Shastri Nagar, Ghaziabad">', false)
+        ->assertSee('<meta property="og:title" content="Dr. Ratika Gupta | Dental Surgeon in Shastri Nagar, Ghaziabad">', false)
         ->assertSee('dental/Dr.-Ratika-Gupta-4.jpg')
         ->assertSee('Dr. Ratika Gupta, dentist in Shastri Nagar, Ghaziabad');
 });
@@ -62,7 +62,7 @@ test('the doctor profile page renders its canonical seo metadata', function () {
 test('the doctor profile page shows qualifications, dental services, and contact details', function () {
     $this->get(route('dentist'))
         ->assertOk()
-        ->assertSee('Best Dentist in Shastri Nagar, Ghaziabad')
+        ->assertSee('Dental Surgeon in Shastri Nagar, Ghaziabad')
         ->assertSee('Bankey Bihari Dental College')
         ->assertSee('CCS University, Meerut')
         ->assertSee('Jaipur Dental College')

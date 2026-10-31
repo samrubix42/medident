@@ -32,6 +32,7 @@ test('stored page seo metadata is applied to public pages', function (string $pa
     'contact' => ['contact', 'contact'],
     'dentist' => ['dentist', 'dentist'],
     'physician' => ['physician', 'physician'],
+    'gastroenterologist' => ['gastroenterologist', 'gastroenterologist'],
 ]);
 
 test('public pages use their default metadata when no page seo entry exists', function () {
@@ -40,6 +41,6 @@ test('public pages use their default metadata when no page seo entry exists', fu
     $this->get(route('about'))
         ->assertOk()
         ->assertSee('<title>About MediDENT Multicare Clinic | Doctors in Ghaziabad</title>', false)
-        ->assertSee('<meta name="description" content="Meet the doctors and learn about MediDENT Multicare Clinic&#039;s approach to general medicine, diabetes care and family dentistry in Shastri Nagar, Ghaziabad.">', false)
-        ->assertSee('<meta name="keywords" content="about MediDENT Multicare Clinic, doctors in Shastri Nagar Ghaziabad, Dr Divya Prakash, Dr Ratika Gupta, clinic in Ghaziabad">', false);
+        ->assertSee('<meta name="description" content="Meet the doctors and learn about MediDENT Multicare Clinic&#039;s approach to general medicine, diabetes care, pediatric gastroenterology and family dentistry in Shastri Nagar, Ghaziabad.">', false)
+        ->assertSee('<meta name="keywords" content="about MediDENT Multicare Clinic, doctors in Shastri Nagar Ghaziabad, Dr Divya Prakash, Dr Ratika Gupta, Dr Megha Rustagi, pediatric gastroenterologist Ghaziabad, clinic in Ghaziabad">', false);
 });

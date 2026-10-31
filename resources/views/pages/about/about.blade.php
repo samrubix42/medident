@@ -387,7 +387,7 @@
                             </p>
 
                             <p class="mt-4 text-sm leading-relaxed text-slate-600">
-                                Dr. Divya Prakash has over 10 years of clinical experience as a Diabetologist and General Physician. He is one of the most trusted physicians in Delhi NCR at MediDENT Multicare Clinic, Shastri Nagar, Ghaziabad.
+                                Dr. Divya Prakash has over 10 years of clinical experience as a Diabetologist and General Physician. He is an experienced physician in Delhi NCR at MediDENT Multicare Clinic, Shastri Nagar, Ghaziabad.
                             </p>
 
                             <div class="mt-6 grid gap-3.5 border-t border-slate-100 pt-5 sm:grid-cols-2">
@@ -462,7 +462,7 @@
                             </h3>
 
                             <p class="mt-1.5 text-sm font-bold text-cyan-700">
-                                Best Dentist, Dental Surgeon
+                                Dental Surgeon &amp; Pediatric Dentist
                             </p>
 
                             <p class="mt-1 text-xs font-medium tracking-wide text-slate-400">
@@ -512,6 +512,89 @@
                                    @click="$dispatch('open-booking-modal')"
                                    class="inline-flex items-center justify-center gap-2 rounded-full border border-cyan-700/30 bg-cyan-50/70 px-5 py-2.5 text-xs font-semibold text-cyan-700 transition hover:bg-cyan-100">
                                     <span>Book Dental Visit</span>
+                                    <i class="ri-arrow-right-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                {{-- Dr. Megha Rustagi --}}
+                <article class="group overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-[0_25px_60px_rgba(18,50,74,0.12)]">
+                    <div class="grid lg:grid-cols-[.42fr_.58fr]">
+                        <div class="relative min-h-[340px] overflow-hidden bg-slate-100 lg:min-h-full">
+                            <img
+                                src="{{ asset('doctors/Dr.-Megha-Rustagi.jpeg') }}"
+                                alt="Dr. Megha Rustagi"
+                                loading="lazy"
+                                decoding="async"
+                                class="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-105"
+                            >
+
+                            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-med-navy/50 via-transparent to-transparent"></div>
+                        </div>
+
+                        <div class="p-6 sm:p-8 lg:p-10">
+                            <p class="text-xs font-bold uppercase tracking-[0.2em] text-med-blue">
+                                Pediatric Gastroenterology &amp; Hepatology
+                            </p>
+
+                            <h3 class="mt-2 text-2xl font-extrabold tracking-tight text-med-navy sm:text-3xl">
+                                <a href="{{ route('gastroenterologist') }}" class="transition hover:text-med-blue">
+                                    Dr. Megha Rustagi
+                                </a>
+                            </h3>
+
+                            <p class="mt-1.5 text-sm font-bold text-med-blue">
+                                Pediatric Gastroenterologist &amp; Hepatologist
+                            </p>
+
+                            <p class="mt-1 text-xs font-medium tracking-wide text-slate-400">
+                                M.B.B.S., M.D. Pediatrics, ISPGHAN &amp; M.U.H.S. Fellowships · 10+ Years Experience
+                            </p>
+
+                            <p class="mt-4 text-sm leading-relaxed text-slate-600">
+                                Dr. Megha Rustagi is an experienced Pediatrician and Pediatric Gastroenterologist &amp; Hepatologist with specialised fellowship training in pediatric gastroenterology and hepatology. She diagnoses and manages digestive, intestinal and liver disorders in infants, children and adolescents.
+                            </p>
+
+                            <div class="mt-6 grid gap-3.5 border-t border-slate-100 pt-5 sm:grid-cols-2">
+                                <div class="flex items-start gap-3 rounded-2xl border border-slate-100 bg-[#fbfdfd] p-3.5">
+                                    <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-sky-50 text-med-blue">
+                                        <i class="ri-heart-2-line text-lg"></i>
+                                    </span>
+                                    <div>
+                                        <p class="text-xs font-bold text-med-navy">Areas of Focus</p>
+                                        <p class="mt-0.5 text-xs leading-5 text-slate-600">Digestive, liver &amp; nutritional disorders</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3 rounded-2xl border border-slate-100 bg-[#fbfdfd] p-3.5">
+                                    <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-sky-50 text-med-blue">
+                                        <i class="ri-user-heart-line text-lg"></i>
+                                    </span>
+                                    <div>
+                                        <p class="text-xs font-bold text-med-navy">Care Approach</p>
+                                        <p class="mt-0.5 text-xs leading-5 text-slate-600">Compassionate, evidence-based, child-friendly</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
+                                <a href="tel:+918800023032"
+                                   class="inline-flex items-center justify-center gap-2 rounded-full bg-med-blue px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-sky-800 hover:shadow-md">
+                                    <i class="ri-phone-line"></i>
+                                    <span>+91-8800023032</span>
+                                </a>
+
+                                <a href="{{ route('gastroenterologist') }}"
+                                   class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-med-navy shadow-sm transition hover:border-med-blue hover:text-med-blue">
+                                    <span>View Profile</span>
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+
+                                <button type="button"
+                                   @click="$dispatch('open-booking-modal')"
+                                   class="inline-flex items-center justify-center gap-2 rounded-full border border-med-blue/30 bg-sky-50/70 px-5 py-2.5 text-xs font-semibold text-med-blue transition hover:bg-sky-100">
+                                    <span>Book Consultation</span>
                                     <i class="ri-arrow-right-line"></i>
                                 </button>
                             </div>

@@ -118,9 +118,11 @@ test('the footer shows the Techonika credit and doctor profile links', function 
         ->assertSee('Powered by')
         ->assertSee('href="https://techonika.com/"', false)
         ->assertSee('Techonika')
-        ->assertSee('Best Physician in Ghaziabad')
+        ->assertSee('Physician in Ghaziabad')
         ->assertSee('href="'.route('physician').'"', false)
-        ->assertSee('Best Dentist in Ghaziabad')
+        ->assertSee('Dentist in Ghaziabad')
         ->assertSee('href="'.route('dentist').'"', false)
+        ->assertSee('Pediatric Gastroenterologist in Ghaziabad')
+        ->assertSee('href="'.route('gastroenterologist').'"', false)
         ->assertDontSee('Medical · Diabetes · Dental Care');
 });

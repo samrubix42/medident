@@ -24,8 +24,8 @@ class PageSeoSeeder extends Seeder
                 'page_name' => 'About Us',
                 'page_slug' => 'about',
                 'meta_title' => 'About MediDENT Multicare Clinic | Doctors in Ghaziabad',
-                'meta_description' => 'Meet the doctors and learn about MediDENT Multicare Clinic\'s approach to general medicine, diabetes care and family dentistry in Shastri Nagar, Ghaziabad.',
-                'meta_keywords' => 'about MediDENT Multicare Clinic, doctors in Shastri Nagar Ghaziabad, Dr Divya Prakash, Dr Ratika Gupta, clinic in Ghaziabad',
+                'meta_description' => 'Meet the doctors and learn about MediDENT Multicare Clinic\'s approach to general medicine, diabetes care, pediatric gastroenterology and family dentistry in Shastri Nagar, Ghaziabad.',
+                'meta_keywords' => 'about MediDENT Multicare Clinic, doctors in Shastri Nagar Ghaziabad, Dr Divya Prakash, Dr Ratika Gupta, Dr Megha Rustagi, pediatric gastroenterologist Ghaziabad, clinic in Ghaziabad',
             ],
             [
                 'page_name' => 'Gallery',
@@ -58,16 +58,23 @@ class PageSeoSeeder extends Seeder
             [
                 'page_name' => 'Dr. Ratika Gupta',
                 'page_slug' => 'dentist',
-                'meta_title' => 'Dr. Ratika Gupta: Best Dentist in Shastri Nagar, Ghaziabad',
+                'meta_title' => 'Dr. Ratika Gupta | Dental Surgeon in Shastri Nagar, Ghaziabad',
                 'meta_description' => 'Dr. Ratika Gupta, B.D.S., M.D.S., is an experienced dental surgeon in Shastri Nagar, Ghaziabad offering family, cosmetic and implant dentistry. Book a visit.',
-                'meta_keywords' => 'best dentist in Shastri Nagar, dentist in Shastri Nagar Ghaziabad, Dr Ratika Gupta, dental surgeon Ghaziabad, pediatric dentist Ghaziabad, cosmetic dentistry Ghaziabad, dental implants Ghaziabad, root canal treatment Ghaziabad',
+                'meta_keywords' => 'dentist in Shastri Nagar, dentist in Shastri Nagar Ghaziabad, Dr Ratika Gupta, dental surgeon Ghaziabad, pediatric dentist Ghaziabad, cosmetic dentistry Ghaziabad, dental implants Ghaziabad, root canal treatment Ghaziabad',
             ],
             [
                 'page_name' => 'Dr. Divya Prakash',
                 'page_slug' => 'physician',
-                'meta_title' => 'Best Physician Doctor in Ghaziabad | Dr. Divya Prakash',
+                'meta_title' => 'Dr. Divya Prakash | Diabetologist & General Physician in Ghaziabad',
                 'meta_description' => 'Dr. Divya Prakash is a diabetologist and general physician in Ghaziabad with over 10 years of experience. Book a consultation at MediDENT, Shastri Nagar.',
-                'meta_keywords' => 'best physician in Ghaziabad, general physician Ghaziabad, diabetologist Ghaziabad, Dr Divya Prakash, physician near me Ghaziabad, consultant physician Shastri Nagar',
+                'meta_keywords' => 'general physician Ghaziabad, diabetologist Ghaziabad, Dr Divya Prakash, physician near me Ghaziabad, consultant physician Shastri Nagar',
+            ],
+            [
+                'page_name' => 'Dr. Megha Rustagi',
+                'page_slug' => 'gastroenterologist',
+                'meta_title' => 'Dr. Megha Rustagi | Pediatric Gastroenterologist in Ghaziabad',
+                'meta_description' => 'Dr. Megha Rustagi is a pediatric gastroenterologist and hepatologist in Ghaziabad with over 10 years of pediatric experience, treating digestive, liver and nutritional disorders in children.',
+                'meta_keywords' => 'pediatric gastroenterologist Ghaziabad, child gastroenterologist Ghaziabad, pediatric hepatologist Ghaziabad, Dr Megha Rustagi, child digestion specialist, pediatric liver specialist Ghaziabad, pediatric endoscopy Ghaziabad',
             ],
         ];
 

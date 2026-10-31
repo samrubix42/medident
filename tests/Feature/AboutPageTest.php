@@ -18,7 +18,10 @@ test('the about page shows the clinic story, statistics, and doctors', function 
         ->assertSee('Dr. Divya Prakash')
         ->assertSee('Diabetologist &amp; General Physician', false)
         ->assertSee('Dr. Ratika Gupta')
-        ->assertSee('Best Dentist, Dental Surgeon')
+        ->assertSee('Dental Surgeon &amp; Pediatric Dentist', false)
+        ->assertSee('Dr. Megha Rustagi')
+        ->assertSee('Pediatric Gastroenterologist &amp; Hepatologist', false)
         ->assertSee('doctors/Dr.-Divya-Prakash.jpeg')
+        ->assertSee('doctors/Dr.-Megha-Rustagi.jpeg')
         ->assertSee('doctors/Dr.-RatikaGupta.jpg');
 });

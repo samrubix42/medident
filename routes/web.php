@@ -22,8 +22,11 @@ Route::livewire('/best-dentist-ghaziabad', 'pages::dentist')->name('dentist');
 
 Route::livewire('/best-physician-ghaziabad', 'pages::physician')->name('physician');
 
+Route::livewire('/pediatric-gastroenterologist-ghaziabad', 'pages::gastroenterologist')->name('gastroenterologist');
+
 Route::redirect('/best-dentist-in-shastri-nagar-ghaziabad', '/best-dentist-ghaziabad', 301);
 Route::redirect('/dr-ratika-gupta', '/best-dentist-ghaziabad', 301);
+Route::redirect('/dr-megha-rustagi', '/pediatric-gastroenterologist-ghaziabad', 301);
 
 Route::livewire('/login', 'pages::auth.login')
     ->middleware('guest')

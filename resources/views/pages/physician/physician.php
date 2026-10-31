@@ -92,9 +92,9 @@ new class extends Component
 
         $metadata = PageSeo::metadataFor(
             'physician',
-            'Best Physician Doctor in Ghaziabad | Dr. Divya Prakash',
+            'Dr. Divya Prakash | Diabetologist & General Physician in Ghaziabad',
             'Dr. Divya Prakash is a diabetologist and general physician in Ghaziabad with over 10 years of experience. Book a consultation at MediDENT, Shastri Nagar.',
-            'best physician in Ghaziabad, general physician Ghaziabad, diabetologist Ghaziabad, Dr Divya Prakash, physician near me Ghaziabad, consultant physician Shastri Nagar',
+            'general physician Ghaziabad, diabetologist Ghaziabad, Dr Divya Prakash, physician near me Ghaziabad, consultant physician Shastri Nagar',
         );
 
         $title = $metadata['title'];

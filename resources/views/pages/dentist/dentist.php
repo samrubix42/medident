@@ -92,9 +92,9 @@ new class extends Component
 
         $metadata = PageSeo::metadataFor(
             'dentist',
-            'Dr. Ratika Gupta: Best Dentist in Shastri Nagar, Ghaziabad',
+            'Dr. Ratika Gupta | Dental Surgeon in Shastri Nagar, Ghaziabad',
             'Dr. Ratika Gupta, B.D.S., M.D.S., is an experienced dental surgeon in Shastri Nagar, Ghaziabad offering family, cosmetic and implant dentistry. Book a visit.',
-            'best dentist in Shastri Nagar, dentist in Shastri Nagar Ghaziabad, Dr Ratika Gupta, dental surgeon Ghaziabad, pediatric dentist Ghaziabad, cosmetic dentistry Ghaziabad, dental implants Ghaziabad, root canal treatment Ghaziabad',
+            'dentist in Shastri Nagar, dentist in Shastri Nagar Ghaziabad, Dr Ratika Gupta, dental surgeon Ghaziabad, pediatric dentist Ghaziabad, cosmetic dentistry Ghaziabad, dental implants Ghaziabad, root canal treatment Ghaziabad',
         );
 
         $title = $metadata['title'];
