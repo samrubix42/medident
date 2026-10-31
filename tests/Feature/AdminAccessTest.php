@@ -10,6 +10,10 @@ test('the login page renders', function () {
     $this->get('/login')
         ->assertOk()
         ->assertSee('Sign in to your account');
+
+    Livewire::test('pages::auth.login')
+        ->assertSet('email', '')
+        ->assertSet('password', '');
 });
 
 test('guests are redirected from the admin dashboard', function () {
