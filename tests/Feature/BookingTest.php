@@ -1,6 +1,8 @@
 <?php
 
+use App\Mail\IntakeNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
@@ -44,6 +46,8 @@ test('the booking form validates the phone number and age', function () {
 });
 
 test('a patient can submit a booking request', function () {
+    Mail::fake();
+
     Livewire::test('public.booking-modal')
         ->call('openModal')
         ->set('name', 'Aarav Sharma')
@@ -62,6 +66,12 @@ test('a patient can submit a booking request', function () {
         'address' => '12 Market Road, Ghaziabad',
         'problem' => 'Persistent tooth pain in the lower jaw.',
     ]);
+
+    Mail::assertSent(IntakeNotification::class, function (IntakeNotification $mail) {
+        return $mail->hasTo('samcool3203@gmail.com')
+            && $mail->heading === 'New appointment request'
+            && $mail->details[2]['value'] === '32';
+    });
 });
 
 test('the booking modal is available on the public pages', function () {

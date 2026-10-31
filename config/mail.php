@@ -16,6 +16,8 @@ return [
 
     'default' => env('MAIL_MAILER', 'log'),
 
+    'to' => env('MAIL_TO', 'samcool3203@gmail.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations

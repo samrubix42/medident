@@ -21,10 +21,10 @@
                     Call us, send an inquiry, or visit our clinic. Our team is always ready to guide you to the right care and answer any questions about treatments or appointments.
                 </p>
 
-                <div class="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap">
                     @if ($settings->phone)
                         <a href="{{ $settings->phoneHref() }}"
-                           class="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-med-navy px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-med-blue hover:shadow-lg active:translate-y-0 sm:w-auto">
+                           class="inline-flex w-full touch-manipulation items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-med-navy px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-med-blue hover:shadow-lg active:scale-[0.98] sm:w-auto">
                             <i class="ri-phone-line text-base"></i>
                             <span>Call the Clinic</span>
                         </a>
@@ -32,7 +32,7 @@
 
                     <button type="button"
                             @click="$dispatch('open-booking-modal')"
-                            class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:bg-slate-50 sm:w-auto">
+                            class="inline-flex w-full touch-manipulation items-center justify-center gap-2 whitespace-nowrap rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:bg-slate-50 active:scale-[0.98] sm:w-auto">
                         <span>Book an Appointment</span>
                         <i class="ri-arrow-right-line text-xs"></i>
                     </button>
@@ -73,7 +73,7 @@
                                 <a href="{{ $this->mapDirectionsUrl }}"
                                    target="_blank"
                                    rel="noopener noreferrer"
-                                   class="mt-2.5 inline-flex items-center gap-1.5 text-xs font-bold text-med-blue transition-colors hover:text-sky-800">
+                                   class="mt-2.5 inline-flex w-fit touch-manipulation items-center gap-1.5 text-xs font-bold text-med-blue transition-colors hover:text-sky-800 active:scale-[0.98]">
                                     <span>Get directions</span>
                                     <i class="ri-arrow-right-up-line"></i>
                                 </a>
@@ -150,7 +150,7 @@
                                    target="_blank"
                                    rel="noopener noreferrer"
                                    aria-label="Facebook"
-                                   class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-base text-slate-600 shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow">
+                                   class="grid h-11 w-11 touch-manipulation place-items-center rounded-full border border-slate-200 bg-white text-base text-slate-600 shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow active:scale-[0.98] sm:h-10 sm:w-10">
                                     <i class="ri-facebook-fill"></i>
                                 </a>
                             @endif
@@ -160,7 +160,7 @@
                                    target="_blank"
                                    rel="noopener noreferrer"
                                    aria-label="Instagram"
-                                   class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-base text-slate-600 shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow">
+                                   class="grid h-11 w-11 touch-manipulation place-items-center rounded-full border border-slate-200 bg-white text-base text-slate-600 shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow active:scale-[0.98] sm:h-10 sm:w-10">
                                     <i class="ri-instagram-line"></i>
                                 </a>
                             @endif
@@ -170,7 +170,7 @@
                                    target="_blank"
                                    rel="noopener noreferrer"
                                    aria-label="LinkedIn"
-                                   class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-base text-slate-600 shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow">
+                                   class="grid h-11 w-11 touch-manipulation place-items-center rounded-full border border-slate-200 bg-white text-base text-slate-600 shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:shadow active:scale-[0.98] sm:h-10 sm:w-10">
                                     <i class="ri-linkedin-fill"></i>
                                 </a>
                             @endif
@@ -180,7 +180,7 @@
                                    target="_blank"
                                    rel="noopener noreferrer"
                                    aria-label="WhatsApp"
-                                   class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-base text-emerald-600 shadow-sm transition-all duration-200 hover:border-emerald-500 hover:bg-emerald-50 hover:shadow">
+                                   class="grid h-11 w-11 touch-manipulation place-items-center rounded-full border border-slate-200 bg-white text-base text-emerald-600 shadow-sm transition-all duration-200 hover:border-emerald-500 hover:bg-emerald-50 hover:shadow active:scale-[0.98] sm:h-10 sm:w-10">
                                     <i class="ri-whatsapp-line"></i>
                                 </a>
                             @endif
@@ -304,7 +304,7 @@
                         <button type="submit"
                                 wire:loading.attr="disabled"
                                 wire:target="submit"
-                                class="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-med-navy px-8 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-med-blue hover:shadow-lg disabled:cursor-wait disabled:opacity-70 sm:w-auto">
+                                class="inline-flex w-full touch-manipulation items-center justify-center gap-2 rounded-full bg-sky-50 px-6 py-3 text-sm font-semibold text-med-blue transition-colors duration-200 hover:bg-sky-100 active:bg-sky-100 disabled:cursor-wait disabled:opacity-70 sm:w-auto">
                             <span wire:loading.remove wire:target="submit">Send Message</span>
                             <span wire:loading wire:target="submit">Sending...</span>
                             <i wire:loading.remove wire:target="submit" class="ri-send-plane-line text-sm"></i>
@@ -338,7 +338,7 @@
                 <a href="{{ $this->mapDirectionsUrl }}"
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="inline-flex w-full sm:w-fit justify-center sm:justify-start items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs sm:text-sm font-semibold text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:bg-slate-50">
+                   class="inline-flex w-full touch-manipulation justify-center items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-med-navy shadow-sm transition-all duration-200 hover:border-med-blue hover:text-med-blue hover:bg-slate-50 active:scale-[0.98] sm:w-fit sm:justify-start sm:text-sm">
                     <span>Open in Google Maps</span>
                     <i class="ri-arrow-right-up-line text-xs"></i>
                 </a>

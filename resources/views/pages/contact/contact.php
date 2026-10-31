@@ -1,8 +1,10 @@
 <?php
 
+use App\Mail\IntakeNotification;
 use App\Models\ClinicSetting;
 use App\Models\ContactMessage;
 use App\Models\PageSeo;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
@@ -63,6 +65,21 @@ new class extends Component
             ...$validated,
             'is_read' => false,
         ]);
+
+        Mail::to(config('mail.to'))->send(
+            new IntakeNotification(
+                'New contact message',
+                'A visitor sent a message through the MediDENT contact form.',
+                [
+                    ['label' => 'Name', 'value' => $validated['name']],
+                    ['label' => 'Email', 'value' => $validated['email'] ?? 'Not provided'],
+                    ['label' => 'Phone', 'value' => $validated['phone']],
+                    ['label' => 'Subject', 'value' => $validated['subject']],
+                    ['label' => 'Message', 'value' => $validated['message']],
+                ],
+                'New contact message - MediDENT',
+            ),
+        );
 
         $this->reset(['name', 'email', 'phone', 'subject', 'message']);
         $this->submitted = true;

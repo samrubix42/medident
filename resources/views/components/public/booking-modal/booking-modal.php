@@ -1,6 +1,8 @@
 <?php
 
+use App\Mail\IntakeNotification;
 use App\Models\Appointment;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 new class extends Component
@@ -56,6 +58,21 @@ new class extends Component
             'address' => $validated['address'],
             'problem' => $validated['problem'],
         ]);
+
+        Mail::to(config('mail.to'))->send(
+            new IntakeNotification(
+                'New appointment request',
+                'A patient requested an appointment through the MediDENT website.',
+                [
+                    ['label' => 'Name', 'value' => $validated['name']],
+                    ['label' => 'Phone', 'value' => $validated['phone']],
+                    ['label' => 'Age', 'value' => (string) $validated['age']],
+                    ['label' => 'Address', 'value' => $validated['address']],
+                    ['label' => 'Problem', 'value' => $validated['problem']],
+                ],
+                'New appointment request - MediDENT',
+            ),
+        );
 
         $this->submitted = true;
     }

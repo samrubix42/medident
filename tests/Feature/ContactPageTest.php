@@ -1,7 +1,9 @@
 <?php
 
+use App\Mail\IntakeNotification;
 use App\Models\ContactMessage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
@@ -47,6 +49,8 @@ test('the contact form validates the email address and phone number', function (
 });
 
 test('a visitor can submit a contact message', function () {
+    Mail::fake();
+
     Livewire::test('pages::contact')
         ->set('name', 'Aarav Sharma')
         ->set('email', 'aarav@example.com')
@@ -72,9 +76,16 @@ test('a visitor can submit a contact message', function () {
     ]);
 
     expect(ContactMessage::query()->count())->toBe(1);
+
+    Mail::assertSent(IntakeNotification::class, function (IntakeNotification $mail) {
+        return $mail->hasTo('samcool3203@gmail.com')
+            && $mail->heading === 'New contact message';
+    });
 });
 
 test('a visitor can submit a contact message without an email address', function () {
+    Mail::fake();
+
     Livewire::test('pages::contact')
         ->set('name', 'Aarav Sharma')
         ->set('phone', '+91 98765 43210')
@@ -90,4 +101,29 @@ test('a visitor can submit a contact message without an email address', function
         'phone' => '+91 98765 43210',
         'is_read' => false,
     ]);
+
+    Mail::assertSent(IntakeNotification::class, function (IntakeNotification $mail) {
+        return $mail->hasTo('samcool3203@gmail.com')
+            && $mail->details[1]['value'] === 'Not provided';
+    });
+});
+
+test('contact notifications render the clinic email design and submitted details', function () {
+    $mail = new IntakeNotification(
+        'New contact message',
+        'A visitor sent a message through the MediDENT contact form.',
+        [
+            ['label' => 'Name', 'value' => 'Aarav Sharma'],
+            ['label' => 'Message', 'value' => '<b>Please call me about an appointment.</b>'],
+        ],
+        'New contact message - MediDENT',
+    );
+
+    $mail->assertHasSubject('New contact message - MediDENT');
+    $mail->assertSeeInHtml('MEDIDENT MULTICARE CLINIC');
+    $mail->assertSeeInHtml('Aarav Sharma');
+    $mail->assertSeeInHtml('text-align: left !important');
+    $mail->assertSeeInHtml('<b>Please call me about an appointment.</b>');
+    expect($mail->render())->not->toContain('<b>Please call me about an appointment.</b>');
+    $mail->assertSeeInText('MediDENT Multicare Clinic');
 });
